@@ -64,21 +64,22 @@
   background-color: #1e3a5f;
   border-radius: 0 0 12px 12px;
   margin: 0 40px 40px 40px;
+  overflow: visible;
 }
 
 .news-scroll-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  max-height: 650px;
-  overflow-y: auto;
-  padding-right: 15px;
-  scrollbar-width: thin;
-  scrollbar-color: #2ecc71 rgba(46, 204, 113, 0.1);
+  padding-right: 0px;
+  min-height: auto;
+  height: auto;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 .news-scroll-wrapper::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
 .news-scroll-wrapper::-webkit-scrollbar-track {
@@ -192,7 +193,6 @@
 
   .news-scroll-wrapper {
     grid-template-columns: 1fr;
-    max-height: 500px;
     gap: 15px;
   }
 

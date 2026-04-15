@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import AdmissionPortrait from './AdmissionPortrait';
 import '../styles/Header.css';
 
@@ -19,197 +19,206 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
   const institutesSubMenu: SubMenuItem[] = [
     {
       labelEn: 'University Campus',
-      labelHi: 'विश्वविद्यालय परिसर',
+      labelHi: 'à¤µà¤¿à¤¶à¥à¤µà¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ à¤ªà¤°à¤¿à¤¸à¤°',
       url: '#'
     },
     {
       labelEn: 'Pandit Lalit Mohan Sharma Government PG College',
-      labelHi: 'पंडित ललित मोहन शर्मा सरकारी स्नातकोत्तर महाविद्यालय',
+      labelHi: 'à¤ªà¤‚à¤¡à¤¿à¤¤ à¤²à¤²à¤¿à¤¤ à¤®à¥‹à¤¹à¤¨ à¤¶à¤°à¥à¤®à¤¾ à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤¸à¥à¤¨à¤¾à¤¤à¤•à¥‹à¤¤à¥à¤¤à¤° à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯',
       url: '#'
     },
     {
       labelEn: 'Government Post Graduate College - Gopeshwar, Chamoli',
-      labelHi: 'सरकारी स्नातकोत्तर महाविद्यालय - गोपेश्वर, चमोली',
+      labelHi: 'à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤¸à¥à¤¨à¤¾à¤¤à¤•à¥‹à¤¤à¥à¤¤à¤° à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ - à¤—à¥‹à¤ªà¥‡à¤¶à¥à¤µà¤°, à¤šà¤®à¥‹à¤²à¥€',
+      url: '#'
+    },
+    {
+      labelEn: 'Government Degree College - Chandrabadni(naikhi)',
+      labelHi: 'à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤¸à¥à¤¨à¤¾à¤¤à¤•à¥‹à¤¤à¥à¤¤à¤° à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ - à¤—à¥‹à¤ªà¥‡à¤¶à¥à¤µà¤°, à¤šà¤®à¥‹à¤²à¥€',
+      url: '#'
+    },
+    
+    {
+      labelEn: 'Government Degree College Chandrabadni (Naikhi)',
+      labelHi: 'à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯',
       url: '#'
     },
     {
       labelEn: 'University Affiliated Colleges',
-      labelHi: 'विश्वविद्यालय संबद्ध महाविद्यालय',
-      url: '#'
-    },
-    {
-      labelEn: 'Government Colleges',
-      labelHi: 'सरकारी महाविद्यालय',
+      labelHi: 'à¤µà¤¿à¤¶à¥à¤µà¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ à¤¸à¤‚à¤¬à¤¦à¥à¤§ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯',
       url: '#'
     },
     {
       labelEn: 'Aided Colleges',
-      labelHi: 'सहायता प्राप्त महाविद्यालय',
+      labelHi: 'à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤ªà¥à¤°à¤¾à¤ªà¥à¤¤ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯',
       url: '#'
     },
     {
       labelEn: 'Private Colleges',
-      labelHi: 'निजी महाविद्यालय',
+      labelHi: 'à¤¨à¤¿à¤œà¥€ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯',
       url: '#'
     }
+    
   ];
 
   const departmentsSubMenu: SubMenuItem[] = [
-    { labelEn: 'Biotechnology', labelHi: 'जैव प्रौद्योगिकी', url: '#' },
-    { labelEn: 'Botany', labelHi: 'वनस्पति विज्ञान', url: '#' },
-    { labelEn: 'Charak School of Pharmacy', labelHi: 'चरक स्कूल ऑफ फार्मेसी', url: '#' },
-    { labelEn: 'Chemistry', labelHi: 'रसायन विज्ञान', url: '#' },
-    { labelEn: 'Commerce', labelHi: 'वाणिज्य', url: '#' },
-    { labelEn: 'Computer Application', labelHi: 'कंप्यूटर अनुप्रयोग', url: '#' },
-    { labelEn: 'Economics', labelHi: 'अर्थशास्त्र', url: '#' },
-    { labelEn: 'Education', labelHi: 'शिक्षा', url: '#' },
-    { labelEn: 'English', labelHi: 'अंग्रेजी', url: '#' },
-    { labelEn: 'Environmental Science', labelHi: 'पर्यावरण विज्ञान', url: '#' },
-    { labelEn: 'Fine Arts', labelHi: 'ललित कला', url: '#' },
-    { labelEn: 'Food Science & Technology', labelHi: 'खाद्य विज्ञान और प्रौद्योगिकी', url: '#' },
-    { labelEn: 'Foreign Language', labelHi: 'विदेशी भाषा', url: '#' },
-    { labelEn: 'Forensic Science', labelHi: 'फोरेंसिक विज्ञान', url: '#' },
-    { labelEn: 'Genetics & Plant Breeding', labelHi: 'आनुवंशिकी और पादप प्रजनन', url: '#' },
-    { labelEn: 'Geography', labelHi: 'भूगोल', url: '#' },
-    { labelEn: 'Hindi', labelHi: 'हिंदी', url: '#' },
-    { labelEn: 'History', labelHi: 'इतिहास', url: '#' },
-    { labelEn: 'Home Science', labelHi: 'गृह विज्ञान', url: '#' },
-    { labelEn: 'Horticulture', labelHi: 'बागवानी', url: '#' },
-    { labelEn: 'Institute of Business Studies', labelHi: 'व्यावसायिक अध्ययन संस्थान', url: '#' },
-    { labelEn: 'Institute of Engineering & Technology', labelHi: 'इंजीनियरिंग और प्रौद्योगिकी संस्थान', url: '#' },
-    { labelEn: 'Jewellery Design & Technology', labelHi: 'गहने डिजाइन और प्रौद्योगिकी', url: '#' },
-    { labelEn: 'Legal Studies', labelHi: 'कानूनी अध्ययन', url: '#' },
-    { labelEn: 'Library and Information Science', labelHi: 'पुस्तकालय और सूचना विज्ञान', url: '#' },
-    { labelEn: 'Mathematics', labelHi: 'गणित', url: '#' },
-    { labelEn: 'Microbiology', labelHi: 'सूक्ष्मजीव विज्ञान', url: '#' },
-    { labelEn: 'Physical Education', labelHi: 'शारीरिक शिक्षा', url: '#' },
-    { labelEn: 'Physics', labelHi: 'भौतिकी', url: '#' },
-    { labelEn: 'Plant Protection', labelHi: 'पादप सुरक्षा', url: '#' },
-    { labelEn: 'Political Science', labelHi: 'राजनीति विज्ञान', url: '#' },
-    { labelEn: 'Psychology', labelHi: 'मनोविज्ञान', url: '#' },
-    { labelEn: 'Sanskrit', labelHi: 'संस्कृत', url: '#' }
+    { labelEn: 'Biotechnology', labelHi: 'à¤œà¥ˆà¤µ à¤ªà¥à¤°à¥Œà¤¦à¥à¤¯à¥‹à¤—à¤¿à¤•à¥€', url: '#' },
+    { labelEn: 'Botany', labelHi: 'à¤µà¤¨à¤¸à¥à¤ªà¤¤à¤¿ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Charak School of Pharmacy', labelHi: 'à¤šà¤°à¤• à¤¸à¥à¤•à¥‚à¤² à¤‘à¤« à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€', url: '#' },
+    { labelEn: 'Chemistry', labelHi: 'à¤°à¤¸à¤¾à¤¯à¤¨ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Commerce', labelHi: 'à¤µà¤¾à¤£à¤¿à¤œà¥à¤¯', url: '#' },
+    { labelEn: 'Computer Application', labelHi: 'à¤•à¤‚à¤ªà¥à¤¯à¥‚à¤Ÿà¤° à¤…à¤¨à¥à¤ªà¥à¤°à¤¯à¥‹à¤—', url: '#' },
+    { labelEn: 'Economics', labelHi: 'à¤…à¤°à¥à¤¥à¤¶à¤¾à¤¸à¥à¤¤à¥à¤°', url: '#' },
+    { labelEn: 'Education', labelHi: 'à¤¶à¤¿à¤•à¥à¤·à¤¾', url: '#' },
+    { labelEn: 'English', labelHi: 'à¤…à¤‚à¤—à¥à¤°à¥‡à¤œà¥€', url: '#' },
+    { labelEn: 'Environmental Science', labelHi: 'à¤ªà¤°à¥à¤¯à¤¾à¤µà¤°à¤£ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Fine Arts', labelHi: 'à¤²à¤²à¤¿à¤¤ à¤•à¤²à¤¾', url: '#' },
+    { labelEn: 'Food Science & Technology', labelHi: 'à¤–à¤¾à¤¦à¥à¤¯ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨ à¤”à¤° à¤ªà¥à¤°à¥Œà¤¦à¥à¤¯à¥‹à¤—à¤¿à¤•à¥€', url: '#' },
+    { labelEn: 'Foreign Language', labelHi: 'à¤µà¤¿à¤¦à¥‡à¤¶à¥€ à¤­à¤¾à¤·à¤¾', url: '#' },
+    { labelEn: 'Forensic Science', labelHi: 'à¤«à¥‹à¤°à¥‡à¤‚à¤¸à¤¿à¤• à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Genetics & Plant Breeding', labelHi: 'à¤†à¤¨à¥à¤µà¤‚à¤¶à¤¿à¤•à¥€ à¤”à¤° à¤ªà¤¾à¤¦à¤ª à¤ªà¥à¤°à¤œà¤¨à¤¨', url: '#' },
+    { labelEn: 'Geography', labelHi: 'à¤­à¥‚à¤—à¥‹à¤²', url: '#' },
+    { labelEn: 'Hindi', labelHi: 'à¤¹à¤¿à¤‚à¤¦à¥€', url: '#' },
+    { labelEn: 'History', labelHi: 'à¤‡à¤¤à¤¿à¤¹à¤¾à¤¸', url: '#' },
+    { labelEn: 'Home Science', labelHi: 'à¤—à¥ƒà¤¹ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Horticulture', labelHi: 'à¤¬à¤¾à¤—à¤µà¤¾à¤¨à¥€', url: '#' },
+    { labelEn: 'Institute of Business Studies', labelHi: 'à¤µà¥à¤¯à¤¾à¤µà¤¸à¤¾à¤¯à¤¿à¤• à¤…à¤§à¥à¤¯à¤¯à¤¨ à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨', url: '#' },
+    { labelEn: 'Institute of Engineering & Technology', labelHi: 'à¤‡à¤‚à¤œà¥€à¤¨à¤¿à¤¯à¤°à¤¿à¤‚à¤— à¤”à¤° à¤ªà¥à¤°à¥Œà¤¦à¥à¤¯à¥‹à¤—à¤¿à¤•à¥€ à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨', url: '#' },
+    { labelEn: 'Jewellery Design & Technology', labelHi: 'à¤—à¤¹à¤¨à¥‡ à¤¡à¤¿à¤œà¤¾à¤‡à¤¨ à¤”à¤° à¤ªà¥à¤°à¥Œà¤¦à¥à¤¯à¥‹à¤—à¤¿à¤•à¥€', url: '#' },
+    { labelEn: 'Legal Studies', labelHi: 'à¤•à¤¾à¤¨à¥‚à¤¨à¥€ à¤…à¤§à¥à¤¯à¤¯à¤¨', url: '#' },
+    { labelEn: 'Library and Information Science', labelHi: 'à¤ªà¥à¤¸à¥à¤¤à¤•à¤¾à¤²à¤¯ à¤”à¤° à¤¸à¥‚à¤šà¤¨à¤¾ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Mathematics', labelHi: 'à¤—à¤£à¤¿à¤¤', url: '#' },
+    { labelEn: 'Microbiology', labelHi: 'à¤¸à¥‚à¤•à¥à¤·à¥à¤®à¤œà¥€à¤µ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Physical Education', labelHi: 'à¤¶à¤¾à¤°à¥€à¤°à¤¿à¤• à¤¶à¤¿à¤•à¥à¤·à¤¾', url: '#' },
+    { labelEn: 'Physics', labelHi: 'à¤­à¥Œà¤¤à¤¿à¤•à¥€', url: '#' },
+    { labelEn: 'Plant Protection', labelHi: 'à¤ªà¤¾à¤¦à¤ª à¤¸à¥à¤°à¤•à¥à¤·à¤¾', url: '#' },
+    { labelEn: 'Political Science', labelHi: 'à¤°à¤¾à¤œà¤¨à¥€à¤¤à¤¿ à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Psychology', labelHi: 'à¤®à¤¨à¥‹à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨', url: '#' },
+    { labelEn: 'Sanskrit', labelHi: 'à¤¸à¤‚à¤¸à¥à¤•à¥ƒà¤¤', url: '#' }
   ];
 
   const academicSubMenu: SubMenuItem[] = [
-    { labelEn: 'Faculty of Arts', labelHi: 'कला संकाय', url: '#' },
-    { labelEn: 'Faculty of Science', labelHi: 'विज्ञान संकाय', url: '#' },
-    { labelEn: 'Faculty of Commerce', labelHi: 'वाणिज्य संकाय', url: '#' },
-    { labelEn: 'All Programmes', labelHi: 'सभी कार्यक्रम', url: '#' },
-    { labelEn: 'Regular Courses', labelHi: 'नियमित पाठ्यक्रम', url: '#' },
-    { labelEn: 'Self Financial Courses', labelHi: 'आत्मनिर्भर वित्तीय पाठ्यक्रम', url: '#' },
-    { labelEn: 'Self-Designed Courses', labelHi: 'स्व-डिजाइन किए गए पाठ्यक्रम', url: '#' },
-    { labelEn: 'Campus Syllabus', labelHi: 'परिसर पाठ्यक्रम', url: '#' },
-    { labelEn: 'College Syllabus', labelHi: 'कॉलेज पाठ्यक्रम', url: '#' },
-    { labelEn: 'NEP-2020 Syllabus', labelHi: 'राष्ट्रीय शिक्षा नीति-2020 पाठ्यक्रम', url: '#' },
-    { labelEn: 'Skill Development Syllabus', labelHi: 'कौशल विकास पाठ्यक्रम', url: '#' },
-    { labelEn: 'Academic Calendar', labelHi: 'शैक्षणिक कैलेंडर', url: '#' },
-    { labelEn: 'College Code', labelHi: 'कॉलेज कोड', url: '#' },
-    { labelEn: 'Course Code', labelHi: 'पाठ्यक्रम कोड', url: '#' },
-    { labelEn: 'Alumni', labelHi: 'पूर्व छात्र', url: '#' },
-    { labelEn: 'Feedback', labelHi: 'प्रतिक्रिया', url: '#' }
+    { labelEn: 'Faculty of Arts', labelHi: 'à¤•à¤²à¤¾ à¤¸à¤‚à¤•à¤¾à¤¯', url: '#' },
+    { labelEn: 'Faculty of Science', labelHi: 'à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨ à¤¸à¤‚à¤•à¤¾à¤¯', url: '#' },
+    { labelEn: 'Faculty of Commerce', labelHi: 'à¤µà¤¾à¤£à¤¿à¤œà¥à¤¯ à¤¸à¤‚à¤•à¤¾à¤¯', url: '#' },
+    { labelEn: 'All Programmes', labelHi: 'à¤¸à¤­à¥€ à¤•à¤¾à¤°à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'Regular Courses', labelHi: 'à¤¨à¤¿à¤¯à¤®à¤¿à¤¤ à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'Self Financial Courses', labelHi: 'à¤†à¤¤à¥à¤®à¤¨à¤¿à¤°à¥à¤­à¤° à¤µà¤¿à¤¤à¥à¤¤à¥€à¤¯ à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'Self-Designed Courses', labelHi: 'à¤¸à¥à¤µ-à¤¡à¤¿à¤œà¤¾à¤‡à¤¨ à¤•à¤¿à¤ à¤—à¤ à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'Campus Syllabus', labelHi: 'à¤ªà¤°à¤¿à¤¸à¤° à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'College Syllabus', labelHi: 'à¤•à¥‰à¤²à¥‡à¤œ à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'NEP-2020 Syllabus', labelHi: 'à¤°à¤¾à¤·à¥à¤Ÿà¥à¤°à¥€à¤¯ à¤¶à¤¿à¤•à¥à¤·à¤¾ à¤¨à¥€à¤¤à¤¿-2020 à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'Skill Development Syllabus', labelHi: 'à¤•à¥Œà¤¶à¤² à¤µà¤¿à¤•à¤¾à¤¸ à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'Academic Calendar', labelHi: 'à¤¶à¥ˆà¤•à¥à¤·à¤£à¤¿à¤• à¤•à¥ˆà¤²à¥‡à¤‚à¤¡à¤°', url: '#' },
+    { labelEn: 'College Code', labelHi: 'à¤•à¥‰à¤²à¥‡à¤œ à¤•à¥‹à¤¡', url: '#' },
+    { labelEn: 'Course Code', labelHi: 'à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤® à¤•à¥‹à¤¡', url: '#' },
+    { labelEn: 'Alumni', labelHi: 'à¤ªà¥‚à¤°à¥à¤µ à¤›à¤¾à¤¤à¥à¤°', url: '#' },
+    { labelEn: 'Feedback', labelHi: 'à¤ªà¥à¤°à¤¤à¤¿à¤•à¥à¤°à¤¿à¤¯à¤¾', url: '#' }
   ];
 
   const infrastructureSubMenu: SubMenuItem[] = [
-    { labelEn: 'Auditorium', labelHi: 'सभागार', url: '#' },
-    { labelEn: 'Canteen', labelHi: 'कैंटीन', url: '#' },
-    { labelEn: 'Guest House', labelHi: 'अतिथि गृह', url: '#' },
-    { labelEn: 'Hostel', labelHi: 'छात्रावास', url: '#' },
-    { labelEn: 'Internet Facility', labelHi: 'इंटरनेट सुविधा', url: '#' },
-    { labelEn: 'Placement Call Centre', labelHi: 'प्लेसमेंट कॉल सेंटर', url: '#' },
-    { labelEn: 'Healthcare', labelHi: 'स्वास्थ्य सेवा', url: '#' },
-    { labelEn: 'Skill Development Centre', labelHi: 'कौशल विकास केंद्र', url: '#' },
-    { labelEn: 'Sports and Games', labelHi: 'खेल और खेल कूद', url: '#' },
-    { labelEn: 'Computer Lab', labelHi: 'कंप्यूटर प्रयोगशाला', url: '#' },
-    { labelEn: 'Library', labelHi: 'पुस्तकालय', url: '#' },
-    { labelEn: 'Faculty Development Centre', labelHi: 'संकाय विकास केंद्र', url: '#' },
-    { labelEn: 'Centre of Excellence', labelHi: 'उत्कृष्टता केंद्र', url: '#' },
-    { labelEn: 'Medical Room', labelHi: 'चिकित्सा कक्ष', url: '#' },
-    { labelEn: 'Student Counseling Centre', labelHi: 'छात्र परामर्श केंद्र', url: '#' },
-    { labelEn: 'Transportation', labelHi: 'परिवहन', url: '#' }
+    { labelEn: 'Auditorium', labelHi: 'à¤¸à¤­à¤¾à¤—à¤¾à¤°', url: '#' },
+    { labelEn: 'Canteen', labelHi: 'à¤•à¥ˆà¤‚à¤Ÿà¥€à¤¨', url: '#' },
+    { labelEn: 'Guest House', labelHi: 'à¤…à¤¤à¤¿à¤¥à¤¿ à¤—à¥ƒà¤¹', url: '#' },
+    { labelEn: 'Hostel', labelHi: 'à¤›à¤¾à¤¤à¥à¤°à¤¾à¤µà¤¾à¤¸', url: '#' },
+    { labelEn: 'Internet Facility', labelHi: 'à¤‡à¤‚à¤Ÿà¤°à¤¨à¥‡à¤Ÿ à¤¸à¥à¤µà¤¿à¤§à¤¾', url: '#' },
+    { labelEn: 'Placement Call Centre', labelHi: 'à¤ªà¥à¤²à¥‡à¤¸à¤®à¥‡à¤‚à¤Ÿ à¤•à¥‰à¤² à¤¸à¥‡à¤‚à¤Ÿà¤°', url: '#' },
+    { labelEn: 'Healthcare', labelHi: 'à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤¸à¥‡à¤µà¤¾', url: '#' },
+    { labelEn: 'Skill Development Centre', labelHi: 'à¤•à¥Œà¤¶à¤² à¤µà¤¿à¤•à¤¾à¤¸ à¤•à¥‡à¤‚à¤¦à¥à¤°', url: '#' },
+    { labelEn: 'Sports and Games', labelHi: 'à¤–à¥‡à¤² à¤”à¤° à¤–à¥‡à¤² à¤•à¥‚à¤¦', url: '#' },
+    { labelEn: 'Computer Lab', labelHi: 'à¤•à¤‚à¤ªà¥à¤¯à¥‚à¤Ÿà¤° à¤ªà¥à¤°à¤¯à¥‹à¤—à¤¶à¤¾à¤²à¤¾', url: '#' },
+    { labelEn: 'Library', labelHi: 'à¤ªà¥à¤¸à¥à¤¤à¤•à¤¾à¤²à¤¯', url: '#' },
+    { labelEn: 'Faculty Development Centre', labelHi: 'à¤¸à¤‚à¤•à¤¾à¤¯ à¤µà¤¿à¤•à¤¾à¤¸ à¤•à¥‡à¤‚à¤¦à¥à¤°', url: '#' },
+    { labelEn: 'Centre of Excellence', labelHi: 'à¤‰à¤¤à¥à¤•à¥ƒà¤·à¥à¤Ÿà¤¤à¤¾ à¤•à¥‡à¤‚à¤¦à¥à¤°', url: '#' },
+    { labelEn: 'Medical Room', labelHi: 'à¤šà¤¿à¤•à¤¿à¤¤à¥à¤¸à¤¾ à¤•à¤•à¥à¤·', url: '#' },
+    { labelEn: 'Student Counseling Centre', labelHi: 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¤°à¤¾à¤®à¤°à¥à¤¶ à¤•à¥‡à¤‚à¤¦à¥à¤°', url: '#' },
+    { labelEn: 'Transportation', labelHi: 'à¤ªà¤°à¤¿à¤µà¤¹à¤¨', url: '#' }
   ];
 
   const iqacSubMenu: SubMenuItem[] = [
-    { labelEn: 'IQAC', labelHi: 'आईक्यूएसी', url: '#' },
-    { labelEn: 'AGAR Reports', labelHi: 'एजीएआर रिपोर्ट', url: '#' },
-    { labelEn: 'Minutes of IQAC Meetings', labelHi: 'आईक्यूएसी बैठकों के मिनट', url: '#' },
-    { labelEn: 'Best Practices', labelHi: 'सर्वोत्तम प्रथाएं', url: '#' },
-    { labelEn: 'IQAC Committee Letter', labelHi: 'आईक्यूएसी समिति पत्र', url: '#' },
-    { labelEn: 'Notifications', labelHi: 'सूचनाएं', url: '#' },
-    { labelEn: 'Institutional Distinctiveness', labelHi: 'संस्थागत विशिष्टता', url: '#' },
-    { labelEn: 'Industry Consultancy Cell', labelHi: 'उद्योग परामर्श कक्ष', url: '#' },
-    { labelEn: 'Facilities', labelHi: 'सुविधाएं', url: '#' },
-    { labelEn: 'Proceeding AC/BOS', labelHi: 'कार्यवाही एसी/बीओएस', url: '#' },
-    { labelEn: 'Student Projects/Field Reports', labelHi: 'छात्र परियोजनाएं/क्षेत्र रिपोर्ट', url: '#' },
-    { labelEn: 'Academic Calendar', labelHi: 'शैक्षणिक कैलेंडर', url: '#' },
-    { labelEn: 'Audited Statement of Income Expenditure', labelHi: 'आय और व्यय का लेखापरीक्षित विवरण', url: '#' },
-    { labelEn: 'Feedback', labelHi: 'प्रतिक्रिया', url: '#' },
-    { labelEn: 'Activities', labelHi: 'गतिविधियाँ', url: '#' },
-    { labelEn: 'Contact', labelHi: 'संपर्क', url: '#' }
+    { labelEn: 'IQAC', labelHi: 'à¤†à¤ˆà¤•à¥à¤¯à¥‚à¤à¤¸à¥€', url: '#' },
+    { labelEn: 'AGAR Reports', labelHi: 'à¤à¤œà¥€à¤à¤†à¤° à¤°à¤¿à¤ªà¥‹à¤°à¥à¤Ÿ', url: '#' },
+    { labelEn: 'Minutes of IQAC Meetings', labelHi: 'à¤†à¤ˆà¤•à¥à¤¯à¥‚à¤à¤¸à¥€ à¤¬à¥ˆà¤ à¤•à¥‹à¤‚ à¤•à¥‡ à¤®à¤¿à¤¨à¤Ÿ', url: '#' },
+    { labelEn: 'Best Practices', labelHi: 'à¤¸à¤°à¥à¤µà¥‹à¤¤à¥à¤¤à¤® à¤ªà¥à¤°à¤¥à¤¾à¤à¤‚', url: '#' },
+    { labelEn: 'IQAC Committee Letter', labelHi: 'à¤†à¤ˆà¤•à¥à¤¯à¥‚à¤à¤¸à¥€ à¤¸à¤®à¤¿à¤¤à¤¿ à¤ªà¤¤à¥à¤°', url: '#' },
+    { labelEn: 'Notifications', labelHi: 'à¤¸à¥‚à¤šà¤¨à¤¾à¤à¤‚', url: '#' },
+    { labelEn: 'Institutional Distinctiveness', labelHi: 'à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤—à¤¤ à¤µà¤¿à¤¶à¤¿à¤·à¥à¤Ÿà¤¤à¤¾', url: '#' },
+    { labelEn: 'Industry Consultancy Cell', labelHi: 'à¤‰à¤¦à¥à¤¯à¥‹à¤— à¤ªà¤°à¤¾à¤®à¤°à¥à¤¶ à¤•à¤•à¥à¤·', url: '#' },
+    { labelEn: 'Facilities', labelHi: 'à¤¸à¥à¤µà¤¿à¤§à¤¾à¤à¤‚', url: '#' },
+    { labelEn: 'Proceeding AC/BOS', labelHi: 'à¤•à¤¾à¤°à¥à¤¯à¤µà¤¾à¤¹à¥€ à¤à¤¸à¥€/à¤¬à¥€à¤“à¤à¤¸', url: '#' },
+    { labelEn: 'Student Projects/Field Reports', labelHi: 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¤°à¤¿à¤¯à¥‹à¤œà¤¨à¤¾à¤à¤‚/à¤•à¥à¤·à¥‡à¤¤à¥à¤° à¤°à¤¿à¤ªà¥‹à¤°à¥à¤Ÿ', url: '#' },
+    { labelEn: 'Academic Calendar', labelHi: 'à¤¶à¥ˆà¤•à¥à¤·à¤£à¤¿à¤• à¤•à¥ˆà¤²à¥‡à¤‚à¤¡à¤°', url: '#' },
+    { labelEn: 'Audited Statement of Income Expenditure', labelHi: 'à¤†à¤¯ à¤”à¤° à¤µà¥à¤¯à¤¯ à¤•à¤¾ à¤²à¥‡à¤–à¤¾à¤ªà¤°à¥€à¤•à¥à¤·à¤¿à¤¤ à¤µà¤¿à¤µà¤°à¤£', url: '#' },
+    { labelEn: 'Feedback', labelHi: 'à¤ªà¥à¤°à¤¤à¤¿à¤•à¥à¤°à¤¿à¤¯à¤¾', url: '#' },
+    { labelEn: 'Activities', labelHi: 'à¤—à¤¤à¤¿à¤µà¤¿à¤§à¤¿à¤¯à¤¾à¤', url: '#' },
+    { labelEn: 'Contact', labelHi: 'à¤¸à¤‚à¤ªà¤°à¥à¤•', url: '#' }
   ];
 
   const examinationSubMenu: SubMenuItem[] = [
-    { labelEn: 'Exam Rules', labelHi: 'परीक्षा नियम', url: '#' },
-    { labelEn: 'Exam Related Information', labelHi: 'परीक्षा से संबंधित जानकारी', url: '#' },
-    { labelEn: 'Exam Schedule/Revised Exam Schedule', labelHi: 'परीक्षा समय सारणी/संशोधित परीक्षा समय सारणी', url: '#' },
-    { labelEn: 'Examination Forms', labelHi: 'परीक्षा फार्म', url: '#' },
-    { labelEn: 'Code Books', labelHi: 'कोड बुक', url: '#' }
+    { labelEn: 'Exam Rules', labelHi: 'à¤ªà¤°à¥€à¤•à¥à¤·à¤¾ à¤¨à¤¿à¤¯à¤®', url: '#' },
+    { labelEn: 'Exam Related Information', labelHi: 'à¤ªà¤°à¥€à¤•à¥à¤·à¤¾ à¤¸à¥‡ à¤¸à¤‚à¤¬à¤‚à¤§à¤¿à¤¤ à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€', url: '#' },
+    { labelEn: 'Exam Schedule/Revised Exam Schedule', labelHi: 'à¤ªà¤°à¥€à¤•à¥à¤·à¤¾ à¤¸à¤®à¤¯ à¤¸à¤¾à¤°à¤£à¥€/à¤¸à¤‚à¤¶à¥‹à¤§à¤¿à¤¤ à¤ªà¤°à¥€à¤•à¥à¤·à¤¾ à¤¸à¤®à¤¯ à¤¸à¤¾à¤°à¤£à¥€', url: '#' },
+    { labelEn: 'Examination Forms', labelHi: 'à¤ªà¤°à¥€à¤•à¥à¤·à¤¾ à¤«à¤¾à¤°à¥à¤®', url: '#' },
+    { labelEn: 'Code Books', labelHi: 'à¤•à¥‹à¤¡ à¤¬à¥à¤•', url: '#' }
   ];
 
   const studentsCornerSubMenu: SubMenuItem[] = [
-    { labelEn: 'Syllabus', labelHi: 'पाठ्यक्रम', url: '#' },
-    { labelEn: 'Result', labelHi: 'परिणाम', url: '#' },
-    { labelEn: 'Anti ragging', labelHi: 'रैगिंग विरोधी', url: '#' },
-    { labelEn: 'Conduct & Discipline', labelHi: 'आचरण और अनुशासन', url: '#' },
-    { labelEn: 'Hostel Registration', labelHi: 'छात्रावास पंजीकरण', url: '#' },
-    { labelEn: 'Online Fees Payment for Campus Courses', labelHi: 'कैंपस पाठ्यक्रमों के लिए ऑनलाइन शुल्क भुगतान', url: '#' },
-    { labelEn: 'Campus Fee Payment', labelHi: 'कैंपस शुल्क भुगतान', url: '#' },
-    { labelEn: 'Online Provisional & Migration Certificate', labelHi: 'ऑनलाइन अनंतिम और प्रवास प्रमाणपत्र', url: '#' },
-    { labelEn: 'Student Council', labelHi: 'छात्र परिषद', url: '#' },
-    { labelEn: 'Fee Refund Policy', labelHi: 'शुल्क वापसी नीति', url: '#' },
-    { labelEn: 'Student Handbook', labelHi: 'छात्र पुस्तिका', url: '#' },
-    { labelEn: 'Student Satisfaction Survey', labelHi: 'छात्र संतुष्टि सर्वेक्षण', url: '#' },
-    { labelEn: 'Student Feedback form', labelHi: 'छात्र प्रतिक्रिया फॉर्म', url: '#' },
-    { labelEn: 'OMR Keys, Sheet & Response', labelHi: 'OMR कुंजी, शीट और प्रतिक्रिया', url: '#' },
-    { labelEn: 'Student Help Desk', labelHi: 'छात्र सहायता डेस्क', url: '#' },
-    { labelEn: 'Answer Book Viewing & Challenge Evaluation', labelHi: 'उत्तर पुस्तिका देखना और चुनौती मूल्यांकन', url: '#' },
-    { labelEn: 'Women Cell', labelHi: 'महिला कक्ष', url: '#' },
-    { labelEn: 'Apply for left out practical/viva', labelHi: 'छोड़ी गई व्यावहारिक/मौखिकी के लिए आवेदन करें', url: '#' },
-    { labelEn: 'Document Verification', labelHi: 'दस्तावेज सत्यापन', url: '#' },
-    { labelEn: 'NCC', labelHi: 'एनसीसी', url: '#' }
+    { labelEn: 'Syllabus', labelHi: 'à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®', url: '#' },
+    { labelEn: 'Result', labelHi: 'à¤ªà¤°à¤¿à¤£à¤¾à¤®', url: '#' },
+    { labelEn: 'Anti ragging', labelHi: 'à¤°à¥ˆà¤—à¤¿à¤‚à¤— à¤µà¤¿à¤°à¥‹à¤§à¥€', url: '#' },
+    { labelEn: 'Conduct & Discipline', labelHi: 'à¤†à¤šà¤°à¤£ à¤”à¤° à¤…à¤¨à¥à¤¶à¤¾à¤¸à¤¨', url: '#' },
+    { labelEn: 'Hostel Registration', labelHi: 'à¤›à¤¾à¤¤à¥à¤°à¤¾à¤µà¤¾à¤¸ à¤ªà¤‚à¤œà¥€à¤•à¤°à¤£', url: '#' },
+    { labelEn: 'Online Fees Payment for Campus Courses', labelHi: 'à¤•à¥ˆà¤‚à¤ªà¤¸ à¤ªà¤¾à¤ à¥à¤¯à¤•à¥à¤°à¤®à¥‹à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤‘à¤¨à¤²à¤¾à¤‡à¤¨ à¤¶à¥à¤²à¥à¤• à¤­à¥à¤—à¤¤à¤¾à¤¨', url: '#' },
+    { labelEn: 'Campus Fee Payment', labelHi: 'à¤•à¥ˆà¤‚à¤ªà¤¸ à¤¶à¥à¤²à¥à¤• à¤­à¥à¤—à¤¤à¤¾à¤¨', url: '#' },
+    { labelEn: 'Online Provisional & Migration Certificate', labelHi: 'à¤‘à¤¨à¤²à¤¾à¤‡à¤¨ à¤…à¤¨à¤‚à¤¤à¤¿à¤® à¤”à¤° à¤ªà¥à¤°à¤µà¤¾à¤¸ à¤ªà¥à¤°à¤®à¤¾à¤£à¤ªà¤¤à¥à¤°', url: '#' },
+    { labelEn: 'Student Council', labelHi: 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¤°à¤¿à¤·à¤¦', url: '#' },
+    { labelEn: 'Fee Refund Policy', labelHi: 'à¤¶à¥à¤²à¥à¤• à¤µà¤¾à¤ªà¤¸à¥€ à¤¨à¥€à¤¤à¤¿', url: '#' },
+    { labelEn: 'Student Handbook', labelHi: 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¥à¤¸à¥à¤¤à¤¿à¤•à¤¾', url: '#' },
+    { labelEn: 'Student Satisfaction Survey', labelHi: 'à¤›à¤¾à¤¤à¥à¤° à¤¸à¤‚à¤¤à¥à¤·à¥à¤Ÿà¤¿ à¤¸à¤°à¥à¤µà¥‡à¤•à¥à¤·à¤£', url: '#' },
+    { labelEn: 'Student Feedback form', labelHi: 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¥à¤°à¤¤à¤¿à¤•à¥à¤°à¤¿à¤¯à¤¾ à¤«à¥‰à¤°à¥à¤®', url: '#' },
+    { labelEn: 'OMR Keys, Sheet & Response', labelHi: 'OMR à¤•à¥à¤‚à¤œà¥€, à¤¶à¥€à¤Ÿ à¤”à¤° à¤ªà¥à¤°à¤¤à¤¿à¤•à¥à¤°à¤¿à¤¯à¤¾', url: '#' },
+    { labelEn: 'Student Help Desk', labelHi: 'à¤›à¤¾à¤¤à¥à¤° à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤¡à¥‡à¤¸à¥à¤•', url: '#' },
+    { labelEn: 'Answer Book Viewing & Challenge Evaluation', labelHi: 'à¤‰à¤¤à¥à¤¤à¤° à¤ªà¥à¤¸à¥à¤¤à¤¿à¤•à¤¾ à¤¦à¥‡à¤–à¤¨à¤¾ à¤”à¤° à¤šà¥à¤¨à¥Œà¤¤à¥€ à¤®à¥‚à¤²à¥à¤¯à¤¾à¤‚à¤•à¤¨', url: '#' },
+    { labelEn: 'Women Cell', labelHi: 'à¤®à¤¹à¤¿à¤²à¤¾ à¤•à¤•à¥à¤·', url: '#' },
+    { labelEn: 'Apply for left out practical/viva', labelHi: 'à¤›à¥‹à¤¡à¤¼à¥€ à¤—à¤ˆ à¤µà¥à¤¯à¤¾à¤µà¤¹à¤¾à¤°à¤¿à¤•/à¤®à¥Œà¤–à¤¿à¤•à¥€ à¤•à¥‡ à¤²à¤¿à¤ à¤†à¤µà¥‡à¤¦à¤¨ à¤•à¤°à¥‡à¤‚', url: '#' },
+    { labelEn: 'Document Verification', labelHi: 'à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œ à¤¸à¤¤à¥à¤¯à¤¾à¤ªà¤¨', url: '#' },
+    { labelEn: 'NCC', labelHi: 'à¤à¤¨à¤¸à¥€à¤¸à¥€', url: '#' }
   ];
 
   const eventsSubMenu: SubMenuItem[] = [
-    { labelEn: 'Photo Gallery', labelHi: 'फोटो गैलरी', url: '#' },
-    { labelEn: 'News Gallery', labelHi: 'समाचार गैलरी', url: '#' },
-    { labelEn: 'Conference/Seminar & Workshop', labelHi: 'सम्मेलन/सेमिनार और कार्यशाला', url: '#' },
-    { labelEn: 'Centre of Excellence', labelHi: 'उत्कृष्टता केंद्र', url: '#' },
-    { labelEn: 'NCC', labelHi: 'एनसीसी', url: '#' },
-    { labelEn: 'Sports', labelHi: 'खेल', url: '#' },
-    { labelEn: 'MOUs', labelHi: 'समझौता', url: '#' }
+    { labelEn: 'Photo Gallery', labelHi: 'à¤«à¥‹à¤Ÿà¥‹ à¤—à¥ˆà¤²à¤°à¥€', url: '#' },
+    { labelEn: 'News Gallery', labelHi: 'à¤¸à¤®à¤¾à¤šà¤¾à¤° à¤—à¥ˆà¤²à¤°à¥€', url: '#' },
+    { labelEn: 'Conference/Seminar & Workshop', labelHi: 'à¤¸à¤®à¥à¤®à¥‡à¤²à¤¨/à¤¸à¥‡à¤®à¤¿à¤¨à¤¾à¤° à¤”à¤° à¤•à¤¾à¤°à¥à¤¯à¤¶à¤¾à¤²à¤¾', url: '#' },
+    { labelEn: 'Centre of Excellence', labelHi: 'à¤‰à¤¤à¥à¤•à¥ƒà¤·à¥à¤Ÿà¤¤à¤¾ à¤•à¥‡à¤‚à¤¦à¥à¤°', url: '#' },
+    { labelEn: 'NCC', labelHi: 'à¤à¤¨à¤¸à¥€à¤¸à¥€', url: '#' },
+    { labelEn: 'Sports', labelHi: 'à¤–à¥‡à¤²', url: '#' },
+    { labelEn: 'MOUs', labelHi: 'à¤¸à¤®à¤à¥Œà¤¤à¤¾', url: '#' }
   ];
 
   const journalsSubMenu: SubMenuItem[] = [
-    { labelEn: 'Science Journal', labelHi: 'विज्ञान पत्रिका', url: '#' },
-    { labelEn: 'Commerce Journal', labelHi: 'वाणिज्य पत्रिका', url: '#' },
-    { labelEn: 'Art Journal', labelHi: 'कला पत्रिका', url: '#' }
+    { labelEn: 'Science Journal', labelHi: 'à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨ à¤ªà¤¤à¥à¤°à¤¿à¤•à¤¾', url: '#' },
+    { labelEn: 'Commerce Journal', labelHi: 'à¤µà¤¾à¤£à¤¿à¤œà¥à¤¯ à¤ªà¤¤à¥à¤°à¤¿à¤•à¤¾', url: '#' },
+    { labelEn: 'Art Journal', labelHi: 'à¤•à¤²à¤¾ à¤ªà¤¤à¥à¤°à¤¿à¤•à¤¾', url: '#' }
   ];
 
   const staffsSubMenu: SubMenuItem[] = [
-    { labelEn: 'Science Faculty Staff', labelHi: 'विज्ञान संकाय कर्मचारी', url: '#' },
-    { labelEn: 'Arts Faculty Staff', labelHi: 'कला संकाय कर्मचारी', url: '#' },
-    { labelEn: 'Commerce Faculty Staff', labelHi: 'वाणिज्य संकाय कर्मचारी', url: '#' }
+    { labelEn: 'Science Faculty Staff', labelHi: 'à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨ à¤¸à¤‚à¤•à¤¾à¤¯ à¤•à¤°à¥à¤®à¤šà¤¾à¤°à¥€', url: '#' },
+    { labelEn: 'Arts Faculty Staff', labelHi: 'à¤•à¤²à¤¾ à¤¸à¤‚à¤•à¤¾à¤¯ à¤•à¤°à¥à¤®à¤šà¤¾à¤°à¥€', url: '#' },
+    { labelEn: 'Commerce Faculty Staff', labelHi: 'à¤µà¤¾à¤£à¤¿à¤œà¥à¤¯ à¤¸à¤‚à¤•à¤¾à¤¯ à¤•à¤°à¥à¤®à¤šà¤¾à¤°à¥€', url: '#' }
   ];
 
   const content = {
     en: {
       university: 'Sri Dev Suman Uttarakhand University',
+      address: 'Badshahitol, Tehri (Garhwal), Uttarakhand 249199',
       admission: 'Admission 2026-2027',
-      nav: ['Home', 'About Us', 'Administration', 'Institutes/Departments/Constituent Colleges', 'Departments', 'Academic', 'Infrastructure', 'Examination', 'Students Corner', 'Events', 'Journals', 'Staffs']
+      nav: ['Home', 'About Us', 'Administration', 'Organizational Units', 'Departments', 'Academic', 'Infrastructure', 'Examination', 'Students Corner', 'Events', 'Journals', 'Staffs']
     },
     hi: {
-      university: 'श्री देव सुमन उत्तरांचल विश्वविद्यालय',
+      university: 'श्री देव सुमन उत्तराखंड विश्वविद्यालय',
+      address: 'बादशाहीथौल, टिहरी (गढ़वाल), उत्तराखंड 249199',
       admission: 'प्रवेश 2026-2027',
-      nav: ['होम', 'हमारे बारे में', 'प्रशासन', 'संस्थान/विभाग/घटक कॉलेज', 'विभाग', 'अकादमिक', 'बुनियादी ढांचा', 'परीक्षा', 'छात्र कोना', 'इवेंट्स', 'जर्नल', 'स्टाफ']
+      nav: ['Home', 'About Us', 'Administration', 'Organizational Units', 'Departments', 'Academic', 'Infrastructure', 'Examination', 'Students Corner', 'Events', 'Journals', 'Staffs']
     }
   };
 
@@ -231,71 +240,71 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
     setOpenDropdown(null);
     
     // Handle institutes/colleges navigation
-    if (labelEn === 'University Campus' || labelHi === 'विश्वविद्यालय परिसर') {
+    if (labelEn === 'University Campus' || labelHi === 'à¤µà¤¿à¤¶à¥à¤µà¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ à¤ªà¤°à¤¿à¤¸à¤°') {
       setCurrentPage?.('university-campus');
-    } else if (labelEn === 'Pandit Lalit Mohan Sharma Government PG College' || labelHi === 'पंडित ललित मोहन शर्मा सरकारी स्नातकोत्तर महाविद्यालय') {
+    } else if (labelEn === 'Pandit Lalit Mohan Sharma Government PG College' || labelHi === 'à¤ªà¤‚à¤¡à¤¿à¤¤ à¤²à¤²à¤¿à¤¤ à¤®à¥‹à¤¹à¤¨ à¤¶à¤°à¥à¤®à¤¾ à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤¸à¥à¤¨à¤¾à¤¤à¤•à¥‹à¤¤à¥à¤¤à¤° à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯') {
       setCurrentPage?.('pandit-lalit-college');
-    } else if (labelEn === 'Government Post Graduate College - Gopeshwar, Chamoli' || labelHi === 'सरकारी स्नातकोत्तर महाविद्यालय - गोपेश्वर, चमोली') {
+    } else if (labelEn === 'Government Post Graduate College - Gopeshwar, Chamoli' || labelHi === 'à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤¸à¥à¤¨à¤¾à¤¤à¤•à¥‹à¤¤à¥à¤¤à¤° à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ - à¤—à¥‹à¤ªà¥‡à¤¶à¥à¤µà¤°, à¤šà¤®à¥‹à¤²à¥€') {
       setCurrentPage?.('govt-pg-college');
-    } else if (labelEn === 'University Affiliated Colleges' || labelHi === 'विश्वविद्यालय संबद्ध महाविद्यालय') {
+    } else if (labelEn === 'University Affiliated Colleges' || labelHi === 'à¤µà¤¿à¤¶à¥à¤µà¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ à¤¸à¤‚à¤¬à¤¦à¥à¤§ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯') {
       setCurrentPage?.('affiliated-colleges');
-    } else if (labelEn === 'Government Colleges' || labelHi === 'सरकारी महाविद्यालय') {
+    } else if (labelEn === 'Government Degree College Chandrabadni (Naikhi)' || labelHi === 'à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯') {
       setCurrentPage?.('govt-colleges');
-    } else if (labelEn === 'Aided Colleges' || labelHi === 'सहायता प्राप्त महाविद्यालय') {
+    } else if (labelEn === 'Aided Colleges' || labelHi === 'à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤ªà¥à¤°à¤¾à¤ªà¥à¤¤ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯') {
       setCurrentPage?.('aided-colleges');
-    } else if (labelEn === 'Private Colleges' || labelHi === 'निजी महाविद्यालय') {
+    } else if (labelEn === 'Private Colleges' || labelHi === 'à¤¨à¤¿à¤œà¥€ à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯') {
       setCurrentPage?.('private-colleges');
     }
     // Handle staff navigation
-    else if (labelEn === 'Science Faculty Staff' || labelHi === 'विज्ञान संकाय कर्मचारी') {
+    else if (labelEn === 'Science Faculty Staff' || labelHi === 'à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨ à¤¸à¤‚à¤•à¤¾à¤¯ à¤•à¤°à¥à¤®à¤šà¤¾à¤°à¥€') {
       setCurrentPage?.('science-staff');
-    } else if (labelEn === 'Arts Faculty Staff' || labelHi === 'कला संकाय कर्मचारी') {
+    } else if (labelEn === 'Arts Faculty Staff' || labelHi === 'à¤•à¤²à¤¾ à¤¸à¤‚à¤•à¤¾à¤¯ à¤•à¤°à¥à¤®à¤šà¤¾à¤°à¥€') {
       setCurrentPage?.('arts-staff');
-    } else if (labelEn === 'Commerce Faculty Staff' || labelHi === 'वाणिज्य संकाय कर्मचारी') {
+    } else if (labelEn === 'Commerce Faculty Staff' || labelHi === 'à¤µà¤¾à¤£à¤¿à¤œà¥à¤¯ à¤¸à¤‚à¤•à¤¾à¤¯ à¤•à¤°à¥à¤®à¤šà¤¾à¤°à¥€') {
       setCurrentPage?.('commerce-staff');
     }
     // Handle events navigation
-    else if (labelEn === 'Photo Gallery' || labelHi === 'फोटो गैलरी') {
+    else if (labelEn === 'Photo Gallery' || labelHi === 'à¤«à¥‹à¤Ÿà¥‹ à¤—à¥ˆà¤²à¤°à¥€') {
       setCurrentPage?.('photo-gallery');
-    } else if (labelEn === 'News Gallery' || labelHi === 'समाचार गैलरी') {
+    } else if (labelEn === 'News Gallery' || labelHi === 'à¤¸à¤®à¤¾à¤šà¤¾à¤° à¤—à¥ˆà¤²à¤°à¥€') {
       setCurrentPage?.('news-gallery');
-    } else if (labelEn === 'Conference/Seminar & Workshop' || labelHi === 'सम्मेलन/सेमिनार और कार्यशाला') {
+    } else if (labelEn === 'Conference/Seminar & Workshop' || labelHi === 'à¤¸à¤®à¥à¤®à¥‡à¤²à¤¨/à¤¸à¥‡à¤®à¤¿à¤¨à¤¾à¤° à¤”à¤° à¤•à¤¾à¤°à¥à¤¯à¤¶à¤¾à¤²à¤¾') {
       setCurrentPage?.('conference-seminar');
-    } else if (labelEn === 'Centre of Excellence' || labelHi === 'उत्कृष्टता केंद्र') {
+    } else if (labelEn === 'Centre of Excellence' || labelHi === 'à¤‰à¤¤à¥à¤•à¥ƒà¤·à¥à¤Ÿà¤¤à¤¾ à¤•à¥‡à¤‚à¤¦à¥à¤°') {
       setCurrentPage?.('centre-excellence');
-    } else if (labelEn === 'NCC' || labelHi === 'एनसीसी') {
+    } else if (labelEn === 'NCC' || labelHi === 'à¤à¤¨à¤¸à¥€à¤¸à¥€') {
       setCurrentPage?.('ncc');
-    } else if (labelEn === 'Sports' || labelHi === 'खेल') {
+    } else if (labelEn === 'Sports' || labelHi === 'à¤–à¥‡à¤²') {
       setCurrentPage?.('campus-sports-gallery');
-    } else if (labelEn === 'MOUs' || labelHi === 'समझौता') {
+    } else if (labelEn === 'MOUs' || labelHi === 'à¤¸à¤®à¤à¥Œà¤¤à¤¾') {
       setCurrentPage?.('moues');
     }
     // Handle journals navigation
-    else if (labelEn === 'Science Journal' || labelHi === 'विज्ञान पत्रिका') {
+    else if (labelEn === 'Science Journal' || labelHi === 'à¤µà¤¿à¤œà¥à¤žà¤¾à¤¨ à¤ªà¤¤à¥à¤°à¤¿à¤•à¤¾') {
       setCurrentPage?.('science-journal');
-    } else if (labelEn === 'Commerce Journal' || labelHi === 'वाणिज्य पत्रिका') {
+    } else if (labelEn === 'Commerce Journal' || labelHi === 'à¤µà¤¾à¤£à¤¿à¤œà¥à¤¯ à¤ªà¤¤à¥à¤°à¤¿à¤•à¤¾') {
       setCurrentPage?.('commerce-journal');
-    } else if (labelEn === 'Art Journal' || labelHi === 'कला पत्रिका') {
+    } else if (labelEn === 'Art Journal' || labelHi === 'à¤•à¤²à¤¾ à¤ªà¤¤à¥à¤°à¤¿à¤•à¤¾') {
       setCurrentPage?.('art-journal');
     }
     // Handle students corner navigation
-    else if (labelEn === 'Anti ragging' || labelHi === 'रैगिंग विरोधी') {
+    else if (labelEn === 'Anti ragging' || labelHi === 'à¤°à¥ˆà¤—à¤¿à¤‚à¤— à¤µà¤¿à¤°à¥‹à¤§à¥€') {
       setCurrentPage?.('anti-ragging');
-    } else if (labelEn === 'Hostel Registration' || labelHi === 'छात्रावास पंजीकरण') {
+    } else if (labelEn === 'Hostel Registration' || labelHi === 'à¤›à¤¾à¤¤à¥à¤°à¤¾à¤µà¤¾à¤¸ à¤ªà¤‚à¤œà¥€à¤•à¤°à¤£') {
       setCurrentPage?.('hostel-registration');
-    } else if (labelEn === 'Campus Fee Payment' || labelHi === 'कैंपस शुल्क भुगतान') {
+    } else if (labelEn === 'Campus Fee Payment' || labelHi === 'à¤•à¥ˆà¤‚à¤ªà¤¸ à¤¶à¥à¤²à¥à¤• à¤­à¥à¤—à¤¤à¤¾à¤¨') {
       setCurrentPage?.('campus-fee-payment');
-    } else if (labelEn === 'Student Council' || labelHi === 'छात्र परिषद') {
+    } else if (labelEn === 'Student Council' || labelHi === 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¤°à¤¿à¤·à¤¦') {
       setCurrentPage?.('student-council');
-    } else if (labelEn === 'Student Handbook' || labelHi === 'छात्र पुस्तिका') {
+    } else if (labelEn === 'Student Handbook' || labelHi === 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¥à¤¸à¥à¤¤à¤¿à¤•à¤¾') {
       setCurrentPage?.('student-handbook');
-    } else if (labelEn === 'Student Feedback form' || labelHi === 'छात्र प्रतिक्रिया फॉर्म') {
+    } else if (labelEn === 'Student Feedback form' || labelHi === 'à¤›à¤¾à¤¤à¥à¤° à¤ªà¥à¤°à¤¤à¤¿à¤•à¥à¤°à¤¿à¤¯à¤¾ à¤«à¥‰à¤°à¥à¤®') {
       setCurrentPage?.('student-feedback-form');
-    } else if (labelEn === 'Student Help Desk' || labelHi === 'छात्र सहायता डेस्क') {
+    } else if (labelEn === 'Student Help Desk' || labelHi === 'à¤›à¤¾à¤¤à¥à¤° à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤¡à¥‡à¤¸à¥à¤•') {
       setCurrentPage?.('student-help-desk');
-    } else if (labelEn === 'Women Cell' || labelHi === 'महिला कक्ष') {
+    } else if (labelEn === 'Women Cell' || labelHi === 'à¤®à¤¹à¤¿à¤²à¤¾ à¤•à¤•à¥à¤·') {
       setCurrentPage?.('women-cell');
-    } else if (labelEn === 'Document Verification' || labelHi === 'दस्तावेज सत्यापन') {
+    } else if (labelEn === 'Document Verification' || labelHi === 'à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œ à¤¸à¤¤à¥à¤¯à¤¾à¤ªà¤¨') {
       setCurrentPage?.('document-verification');
     }
   };
@@ -307,45 +316,45 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
           <div className="logo-placeholder">
             <img src="/img/logo.jpg" alt="Sri Dev Suman Uttarakhand University Logo" className="logo-image" />
           </div>
-          <h1>{data.university}</h1>
-        </div>
-        <div className="header-portrait-section">
-          <AdmissionPortrait language={language} />
+          <div className="header-text-section">
+            <h1>{data.university}</h1>
+            <p className="header-address">{data.address}</p>
+          </div>
         </div>
       </div>
       <nav className="navbar">
         {data.nav.map((item, index) => {
           const getMenuItems = (itemName: string) => {
             const menus: { [key: string]: SubMenuItem[] } = {
-              'Institutes/Departments/Constituent Colleges': institutesSubMenu,
-              'संस्थान/विभाग/घटक कॉलेज': institutesSubMenu,
+              'Organizational Units': institutesSubMenu,
+              'à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨/à¤µà¤¿à¤­à¤¾à¤—/à¤˜à¤Ÿà¤• à¤•à¥‰à¤²à¥‡à¤œ': institutesSubMenu,
               'Departments': departmentsSubMenu,
-              'विभाग': departmentsSubMenu,
+              'à¤µà¤¿à¤­à¤¾à¤—': departmentsSubMenu,
               'Academic': academicSubMenu,
-              'अकादमिक': academicSubMenu,
+              'à¤…à¤•à¤¾à¤¦à¤®à¤¿à¤•': academicSubMenu,
               'Infrastructure': infrastructureSubMenu,
-              'बुनियादी ढांचा': infrastructureSubMenu,
+              'à¤¬à¥à¤¨à¤¿à¤¯à¤¾à¤¦à¥€ à¤¢à¤¾à¤‚à¤šà¤¾': infrastructureSubMenu,
               'IQAC': iqacSubMenu,
-              'आईक्यूएसी': iqacSubMenu,
+              'à¤†à¤ˆà¤•à¥à¤¯à¥‚à¤à¤¸à¥€': iqacSubMenu,
               'Examination': examinationSubMenu,
-              'परीक्षा': examinationSubMenu,
+              'à¤ªà¤°à¥€à¤•à¥à¤·à¤¾': examinationSubMenu,
               'Students Corner': studentsCornerSubMenu,
-              'छात्र कोना': studentsCornerSubMenu,
+              'à¤›à¤¾à¤¤à¥à¤° à¤•à¥‹à¤¨à¤¾': studentsCornerSubMenu,
               'Events': eventsSubMenu,
-              'इवेंट्स': eventsSubMenu,
+              'à¤‡à¤µà¥‡à¤‚à¤Ÿà¥à¤¸': eventsSubMenu,
               'Journals': journalsSubMenu,
-              'जर्नल': journalsSubMenu,
+              'à¤œà¤°à¥à¤¨à¤²': journalsSubMenu,
               'Staffs': staffsSubMenu,
-              'स्टाफ': staffsSubMenu
+              'à¤¸à¥à¤Ÿà¤¾à¤«': staffsSubMenu
             };
             return menus[itemName];
           };
 
           const menuItems = getMenuItems(item);
-          const menuClass = item === 'Institutes/Departments/Constituent Colleges' || item === 'संस्थान/विभाग/घटक कॉलेज' ? 'institutes-menu' :
-                           item === 'Departments' || item === 'विभाग' ? 'departments-menu' : 
-                           item === 'Academic' || item === 'अकादमिक' ? 'academic-menu' : 
-                           item === 'Students Corner' || item === 'छात्र कोना' ? 'students-menu' : '';
+          const menuClass = item === 'Organizational Units' || item === 'à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨/à¤µà¤¿à¤­à¤¾à¤—/à¤˜à¤Ÿà¤• à¤•à¥‰à¤²à¥‡à¤œ' ? 'institutes-menu' :
+                           item === 'Departments' || item === 'à¤µà¤¿à¤­à¤¾à¤—' ? 'departments-menu' : 
+                           item === 'Academic' || item === 'à¤…à¤•à¤¾à¤¦à¤®à¤¿à¤•' ? 'academic-menu' : 
+                           item === 'Students Corner' || item === 'à¤›à¤¾à¤¤à¥à¤° à¤•à¥‹à¤¨à¤¾' ? 'students-menu' : '';
 
           return (
             <div 
@@ -361,7 +370,6 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
                     onClick={(e) => handleDropdownToggle(index, e)}
                   >
                     {item}
-                    <span className="dropdown-arrow">▼</span>
                   </button>
                   {openDropdown === index && (
                     <div 
@@ -377,20 +385,20 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
                             handleDropdownItemClick(subitem.labelEn, subitem.labelHi);
                           }}
                         >
-                          {language === 'en' ? subitem.labelEn : subitem.labelHi}
+                          {subitem.labelEn}
                         </a>
                       ))}
                     </div>
                   )}
                 </>
-              ) : item === 'Administration' || item === 'प्रशासन' ? (
+              ) : item === 'Administration' || item === 'à¤ªà¥à¤°à¤¶à¤¾à¤¸à¤¨' ? (
                 <button 
                   className="nav-link"
                   onClick={() => setCurrentPage?.('administration')}
                 >
                   {item}
                 </button>
-              ) : item === 'About Us' || item === 'हमारे बारे में' ? (
+              ) : item === 'About Us' || item === 'à¤¹à¤®à¤¾à¤°à¥‡ à¤¬à¤¾à¤°à¥‡ à¤®à¥‡à¤‚' ? (
                 <button 
                   className="nav-link"
                   onClick={() => setCurrentPage?.('about')}
@@ -409,3 +417,4 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
 };
 
 export default Header;
+

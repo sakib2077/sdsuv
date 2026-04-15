@@ -35,6 +35,36 @@ const LatestUpdates: React.FC<LatestUpdatesProps> = ({ language, onViewMore }) =
           label: 'ANNOUNCEMENT',
           newsTitle: 'Research Grant Applications Open',
           newsContent: 'The university is inviting applications for the new research grants program. Deadline for submissions is February 28, 2026. Visit the research office for details.'
+        },
+        {
+          date: 'JANUARY 18, 2026',
+          label: 'UPDATE',
+          newsTitle: 'New Courses Added for 2026-27',
+          newsContent: 'We are excited to announce the addition of 5 new specialized courses for the academic year 2026-27. Register now to secure your spot.'
+        },
+        {
+          date: 'JANUARY 20, 2026',
+          label: 'ANNOUNCEMENT',
+          newsTitle: 'Document Verification Guidelines',
+          newsContent: 'All candidates must submit properly verified documents. Check our guidelines for the complete list of required documents and verification process.'
+        },
+        {
+          date: 'JANUARY 22, 2026',
+          label: 'EVENT',
+          newsTitle: 'Scholarship Opportunities Available',
+          newsContent: 'Merit-based scholarships worth up to 50% of annual fees are available for eligible candidates. Apply now to avail benefits.'
+        },
+        {
+          date: 'JANUARY 25, 2026',
+          label: 'NOTICE',
+          newsTitle: 'Campus Tour Virtual Sessions',
+          newsContent: 'Join our virtual campus tours every Thursday at 3 PM to explore our facilities and meet our faculty members. Register today!'
+        },
+        {
+          date: 'JANUARY 28, 2026',
+          label: 'ANNOUNCEMENT',
+          newsTitle: 'Hostel Registration Portal Launched',
+          newsContent: 'Students interested in hostel accommodation can now register through our online portal. Limited seats available, register quickly.'
         }
       ]
     },
@@ -65,6 +95,36 @@ const LatestUpdates: React.FC<LatestUpdatesProps> = ({ language, onViewMore }) =
           label: 'घोषणा',
           newsTitle: 'अनुसंधान अनुदान आवेदन खुले',
           newsContent: 'विश्वविद्यालय नई अनुसंधान अनुदान कार्यक्रम के लिए आवेदन आमंत्रित कर रहा है। जमा करने की समय सीमा 28 फरवरी, 2026 है। विवरण के लिए अनुसंधान कार्यालय देखें।'
+        },
+        {
+          date: '18 जनवरी, 2026',
+          label: 'अपडेट',
+          newsTitle: '2026-27 के लिए नए पाठ्यक्रम जोड़े गए',
+          newsContent: 'हम शैक्षणिक वर्ष 2026-27 के लिए 5 नए विशेष पाठ्यक्रमों को जोड़ने की घोषणा करते हैं। अभी पंजीकरण करें।'
+        },
+        {
+          date: '20 जनवरी, 2026',
+          label: 'घोषणा',
+          newsTitle: 'दस्तावेज सत्यापन दिशानिर्देश',
+          newsContent: 'सभी उम्मीदवारों को सही तरीके से सत्यापित दस्तावेज जमा करने चाहिए। आवश्यक दस्तावेजों की पूरी सूची देखें।'
+        },
+        {
+          date: '22 जनवरी, 2026',
+          label: 'कार्यक्रम',
+          newsTitle: 'छात्रवृत्ति के अवसर उपलब्ध',
+          newsContent: 'योग्य उम्मीदवारों के लिए वार्षिक शुल्क का 50% तक की योग्यता-आधारित छात्रवृत्तियाँ उपलब्ध हैं।'
+        },
+        {
+          date: '25 जनवरी, 2026',
+          label: 'सूचना',
+          newsTitle: 'कैंपस टूर वर्चुअल सत्र',
+          newsContent: 'हर गुरुवार दोपहर 3 बजे हमारे वर्चुअल कैंपस टूर में शामिल हों और हमारी सुविधाएं देखें।'
+        },
+        {
+          date: '28 जनवरी, 2026',
+          label: 'घोषणा',
+          newsTitle: 'छात्रावास पंजीकरण पोर्टल लॉन्च',
+          newsContent: 'छात्रावास आवास में रुचि रखने वाले छात्र अब हमारे ऑनलाइन पोर्टल के माध्यम से पंजीकरण कर सकते हैं।'
         }
       ]
     }

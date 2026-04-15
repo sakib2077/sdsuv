@@ -79,6 +79,7 @@ import Alumni from './components/Alumni';
 import ExamSchedules from './components/ExamSchedules';
 import AcademicCalendar from './components/AcademicCalendar';
 import VacancyPositions from './components/VacancyPositions';
+import DepartmentSecondaryPage from './components/DepartmentSecondaryPage';
 
 type PageType = 'home' | 'admission' | 'administration' | 'about' | 'sports' | 'cultural' | 'academics' | 'up-state-universities-act' | 'rti-act' | 'iqac' | 'startup-cell' | 'it-policy' | 'ipr-policy' | 'phd-dlitt' | 'science-staff' | 'arts-staff' | 'commerce-staff' | 'photo-gallery' | 'news-gallery' | 'conference-seminar' | 'centre-excellence' | 'ncc' | 'events-sports' | 'moues' | 'science-journal' | 'commerce-journal' | 'art-journal' | 'anti-ragging' | 'hostel-registration' | 'campus-fee-payment' | 'student-council' | 'student-handbook' | 'student-feedback-form' | 'student-help-desk' | 'women-cell' | 'document-verification' | 'university-campus' | 'pandit-lalit-college' | 'govt-pg-college' | 'affiliated-colleges' | 'govt-colleges' | 'aided-colleges' | 'private-colleges' | 'campus-sports-gallery' | 'centre-excellence-page' | 'research-development' | 'faculty-development' | 'conference-seminar-workshop' | 'college-affiliation-pdf' | 'ordinance-curriculum-pdf' | 'scholarship-pdf' | 'convocation-medal-pdf' | 'phd-merit-list-pdf' | 'nirf-pdf' | 'academic-calendar-pdf' | 'helpline-pdf' | 'phd-notification-pdf' | 'exam-date-sheet-pdf' | 'convocation-quotation-pdf' | 'university-film-pdf' | 'college-affiliation' | 'scholarship' | 'academic-calendar' | 'exam-sheet' | 'all-news' | 'convocation' | 'student-corner' | 'tenders-notification' | 'courses-offered' | 'recruitments' | 'affiliation-affiliated-colleges' | 'old-syllabus' | 'examination' | 'results' | 'notification' | 'lecturer-series' | 'awards-scholarships' | 'career' | 'downloads' | 'fti' | 'announcements' | 'ugc-esamadhan-portal' | 'from-vc-desk' | 'affiliated-college' | 'act-regulations' | 'alumni' | 'exam-schedules' | 'vacancy-positions';
 
@@ -123,6 +124,27 @@ function App() {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  const departmentPageNames: Record<string, string> = {
+    'dept-mathematics': 'Mathematics',
+    'dept-microbiology': 'Microbiology',
+    'dept-music': 'Music',
+    'dept-physics': 'Physics',
+    'dept-political-science': 'Political Science',
+    'dept-sanskrit': 'Sanskrit',
+    'dept-sociology': 'Sociology',
+    'dept-zoology': 'Zoology',
+    'dept-commerce-management': 'Commerce and Management',
+    'dept-chemistry': 'Chemistry',
+    'dept-economics': 'Economics',
+    'dept-education': 'Education',
+    'dept-english': 'English',
+    'dept-geography': 'Geography',
+    'dept-hindi': 'Hindi',
+    'dept-history': 'History',
+    'dept-home-science': 'Home Science',
+    'dept-botany': 'Botany'
+  };
 
   return (
     <div className="App">
@@ -182,7 +204,14 @@ function App() {
       {currentPage === 'women-cell' && <WomenCell language={language} onBack={handleGoBack} />}
       {currentPage === 'document-verification' && <DocumentVerification language={language} onBack={handleGoBack} />}
       {currentPage === 'university-campus' && <UniversityCampus language={language} onBack={handleGoBack} />}
-      {currentPage === 'pandit-lalit-college' && <PanditLalitMohanSharmaCollege language={language} onBack={handleGoBack} />}
+      {currentPage === 'pandit-lalit-college' && <PanditLalitMohanSharmaCollege language={language} onBack={handleGoBack} setCurrentPage={handleNavigate} />}
+      {departmentPageNames[currentPage as string] && (
+        <DepartmentSecondaryPage
+          language={language}
+          onBack={handleGoBack}
+          departmentName={departmentPageNames[currentPage as string]}
+        />
+      )}
       {currentPage === 'govt-pg-college' && <GovernmentPostGraduateCollege language={language} onBack={handleGoBack} />}
       {currentPage === 'affiliated-colleges' && <UniversityAffiliatedColleges language={language} onBack={handleGoBack} />}
       {currentPage === 'govt-colleges' && <GovernmentColleges language={language} onBack={handleGoBack} />}

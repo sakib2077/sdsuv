@@ -8,11 +8,21 @@ body {
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .App {
   min-height: 100vh;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
 }
 
 .language-switcher {

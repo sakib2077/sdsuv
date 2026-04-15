@@ -133,10 +133,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ language, setCurrentPage, onBack }) =
 
           <p className="intro-vision">{data.vision}</p>
         </div>
-
-        <div className="intro-image">
-          <img src="/img/event3.jpg" alt="Sri Dev Suman University" />
-        </div>
       </section>
 
       {/* Introduction Section */}
