@@ -1,5 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import '../styles/DepartmentSecondaryPage.css';
+// Global variable to store selected teacher info
 let selectedTeacherInfo = null;
 const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentPage }) => {
     const handleViewTeacherProfile = (member) => {
@@ -61,13 +62,14 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
         'The department continues to strengthen research and laboratory facilities with achievements in Scopus/Web of Science/peer-reviewed publications, patents, books, book chapters, and Ph.D. supervision, while promoting interdisciplinary collaboration and advanced academic engagement.'
     ];
     const commerceManagementIntroParagraphs = [
-        'Faculty of Commerce and Management, Pt. L.M.S. Campus, Rishikesh, Sri Dev Suman Uttarakhand University.',
-        'The Department of Commerce was established in 1973 and offers UG and PG programmes with specializations in Marketing, Finance, and Human Resource Management.',
-        'Since Pt. L.M.S. Campus became part of Sri Dev Suman Uttarakhand University in 2021, B.Com and M.Com have continued under the faculty. In 2023, BBA was introduced and is running successfully, and efforts are ongoing to establish MBA.',
-        'The faculty focuses on practical business skills, career readiness, and academic excellence. NEP was adopted in UG during session 2022-23 and in PG during session 2025-26.',
-        'Over recent years, the faculty has contributed through workshops, seminars, webinars, international lecture series, and publications in reputed journals. In 2024, the Shodh Samarth Research Journal of Commerce, Management and Economics (online) was launched, with four issues published so far.',
-        'Ph.D. in Commerce started in 2023 and research is actively ongoing. Students and faculty continue to achieve in NET/JRF, public service, entrepreneurship, and startup initiatives.',
-        'Faculty achievements include 232 publications, 5 patents, 29 books, 6 edited books, 57 edited-book publications, and 11 awards and honours. Proposals are also being pursued under ICSSR and Chief Minister Research Project schemes.'
+        'The Department of Commerce came into existence in 1973. It offers UG and PG programmes in Commerce with specializations in Marketing, Finance, and Human Resource Management.',
+        'In 2021, Pt. L.M.S. Campus became part of Sri Dev Suman Uttarakhand University. Since then, the Commerce faculty has continued running B.Com and M.Com programmes successfully.',
+        'In 2023, the professional BBA programme (Bachelor of Business Administration) was introduced for the first time and is now running successfully. The department is also working to establish an MBA (Master of Business Administration).',
+        'The Commerce department equips students with practical business skills, career readiness, and the ability to meet challenges in the external environment. NEP was adopted in UG for the 2022-2023 session and in PG for the 2025-2026 session.',
+        'During the past five years, the department has made valuable contributions through workshops, seminars, webinars, international lecture series, and research publications in national and international journals.',
+        'In 2024, the faculty started the Shodh Samarth Research Journal of Commerce, Management and Economics (online). Four issues of the journal have been published till date.',
+        'The faculty members actively support students through academics and co-curricular activities. Students regularly qualify NET/JRF examinations, join government departments, pursue entrepreneurship, and some have launched their own startups.',
+        'The department is also pursuing ICSSR and Chief Minister Research Project approvals, with some project proposals already submitted for review.'
     ];
     const chemistryIntroParagraphs = [
         'Department of Chemistry, Pt. Lalit Mohan Sharma Campus, Rishikesh (Affiliated to Sri Dev Suman Uttarakhand University).',
@@ -88,18 +90,58 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
         'Students develop language and communication skills through GE, SEC, and AEC components, along with strong training in literary analysis, academic writing, and research-oriented learning.',
         'The department supports preparation for diverse careers including teaching, writing, content development, research, and competitive examinations.'
     ];
-    const isMathematics = departmentName === 'Mathematics';
-    const isMicrobiology = departmentName === 'Microbiology';
-    const isMusic = departmentName === 'Music';
-    const isPoliticalScience = departmentName === 'Political Science';
-    const isSanskrit = departmentName === 'Sanskrit';
-    const isSociology = departmentName === 'Sociology';
-    const isZoology = departmentName === 'Zoology';
-    const isCommerceAndManagement = departmentName === 'Commerce and Management';
-    const isChemistry = departmentName === 'Chemistry';
-    const isPhysics = departmentName === 'Physics';
-    const isEducation = departmentName === 'Education';
-    const isEnglish = departmentName === 'English';
+    const homeScienceIntroParagraphs = [
+        'Department of Home Science, Pt. L.M.S. Campus, Rishikesh, Sri Dev Suman Uttarakhand University.',
+        'The Department of Home Science supports interdisciplinary learning in nutrition, textiles, family studies, and community-centered development with a strong focus on practical application.',
+        'The department promotes skill-based and research-oriented learning to prepare students for academic, professional, and entrepreneurial opportunities in Home Science and allied areas.',
+        'It encourages student participation in extension activities, innovation, and socially relevant projects aligned with sustainable development and women empowerment.'
+    ];
+    const hindiIntroParagraphs = [
+        'Department of Hindi, Pt. L.M.S. Campus, Rishikesh, Sri Dev Suman Uttarakhand University.',
+        'The Department of Hindi is committed to the study of Hindi language, literature, criticism, and cultural discourse with strong academic and research orientation.',
+        'The department supports undergraduate, postgraduate, and research-level learning through classroom teaching, seminars, literary activities, and guided academic writing.',
+        'It nurtures language proficiency, critical interpretation, and expression in Hindi while encouraging students to engage with contemporary and classical literature.'
+    ];
+    const historyIntroParagraphs = [
+        'History Department, Pt. L.M.S. Campus, Rishikesh, Sri Dev Suman Uttarakhand University.',
+        'The Department of History is committed to quality teaching, research, and critical understanding of historical processes across local, national, and global contexts.',
+        'The department currently serves a large student base across B.A. and M.A. programmes, and supports active research guidance at the postgraduate and research levels.',
+        'With experienced faculty leadership, the department promotes historical inquiry through classroom learning, seminars, and research-oriented academic activities.'
+    ];
+    const botanyIntroParagraphs = [
+        'Department of Botany, Pt. Lalit Mohan Sharma Campus, Rishikesh, Sri Dev Suman Uttarakhand University.',
+        'The Department of Botany is a leading center for teaching and learning in plant sciences, with a long tradition of quality education and scientific training.',
+        'Aligned with NEP-2020, the department offers B.Sc., M.Sc., and Ph.D. programs, covering microbiology, ecology, plant physiology, phytochemistry, cytogenetics, taxonomy, economic botany, and plant pathology.',
+        'Faculty members are actively engaged in teaching, research, and supervision of undergraduate, postgraduate, and doctoral scholars across specialized areas such as phycology, mycology, ethnobotany, ecology, and agrotechnology.',
+        'The department continues to strengthen research output and academic infrastructure through publications, books, book chapters, patents, and student-focused mentoring.'
+    ];
+    const geographyIntroParagraphs = [
+        'Department of Geography, Pt. L.M.S. Campus, Rishikesh, Sri Dev Suman Uttarakhand University.',
+        'The Department of Geography is a vital academic unit that focuses on the study of the Earth\'s physical and human environments. It offers courses and conducts research in the field of geography, which involves studying the Earth\'s surface, human societies, and the environment.',
+        'The Department provides programs such as BA, M.A., and Ph.D. with specialized focus on Physical Geography, Human Geography, and Geographic Information Systems.',
+        'The Department is committed to conducting research in various areas of geography, including environmental studies, urban planning, and regional development, while providing high-quality education and training to students equipped with theoretical knowledge and practical skills.',
+        'The department aims to contribute to the development of advanced geographic knowledge and its applications, encourage critical thinking and analytical skills among students, and address real-world challenges such as environmental degradation, urbanization, sustainable development, and climate change adaptation.',
+        'The department actively organizes events that blend geographic learning with Uttarakhand\'s rich cultural heritage, engaging students through cultural programs aimed at strengthening local identity and environmental awareness through fieldwork, seminars, and awareness initiatives tailored to the Himalayan region.'
+    ];
+    const normalizedDepartmentName = departmentName?.trim().toLowerCase();
+    const isMathematics = normalizedDepartmentName === 'mathematics';
+    const isMicrobiology = normalizedDepartmentName === 'microbiology';
+    const isMusic = normalizedDepartmentName === 'music';
+    const isPoliticalScience = normalizedDepartmentName === 'political science';
+    const isSanskrit = normalizedDepartmentName === 'sanskrit';
+    const isSociology = normalizedDepartmentName === 'sociology';
+    const isZoology = normalizedDepartmentName === 'zoology';
+    const isCommerceAndManagement = normalizedDepartmentName === 'commerce and management';
+    const isEconomics = normalizedDepartmentName === 'economics';
+    const isChemistry = normalizedDepartmentName === 'chemistry';
+    const isPhysics = normalizedDepartmentName === 'physics';
+    const isEducation = normalizedDepartmentName === 'education';
+    const isEnglish = normalizedDepartmentName === 'english';
+    const isHomeScience = normalizedDepartmentName === 'home science';
+    const isHindi = normalizedDepartmentName === 'hindi';
+    const isHistory = normalizedDepartmentName === 'history';
+    const isBotany = normalizedDepartmentName === 'botany';
+    const isGeography = normalizedDepartmentName === 'geography';
     const content = {
         en: {
             introTitle: 'Department Introduction',
@@ -318,17 +360,46 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                             'Senior faculty member with 30+ years of academic experience'
                         ],
                         education: [
-                            { degree: 'B.Sc', field: 'Physics, Chemistry, Mathematics (PCM)' },
-                            { degree: 'M.Sc', field: 'Physics' },
-                            { degree: 'Ph.D', field: 'Physics', specialization: '1993' },
-                            { degree: 'PG Diploma', field: 'Computer Science', specialization: 'Fortran, MS Office' },
-                            { degree: 'LLB', field: 'Law' }
+                            {
+                                degree: 'B.Sc',
+                                field: 'Physics, Chemistry, Mathematics (PCM)'
+                            },
+                            {
+                                degree: 'M.Sc',
+                                field: 'Physics'
+                            },
+                            {
+                                degree: 'Ph.D',
+                                field: 'Physics',
+                                specialization: '1993'
+                            },
+                            {
+                                degree: 'PG Diploma',
+                                field: 'Computer Science',
+                                specialization: 'Fortran, MS Office'
+                            },
+                            {
+                                degree: 'LLB',
+                                field: 'Law'
+                            }
                         ],
                         researchWork: [
-                            { title: 'Fluid Mechanics Research', description: 'Advanced studies in fluid dynamics and mechanics with applications to astrophysical phenomena' },
-                            { title: 'Astrophysics Studies', description: 'Research in astrophysical phenomena, stellar dynamics, and cosmological applications' },
-                            { title: 'Nonlinear Dynamics', description: 'Investigation of nonlinear dynamical systems and chaos theory applications' },
-                            { title: 'Electronics & Instrumentation', description: 'Design and development of electronic systems and instrumentation for physics experiments' }
+                            {
+                                title: 'Fluid Mechanics Research',
+                                description: 'Advanced studies in fluid dynamics and mechanics with applications to astrophysical phenomena'
+                            },
+                            {
+                                title: 'Astrophysics Studies',
+                                description: 'Research in astrophysical phenomena, stellar dynamics, and cosmological applications'
+                            },
+                            {
+                                title: 'Nonlinear Dynamics',
+                                description: 'Investigation of nonlinear dynamical systems and chaos theory applications'
+                            },
+                            {
+                                title: 'Electronics & Instrumentation',
+                                description: 'Design and development of electronic systems and instrumentation for physics experiments'
+                            }
                         ],
                         technicalSkills: [
                             'Fluid Mechanics & Fluid Dynamics',
@@ -340,8 +411,23 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                             'Scientific Instrumentation',
                             'Experimental & Theoretical Physics'
                         ],
-                        publications: [{ type: 'Research Areas', items: ['Fluid mechanics and astrophysical applications', 'Nonlinear dynamics in physical systems', 'Electronics and instrumental design'] }],
-                        other: ['Senior faculty with 30+ years of academic experience', 'Department of Physics, Pt. L.M.S Campus, Rishikesh', 'Available for teaching, research, and academic mentoring', 'Experience in both theoretical and applied physics', 'Active contributor to physics education and student development']
+                        publications: [
+                            {
+                                type: 'Research Areas',
+                                items: [
+                                    'Fluid mechanics and astrophysical applications',
+                                    'Nonlinear dynamics in physical systems',
+                                    'Electronics and instrumental design'
+                                ]
+                            }
+                        ],
+                        other: [
+                            'Senior faculty with 30+ years of academic experience',
+                            'Department of Physics, Pt. L.M.S Campus, Rishikesh',
+                            'Available for teaching, research, and academic mentoring',
+                            'Experience in both theoretical and applied physics',
+                            'Active contributor to physics education and student development'
+                        ]
                     },
                     {
                         name: 'Dr. B. P. Bahuguna',
@@ -361,14 +447,33 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                             '30+ years of contribution to physics education'
                         ],
                         education: [
-                            { degree: 'B.Sc', field: 'Physics, Chemistry, Mathematics (PCM)' },
-                            { degree: 'M.Sc', field: 'Physics' },
-                            { degree: 'D.Phil', field: 'Physics', specialization: '1992' }
+                            {
+                                degree: 'B.Sc',
+                                field: 'Physics, Chemistry, Mathematics (PCM)'
+                            },
+                            {
+                                degree: 'M.Sc',
+                                field: 'Physics'
+                            },
+                            {
+                                degree: 'D.Phil',
+                                field: 'Physics',
+                                specialization: '1992'
+                            }
                         ],
                         researchWork: [
-                            { title: 'Electronics Research', description: 'Advanced research in electronic devices, circuits, and semiconductor physics' },
-                            { title: 'Material Science (Theoretical)', description: 'Theoretical studies of material properties, crystal structures, and solid-state physics' },
-                            { title: 'Condensed Matter Physics', description: 'Research in condensed matter systems and their applications in materials engineering' }
+                            {
+                                title: 'Electronics Research',
+                                description: 'Advanced research in electronic devices, circuits, and semiconductor physics'
+                            },
+                            {
+                                title: 'Material Science (Theoretical)',
+                                description: 'Theoretical studies of material properties, crystal structures, and solid-state physics'
+                            },
+                            {
+                                title: 'Condensed Matter Physics',
+                                description: 'Research in condensed matter systems and their applications in materials engineering'
+                            }
                         ],
                         technicalSkills: [
                             'Electronics & Semiconductor Physics',
@@ -379,8 +484,23 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                             'Physics Education & Curriculum Development',
                             'Experimental & Computational Methods'
                         ],
-                        publications: [{ type: 'Research Focus', items: ['Electronics and device physics', 'Theoretical material science studies', 'Condensed matter physics applications'] }],
-                        other: ['Professor with 30+ years of academic experience', 'Department of Physics, Pt. L.M.S Campus, Rishikesh', 'Available for research supervision and academic mentoring', 'Expertise in both theoretical and practical aspects of physics', 'Active contributor to physics curriculum development']
+                        publications: [
+                            {
+                                type: 'Research Focus',
+                                items: [
+                                    'Electronics and device physics',
+                                    'Theoretical material science studies',
+                                    'Condensed matter physics applications'
+                                ]
+                            }
+                        ],
+                        other: [
+                            'Professor with 30+ years of academic experience',
+                            'Department of Physics, Pt. L.M.S Campus, Rishikesh',
+                            'Available for research supervision and academic mentoring',
+                            'Expertise in both theoretical and practical aspects of physics',
+                            'Active contributor to physics curriculum development'
+                        ]
                     },
                     {
                         name: 'Dr. Hemant Singh',
@@ -400,15 +520,38 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                             'Active researcher with focus on contemporary physics applications'
                         ],
                         education: [
-                            { degree: 'B.Sc', field: 'Physics, Chemistry, Mathematics (PCM)' },
-                            { degree: 'M.Sc', field: 'Physics' },
-                            { degree: 'Ph.D', field: 'Physics', specialization: 'IIT Roorkee (2016)' },
-                            { degree: 'CSIR-UGC NET', field: 'Junior Research Fellowship (JRF)', specialization: 'Qualified' }
+                            {
+                                degree: 'B.Sc',
+                                field: 'Physics, Chemistry, Mathematics (PCM)'
+                            },
+                            {
+                                degree: 'M.Sc',
+                                field: 'Physics'
+                            },
+                            {
+                                degree: 'Ph.D',
+                                field: 'Physics',
+                                specialization: 'IIT Roorkee (2016)'
+                            },
+                            {
+                                degree: 'CSIR-UGC NET',
+                                field: 'Junior Research Fellowship (JRF)',
+                                specialization: 'Qualified'
+                            }
                         ],
                         researchWork: [
-                            { title: 'Condensed Matter Physics', description: 'Research in condensed matter systems, electronic properties, and quantum phenomena' },
-                            { title: 'Advanced Materials Study', description: 'Investigation of advanced materials and their physical properties' },
-                            { title: 'Quantum Physics Applications', description: 'Application of quantum mechanics to condensed matter and materials science' }
+                            {
+                                title: 'Condensed Matter Physics',
+                                description: 'Research in condensed matter systems, electronic properties, and quantum phenomena'
+                            },
+                            {
+                                title: 'Advanced Materials Study',
+                                description: 'Investigation of advanced materials and their physical properties'
+                            },
+                            {
+                                title: 'Quantum Physics Applications',
+                                description: 'Application of quantum mechanics to condensed matter and materials science'
+                            }
                         ],
                         technicalSkills: [
                             'Condensed Matter Physics',
@@ -420,8 +563,23 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                             'Scientific Writing & Publication',
                             'Physics Education & Student Mentoring'
                         ],
-                        publications: [{ type: 'Research Expertise', items: ['Condensed matter physics and electronic properties', 'Advanced materials characterization', 'Quantum phenomena in solid-state systems'] }],
-                        other: ['Associate Professor, Department of Physics, Pt. L.M.S Campus, Rishikesh', 'IIT Roorkee background ensures cutting-edge research training', 'CSIR-UGC NET qualified researcher', 'Active in contemporary physics research', 'Available for research supervision, teaching, and mentoring']
+                        publications: [
+                            {
+                                type: 'Research Expertise',
+                                items: [
+                                    'Condensed matter physics and electronic properties',
+                                    'Advanced materials characterization',
+                                    'Quantum phenomena in solid-state systems'
+                                ]
+                            }
+                        ],
+                        other: [
+                            'Associate Professor, Department of Physics, Pt. L.M.S Campus, Rishikesh',
+                            'IIT Roorkee background ensures cutting-edge research training',
+                            'CSIR-UGC NET qualified researcher',
+                            'Active in contemporary physics research',
+                            'Available for research supervision, teaching, and mentoring'
+                        ]
                     }
                 ]
                 : isPoliticalScience
@@ -1054,25 +1212,235 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                                 : isChemistry
                                     ? [
                                         {
+                                            name: 'Dr. Neeta Joshi',
+                                            role: 'Professor, Department of Chemistry',
+                                            contact: '+919412982875',
+                                            email: 'neeta_joshi000@yahoo.co.in',
+                                            image: '/img/Administrator/dinesh.jpg',
+                                            cvLink: '/img/chemistry/NJ-profile.docx',
+                                            keyHighlights: [
+                                                'M.Sc., Ph.D. with 25+ years of teaching & research experience',
+                                                'Expert in Phytochemistry, Organic Chemistry, Medicinal & Aromatic Plants',
+                                                'Specialized in Essential Oils and Bioactivity Studies',
+                                                'Guided 3 Ph.D. scholars successfully',
+                                                '22+ research papers in reputed international journals',
+                                                'Worked at Phytochemistry Lab (Nainital) and IVRI Bareilly'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Chemistry'
+                                                },
+                                                {
+                                                    degree: 'Ph.D.',
+                                                    field: 'Chemistry'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Phytochemical Analysis & Bioactivity Studies',
+                                                    description: 'Research on medicinal plants, essential oils, and antimicrobial properties (1996–2002)'
+                                                },
+                                                {
+                                                    title: 'Natural Product Evaluation',
+                                                    description: 'Studies on aromatic plants and their therapeutic applications'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Phytochemical analysis',
+                                                'Antimicrobial testing',
+                                                'Essential oil extraction',
+                                                'Natural product evaluation',
+                                                'Medicinal plant research',
+                                                'Bioactivity studies'
+                                            ],
+                                            publications: [
+                                                {
+                                                    type: 'Research Papers',
+                                                    items: [
+                                                        '22+ research papers in international journals',
+                                                        'Publications in Industrial Crops & Products',
+                                                        'Papers in Chemistry & Biodiversity',
+                                                        'Book chapters for Uttarakhand Open University'
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
                                             name: 'Dr. Shanti Prakash Sati',
                                             role: 'Professor & Head, Department of Chemistry',
                                             contact: '+917579110111',
                                             email: 'satisp22@gmail.com',
                                             image: '/img/Administrator/Manoj.jpg',
-                                            cvLink: '/img/chemistry/CURRICULUM-VITAE-Shanti-Prakash-Sati.docx'
+                                            cvLink: '/img/chemistry/CURRICULUM-VITAE-Shanti-Prakash-Sati.docx',
+                                            keyHighlights: [
+                                                '27 years of teaching experience in Chemistry',
+                                                'Expertise in Inorganic Chemistry and Phytochemistry',
+                                                'Specialized in Medicinal Plants research',
+                                                'Strong academic leadership with multiple administrative roles',
+                                                'Conducted numerous workshops and seminars',
+                                                'Active in curriculum development and academic planning'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Chemistry'
+                                                },
+                                                {
+                                                    degree: 'Ph.D.',
+                                                    field: 'Chemistry'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Natural Products Research',
+                                                    description: 'Research on medicinal plants and phytochemistry applications'
+                                                },
+                                                {
+                                                    title: 'Academic Leadership',
+                                                    description: 'Head of Department, Dean (Science), Principal roles'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Inorganic Chemistry',
+                                                'Phytochemistry',
+                                                'Medicinal Plants research',
+                                                'Academic administration',
+                                                'Curriculum development',
+                                                'Workshop organization'
+                                            ]
                                         },
                                         {
                                             name: 'Dr. Vibha Kumar',
                                             role: 'Associate Professor, Department of Chemistry',
                                             email: 'vibhasingh25@gmail.com',
                                             image: '/img/Administrator/uma1.jpg',
-                                            cvLink: '/img/chemistry/CV-Vibha-Kumar.docx'
+                                            cvLink: '/img/chemistry/CV-Vibha-Kumar.docx',
+                                            keyHighlights: [
+                                                'Ph.D. and M.Sc. from IIT Roorkee',
+                                                'CSIR-NET JRF Qualified with GATE (87.23 percentile)',
+                                                'Top ranks in M.Sc. examinations',
+                                                'Multiple research papers (2014–2024)',
+                                                'Focus on Structural Chemistry, Groundwater Analysis, and Biosensors',
+                                                'Authored books on Inorganic and Organic Chemistry'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'B.Sc.',
+                                                    field: 'Chemistry',
+                                                    specialization: 'CCS University'
+                                                },
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Chemistry',
+                                                    specialization: 'IIT Roorkee'
+                                                },
+                                                {
+                                                    degree: 'Ph.D.',
+                                                    field: 'Chemistry',
+                                                    specialization: 'IIT Roorkee'
+                                                },
+                                                {
+                                                    degree: 'CSIR-NET JRF',
+                                                    field: 'Chemistry',
+                                                    specialization: 'Qualified'
+                                                },
+                                                {
+                                                    degree: 'GATE',
+                                                    field: 'Chemistry',
+                                                    specialization: '87.23 percentile'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Structural Chemistry Research',
+                                                    description: 'Advanced studies in chemical structures and molecular analysis'
+                                                },
+                                                {
+                                                    title: 'Groundwater Analysis',
+                                                    description: 'Research on water quality and contamination studies'
+                                                },
+                                                {
+                                                    title: 'Biosensor Development',
+                                                    description: 'Development and application of chemical sensors'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Structural Chemistry',
+                                                'Groundwater Analysis',
+                                                'Biosensor Technology',
+                                                'Analytical Chemistry',
+                                                'Research Methodology',
+                                                'Scientific Writing'
+                                            ],
+                                            publications: [
+                                                {
+                                                    type: 'Research Papers',
+                                                    items: [
+                                                        '10+ papers in international journals (2014–2024)',
+                                                        'Publications on structural chemistry and environmental analysis'
+                                                    ]
+                                                },
+                                                {
+                                                    type: 'Books',
+                                                    items: [
+                                                        'Inorganic Chemistry textbook',
+                                                        'Organic Chemistry textbook'
+                                                    ]
+                                                }
+                                            ]
                                         },
                                         {
                                             name: 'Dr. Ashish Kumar Sharma',
                                             role: 'Professor, Department of Chemistry',
                                             image: '/img/Administrator/hemant.jpg',
-                                            cvLink: '/img/chemistry/Dr-Ashish-Sharma.docx'
+                                            cvLink: '/img/chemistry/Dr-Ashish-Sharma.docx',
+                                            keyHighlights: [
+                                                'D.Phil from University of Allahabad',
+                                                'Research in Thermodynamics and Liquid Systems',
+                                                'Specialized in Binary & Ternary Mixtures and Hydrogen Bonding',
+                                                'Expertise in Ionic Liquids and Molecular Interactions',
+                                                'Member of Acoustical Society of India',
+                                                'Computational and experimental thermodynamics research'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'B.Sc.',
+                                                    field: 'Chemistry'
+                                                },
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Chemistry'
+                                                },
+                                                {
+                                                    degree: 'D.Phil.',
+                                                    field: 'Chemistry',
+                                                    specialization: 'University of Allahabad'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Thermodynamics Research',
+                                                    description: 'Experimental and computational studies on liquid systems'
+                                                },
+                                                {
+                                                    title: 'Molecular Interaction Studies',
+                                                    description: 'Research on binary & ternary mixtures, hydrogen bonding, and ionic liquids'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Thermodynamics',
+                                                'Liquid Systems Analysis',
+                                                'Molecular Interaction Studies',
+                                                'Computational Chemistry',
+                                                'Acoustical Analysis',
+                                                'Research Methodology'
+                                            ],
+                                            other: [
+                                                'Member of Acoustical Society of India',
+                                                'Expert in experimental thermodynamics',
+                                                'Research on hydrogen bonding in liquid mixtures'
+                                            ]
                                         },
                                         {
                                             name: 'Dr. Seema',
@@ -1080,7 +1448,74 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                                             contact: '+919258138438',
                                             email: 'sbaniwal1974@gmail.com, sbaniwal@rediffmail.com',
                                             image: '/img/Administrator/COE2.jpeg',
-                                            cvLink: '/img/chemistry/Dr-Seema-CV-New-2026.docx'
+                                            cvLink: '/img/chemistry/Dr-Seema-CV-New-2026.docx',
+                                            keyHighlights: [
+                                                'Ph.D. from IIT Roorkee in Organic Chemistry',
+                                                '14+ years of academic experience',
+                                                'Industry experience at PI Industries Ltd. and Jubilant Organosys',
+                                                'Research focus on Macrocycles Synthesis and Electrochemical Sensors',
+                                                'CSIR SRF Fellowship recipient',
+                                                'Multiple awards including NSS recognition'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Organic Chemistry'
+                                                },
+                                                {
+                                                    degree: 'Ph.D.',
+                                                    field: 'Chemistry',
+                                                    specialization: 'IIT Roorkee'
+                                                },
+                                                {
+                                                    degree: 'CSIR SRF Fellowship',
+                                                    field: 'Chemistry',
+                                                    specialization: 'Recipient'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Macrocycles Synthesis',
+                                                    description: 'Research on synthesis and applications of macrocyclic compounds'
+                                                },
+                                                {
+                                                    title: 'Electrochemical Sensors',
+                                                    description: 'Development of sensors for chemical analysis'
+                                                },
+                                                {
+                                                    title: 'Antimicrobial Studies',
+                                                    description: 'Research on antimicrobial properties of chemical compounds'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Organic Chemistry',
+                                                'Macrocycles Synthesis',
+                                                'Electrochemical Analysis',
+                                                'Antimicrobial Testing',
+                                                'Sensor Development',
+                                                'Research Methodology'
+                                            ],
+                                            publications: [
+                                                {
+                                                    type: 'Books',
+                                                    items: [
+                                                        'Multiple books on Chemistry subjects',
+                                                        'Textbooks for undergraduate and postgraduate levels'
+                                                    ]
+                                                },
+                                                {
+                                                    type: 'Research Papers',
+                                                    items: [
+                                                        'Multiple research papers (2023–2024)',
+                                                        'Publications on macrocycles and sensors'
+                                                    ]
+                                                }
+                                            ],
+                                            other: [
+                                                'NSS awards recipient',
+                                                'Active conference participation',
+                                                'Industry-academia collaboration experience'
+                                            ]
                                         },
                                         {
                                             name: 'Dr. Neha Bhatt',
@@ -1088,7 +1523,68 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                                             contact: '+918384818010, +919760655758',
                                             email: 'nehagairola1992@gmail.com',
                                             image: '/img/Administrator/AEC.jpg',
-                                            cvLink: '/img/chemistry/Dr-Neha-Academic-CV.docx'
+                                            cvLink: '/img/chemistry/Dr-Neha-Academic-CV.docx',
+                                            keyHighlights: [
+                                                'Ph.D. in Physical Chemistry',
+                                                'Research in Chemical Kinetics and Oxidation Reactions',
+                                                'Studies on Nanoparticles, Antioxidants, and Groundwater Contamination',
+                                                'Multiple SCOPUS indexed publications',
+                                                'Assistant Professor (2022–2023) and current Guest Faculty',
+                                                'Authored books and chapters on Environmental Science'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'B.Sc.',
+                                                    field: 'PCM (Physics, Chemistry, Mathematics)'
+                                                },
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Analytical Chemistry'
+                                                },
+                                                {
+                                                    degree: 'Ph.D.',
+                                                    field: 'Physical Chemistry'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Chemical Kinetics Research',
+                                                    description: 'Studies on reaction mechanisms and oxidation processes'
+                                                },
+                                                {
+                                                    title: 'Nanoparticles Research',
+                                                    description: 'Synthesis and applications of nanoparticles'
+                                                },
+                                                {
+                                                    title: 'Environmental Chemistry',
+                                                    description: 'Groundwater contamination and antioxidant studies'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Chemical Kinetics',
+                                                'Oxidation Reactions',
+                                                'Nanoparticle Synthesis',
+                                                'Antioxidant Analysis',
+                                                'Groundwater Analysis',
+                                                'Thermodynamic Analysis'
+                                            ],
+                                            publications: [
+                                                {
+                                                    type: 'Research Papers',
+                                                    items: [
+                                                        'Multiple SCOPUS indexed papers',
+                                                        'Publications on nanoparticles and antioxidants',
+                                                        'Papers on groundwater contamination studies'
+                                                    ]
+                                                },
+                                                {
+                                                    type: 'Books & Chapters',
+                                                    items: [
+                                                        'Books on Environmental Science',
+                                                        'Chapters on Natural Products research'
+                                                    ]
+                                                }
+                                            ]
                                         },
                                         {
                                             name: 'Dr. Rakesh Kumar Joshi',
@@ -1096,22 +1592,157 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                                             contact: '+919412441598',
                                             email: 'joshirk12@gmail.com',
                                             image: '/img/Administrator/Pramod.jpg',
-                                            cvLink: '/img/chemistry/Dr-Rakesh-Joshi.doc'
+                                            cvLink: '/img/chemistry/Dr-Rakesh-Joshi.doc',
+                                            keyHighlights: [
+                                                'M.Sc. and D.Phil in Chemistry',
+                                                'Specialized in Organic Chemistry, Phytochemistry, and Natural Dyes',
+                                                'Extensive research papers (1993–2025)',
+                                                'Patents in Cyclopentane Production and Pollution Removal Systems',
+                                                'Teacher of the Year (2021)',
+                                                'Editor roles in academic journals'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Chemistry'
+                                                },
+                                                {
+                                                    degree: 'D.Phil.',
+                                                    field: 'Chemistry'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Organic Chemistry Research',
+                                                    description: 'Studies on organic compounds and synthesis'
+                                                },
+                                                {
+                                                    title: 'Phytochemistry',
+                                                    description: 'Research on plant-based chemical compounds'
+                                                },
+                                                {
+                                                    title: 'Natural Dyes',
+                                                    description: 'Development and application of natural dyes'
+                                                },
+                                                {
+                                                    title: 'Petrochemical Separation',
+                                                    description: 'Research on petrochemical processes'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Organic Chemistry',
+                                                'Phytochemistry',
+                                                'Natural Dyes Processing',
+                                                'Petrochemical Separation',
+                                                'Patent Development',
+                                                'Editorial Work'
+                                            ],
+                                            publications: [
+                                                {
+                                                    type: 'Research Papers',
+                                                    items: [
+                                                        'Extensive research papers (1993–2025)',
+                                                        'Publications in high-impact journals'
+                                                    ]
+                                                },
+                                                {
+                                                    type: 'Books',
+                                                    items: [
+                                                        'Organic Chemistry textbook',
+                                                        'Physical Chemistry textbook',
+                                                        'Fundamentals of Chemistry'
+                                                    ]
+                                                }
+                                            ],
+                                            other: [
+                                                'Teacher of the Year (2021)',
+                                                'Editor in academic journals',
+                                                'ML-based education research patent',
+                                                'Pollution removal systems patent'
+                                            ]
                                         },
                                         {
-                                            name: 'Hitendra Singh',
+                                            name: 'Dr. Hitendra Singh',
                                             role: 'Professor, Department of Chemistry',
                                             email: 'hitensingh25@gmail.com',
                                             image: '/img/Administrator/Vijay.jpg',
-                                            cvLink: '/img/chemistry/Hitendra-CV.docx'
-                                        },
-                                        {
-                                            name: 'Dr. Neeta Joshi',
-                                            role: 'Professor, Department of Chemistry',
-                                            contact: '+919412982875',
-                                            email: 'neeta_joshi000@yahoo.co.in',
-                                            image: '/img/Administrator/dinesh.jpg',
-                                            cvLink: '/img/chemistry/NJ-profile.docx'
+                                            cvLink: '/img/chemistry/Hitendra-CV.docx',
+                                            keyHighlights: [
+                                                'Ph.D. from IIT Roorkee',
+                                                'Specialized in Organometallic and Bio-inorganic Chemistry',
+                                                'CSIR-NET and GATE qualified',
+                                                'Scientist-C (NIH Roorkee) and Director IQAC (15 years)',
+                                                '12+ research papers and 2 books + chapters',
+                                                'Active in Ph.D. supervision and editorial work'
+                                            ],
+                                            education: [
+                                                {
+                                                    degree: 'B.Sc.',
+                                                    field: 'Chemistry'
+                                                },
+                                                {
+                                                    degree: 'M.Sc.',
+                                                    field: 'Chemistry'
+                                                },
+                                                {
+                                                    degree: 'Ph.D.',
+                                                    field: 'Chemistry',
+                                                    specialization: 'IIT Roorkee'
+                                                },
+                                                {
+                                                    degree: 'CSIR-NET',
+                                                    field: 'Chemistry',
+                                                    specialization: 'Qualified'
+                                                },
+                                                {
+                                                    degree: 'GATE',
+                                                    field: 'Chemistry',
+                                                    specialization: 'Qualified'
+                                                }
+                                            ],
+                                            researchWork: [
+                                                {
+                                                    title: 'Organometallic Chemistry',
+                                                    description: 'Research on organometallic compounds and their applications'
+                                                },
+                                                {
+                                                    title: 'Bio-inorganic Chemistry',
+                                                    description: 'Studies on metal complexes in biological systems'
+                                                },
+                                                {
+                                                    title: 'Water Quality Analysis',
+                                                    description: 'Research on water contamination and purification'
+                                                }
+                                            ],
+                                            technicalSkills: [
+                                                'Organometallic Chemistry',
+                                                'Bio-inorganic Chemistry',
+                                                'Water Quality Analysis',
+                                                'Research Supervision',
+                                                'Academic Administration',
+                                                'Editorial Work'
+                                            ],
+                                            publications: [
+                                                {
+                                                    type: 'Research Papers',
+                                                    items: [
+                                                        '12+ research papers in reputed journals'
+                                                    ]
+                                                },
+                                                {
+                                                    type: 'Books & Chapters',
+                                                    items: [
+                                                        '2 books on Chemistry',
+                                                        'Multiple book chapters'
+                                                    ]
+                                                }
+                                            ],
+                                            other: [
+                                                'Ph.D. supervision experience',
+                                                'Editorial roles in journals',
+                                                'Professional memberships',
+                                                '15 years as Director IQAC'
+                                            ]
                                         }
                                     ]
                                     : isEnglish
@@ -1122,15 +1753,115 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                                                 contact: '+919412935163, +918004440687',
                                                 email: 'dparulbhu@gmail.com',
                                                 image: '/img/Administrator/uma1.jpg',
-                                                cvLink: '/img/english/Dr-Parul-Mishra.docx'
+                                                cvLink: '/img/english/Dr-Parul-Mishra.docx',
+                                                keyHighlights: [
+                                                    'Ph.D. in English from BHU (2012)',
+                                                    'UGC-NET Qualified (2005)',
+                                                    'UGC Research Fellowship recipient',
+                                                    'Diploma in IT from NIIT',
+                                                    'Published poetry book "Aadhe Aadhe Chehre"',
+                                                    'Delivered keynote lectures and organized training programs'
+                                                ],
+                                                education: [
+                                                    {
+                                                        degree: 'M.A. English',
+                                                        field: 'English',
+                                                        specialization: 'BHU'
+                                                    },
+                                                    {
+                                                        degree: 'B.A. (Hons.) English',
+                                                        field: 'English',
+                                                        specialization: 'BHU'
+                                                    }
+                                                ],
+                                                researchWork: [
+                                                    {
+                                                        title: 'Feminism',
+                                                        description: 'Research on feminist themes in English literature'
+                                                    },
+                                                    {
+                                                        title: 'Family relationships in literature',
+                                                        description: 'Study of familial dynamics across modern and contemporary texts'
+                                                    },
+                                                    {
+                                                        title: 'Works of Shashi Deshpande',
+                                                        description: 'Critical analysis of Shashi Deshpande’s major novels'
+                                                    }
+                                                ],
+                                                publications: [
+                                                    {
+                                                        type: 'Journal Papers',
+                                                        items: ['Multiple journal papers published between 2009 and 2013']
+                                                    },
+                                                    {
+                                                        type: 'Conference Papers',
+                                                        items: ['45+ conference and seminar papers']
+                                                    }
+                                                ],
+                                                other: [
+                                                    'Sahitya Ratna Samman recipient (2024)',
+                                                    'Organized faculty and student training programs',
+                                                    'Delivered keynote lectures at academic events'
+                                                ]
                                             },
                                             {
                                                 name: 'Dr. Hemant Kumar Shukla',
-                                                role: 'Professor & H.O.D., Department of English',
+                                                role: 'Professor, Department of English',
                                                 contact: '+917500784114, +919897438142',
                                                 email: 'hemantkumar.shukla1@gmail.com',
                                                 image: '/img/Administrator/Manoj.jpg',
-                                                cvLink: '/img/english/Hemant-Shukla.docx'
+                                                cvLink: '/img/english/Hemant-Shukla.docx',
+                                                keyHighlights: [
+                                                    'Professor in English with deep expertise in theatre and comparative literature',
+                                                    'Led a major research project funded at approximately ₹6.8 lakh',
+                                                    'Published multiple research papers between 2022 and 2024',
+                                                    'Authored UOU books on American Literature',
+                                                    'Active in Indian English literature and cultural studies'
+                                                ],
+                                                education: [
+                                                    {
+                                                        degree: 'Ph.D.',
+                                                        field: 'English',
+                                                        specialization: 'Brechtian Theatre & Uttarakhand Theatre'
+                                                    },
+                                                    {
+                                                        degree: 'M.Phil',
+                                                        field: 'English',
+                                                        specialization: 'Reading Comprehension'
+                                                    }
+                                                ],
+                                                researchWork: [
+                                                    {
+                                                        title: 'Theatre and Cultural Studies',
+                                                        description: 'Research focusing on theatre traditions and cultural narratives in India'
+                                                    },
+                                                    {
+                                                        title: 'Comparative Literature',
+                                                        description: 'Study of literature across cultures, with emphasis on Indian and Western texts'
+                                                    }
+                                                ],
+                                                technicalSkills: [
+                                                    'Theatre studies',
+                                                    'Comparative literature',
+                                                    'Indian English literature',
+                                                    'Academic research and project management'
+                                                ],
+                                                publications: [
+                                                    {
+                                                        type: 'Research Papers',
+                                                        items: [
+                                                            'Multiple papers published from 2022 to 2024 on Anita Desai, Sudha Murthy, Sylvia Plath, and Dalit literature'
+                                                        ]
+                                                    },
+                                                    {
+                                                        type: 'Books & Chapters',
+                                                        items: ['American Literature (UOU publications)', 'Literary analysis chapters']
+                                                    }
+                                                ],
+                                                other: [
+                                                    'Professor at SDSU University since 2021',
+                                                    'Extensive teaching experience in government and higher education institutions'
+                                                ]
                                             },
                                             {
                                                 name: 'Dr. Pramod Kumar Kukreti',
@@ -1138,14 +1869,664 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                                                 contact: '+919528379117',
                                                 email: 'parmodkukreti3@gmail.com',
                                                 image: '/img/Administrator/Pramod.jpg',
-                                                cvLink: '/img/english/Dr-Pramod-Kumar-Kukreti.docx'
+                                                cvLink: '/img/english/Dr-Pramod-Kumar-Kukreti.docx',
+                                                keyHighlights: [
+                                                    'D.Phil. in English with specialization in Twentieth Century Literature',
+                                                    'Research interest in Uttarakhand folk literature',
+                                                    'Co-investigator on government-funded research projects'
+                                                ],
+                                                education: [
+                                                    {
+                                                        degree: 'D.Phil.',
+                                                        field: 'English',
+                                                        specialization: 'HNB Garhwal University'
+                                                    },
+                                                    {
+                                                        degree: 'M.Phil',
+                                                        field: 'English'
+                                                    },
+                                                    {
+                                                        degree: 'M.A. English',
+                                                        field: 'English'
+                                                    },
+                                                    {
+                                                        degree: 'B.Sc.',
+                                                        field: 'Science'
+                                                    }
+                                                ],
+                                                researchWork: [
+                                                    {
+                                                        title: 'Folk Literature of Uttarakhand',
+                                                        description: 'Study of regional folk narratives and cultural traditions in Uttarakhand'
+                                                    },
+                                                    {
+                                                        title: 'Govt-funded Research Projects',
+                                                        description: 'Role as co-investigator on academic and cultural studies projects'
+                                                    }
+                                                ],
+                                                publications: [
+                                                    {
+                                                        type: 'Book Chapters',
+                                                        items: ['Chapter on moral values in Indian youth']
+                                                    }
+                                                ],
+                                                other: [
+                                                    'Faculty at SDSU University since 2021',
+                                                    'Former government college teaching experience from 2005 to 2021'
+                                                ]
                                             }
                                         ]
-                                        : [
-                                            { name: `Dr. A. Sharma (${departmentName})`, image: '/img/Administrator/AEC.jpg' },
-                                            { name: `Dr. R. Joshi (${departmentName})`, image: '/img/Administrator/Pramod.jpg' },
-                                            { name: `Dr. N. Rawat (${departmentName})`, image: '/img/Administrator/Vijay.jpg' }
-                                        ];
+                                        : isHomeScience
+                                            ? [
+                                                {
+                                                    name: 'Dr. Vandana Bhandari',
+                                                    role: 'Assistant Professor (Guest Faculty), Department of Home Science',
+                                                    field: 'Home Science',
+                                                    qualification: 'Ph.D in Textile & Apparel Designing',
+                                                    specialization: 'Textile Designing, Natural Dyes, Nanotechnology in Textiles',
+                                                    email: 'bhandarivandana2016@gmail.com',
+                                                    image: '/img/Administrator/uma1.jpg',
+                                                    cvLink: '/img/home-science/Dr-Vandana-Bhandari-CV.docx',
+                                                    keyHighlights: [
+                                                        'Ph.D in Textile & Apparel Designing with expertise in innovative textile technologies',
+                                                        'Qualified UGC NET in Home Science - recognized academic researcher',
+                                                        'Young Scientist Award recipient (UCOST, 2022)',
+                                                        'Specialization in sustainable textiles and nanotechnology applications',
+                                                        'Research combining traditional art (Aipan designs) with modern science',
+                                                        'Focus on women empowerment through textile crafts and entrepreneurship'
+                                                    ],
+                                                    education: [
+                                                        {
+                                                            degree: 'B.Sc',
+                                                            field: 'Home Science',
+                                                            specialization: 'GBPUAT'
+                                                        },
+                                                        {
+                                                            degree: 'M.Sc',
+                                                            field: 'Clothing & Textiles'
+                                                        },
+                                                        {
+                                                            degree: 'Ph.D',
+                                                            field: 'Textile & Apparel Designing'
+                                                        },
+                                                        {
+                                                            degree: 'UGC NET',
+                                                            field: 'Home Science',
+                                                            specialization: 'Qualified'
+                                                        }
+                                                    ],
+                                                    researchWork: [
+                                                        {
+                                                            title: 'Nanotechnology in Textiles',
+                                                            description: 'Research on integration of nano particles in textile design and functionality enhancement'
+                                                        },
+                                                        {
+                                                            title: 'Natural Dyes & Sustainable Textiles',
+                                                            description: 'Development of eco-friendly dyeing methods using natural dyes for sustainable textile production'
+                                                        },
+                                                        {
+                                                            title: 'Traditional Art & Textile Design',
+                                                            description: 'Research on Aipan and Madhubani folk art applied to modern textile designing and cultural preservation'
+                                                        },
+                                                        {
+                                                            title: 'Women Empowerment Through Crafts',
+                                                            description: 'Initiatives for empowering women through traditional textile crafts and skill development'
+                                                        }
+                                                    ],
+                                                    technicalSkills: [
+                                                        'Textile Designing & Pattern Making',
+                                                        'Nanotechnology Applications in Textiles',
+                                                        'Natural Dye Processing & Eco-friendly Methods',
+                                                        'Apparel Designing & Construction',
+                                                        'Textile Sustainability & Green Practices',
+                                                        'Traditional Folk Art Integration (Aipan, Madhubani)',
+                                                        'Textile Innovation & Research',
+                                                        'Fashion Science & Textile Technology',
+                                                        'Material Science in Textiles'
+                                                    ],
+                                                    publications: [
+                                                        {
+                                                            type: 'Research Papers',
+                                                            items: [
+                                                                'Multiple research papers published (2019-2023)',
+                                                                'Papers on nanotechnology in textiles and sustainability',
+                                                                'Research on eco-friendly dyeing processes',
+                                                                'Publications on traditional textile arts and cultural preservation'
+                                                            ]
+                                                        },
+                                                        {
+                                                            type: 'Book Chapters',
+                                                            items: [
+                                                                'Book chapters in international publications (Wiley)',
+                                                                'Contributions on textile sustainability and innovation',
+                                                                'Works on folk art in contemporary textile design',
+                                                                'Chapters on women empowerment through textiles'
+                                                            ]
+                                                        },
+                                                        {
+                                                            type: 'Research Topics',
+                                                            items: [
+                                                                'Nanotechnology in textile applications',
+                                                                'Eco-friendly dyeing and sustainable textiles',
+                                                                'Folk art (Aipan, Madhubani) integration in design',
+                                                                'Textile sustainability and environmental impact'
+                                                            ]
+                                                        }
+                                                    ],
+                                                    other: [
+                                                        'Young Scientist Award (UCOST, 2022) - recognition of research excellence',
+                                                        'Assistant Professor (Guest Faculty), Department of Home Science, Pt. L.M.S Campus',
+                                                        'Strong profile combining traditional + modern research approaches',
+                                                        'Research connects science, fashion, and cultural heritage',
+                                                        'Active focus on real-world applications in textiles and women empowerment',
+                                                        'UGC NET qualified with strong academic credentials',
+                                                        'Recent publication record (2019-2023) demonstrates active research engagement',
+                                                        'Available for teaching, research guidance, and skill development programs'
+                                                    ]
+                                                }
+                                            ]
+                                            : isHindi
+                                                ? [
+                                                    {
+                                                        name: 'Prof. Kalpana Pant',
+                                                        role: 'H.O.D., Department of Hindi',
+                                                        image: '/img/Administrator/uma1.jpg',
+                                                        cvLink: '/img/hindi/Department-of-Hindi.docx'
+                                                    },
+                                                    {
+                                                        name: 'Prof. Adheer Kumar',
+                                                        role: 'Professor, Department of Hindi',
+                                                        contact: '+919411166951',
+                                                        email: 'adheerkumar@gmail.com',
+                                                        image: '/img/Administrator/Manoj.jpg',
+                                                        cvLink: '/img/hindi/C-V-Adheer.pdf'
+                                                    },
+                                                    {
+                                                        name: 'Prof. Mukti Nath Yadav',
+                                                        role: 'Professor, Department of Hindi',
+                                                        image: '/img/Administrator/dinesh.jpg',
+                                                        cvLink: '/img/hindi/hindi-intro.docx'
+                                                    }
+                                                ]
+                                                : isHistory
+                                                    ? [
+                                                        {
+                                                            name: 'Prof. Sangeeta Mishra',
+                                                            role: 'Head of Department, Department of History',
+                                                            field: 'History',
+                                                            qualification: 'Ph.D in History',
+                                                            specialization: 'Ancient Indian Studies, Vedic Culture, Buddhism & Jainism',
+                                                            contact: '+919412965832',
+                                                            email: 'sangeetamishra450@gmail.com',
+                                                            cvLink: '/img/history/Prof-Sangeeta-Mishra-Biodata.pdf',
+                                                            keyHighlights: [
+                                                                'Head of Department with 30+ years of academic experience',
+                                                                'Ph.D in History specializing in Ancient Indian studies',
+                                                                'Expertise in Vedic culture, Buddhism, and Jainism',
+                                                                'Member of Syllabus Committee for UG, PG, and Ph.D programs',
+                                                                'Editorial board member for academic journals',
+                                                                'Published numerous research papers and book chapters (2010-2025)'
+                                                            ],
+                                                            education: [
+                                                                {
+                                                                    degree: 'B.A',
+                                                                    field: 'History'
+                                                                },
+                                                                {
+                                                                    degree: 'M.A',
+                                                                    field: 'Ancient History'
+                                                                },
+                                                                {
+                                                                    degree: 'Ph.D',
+                                                                    field: 'History',
+                                                                    specialization: 'Ancient Indian Studies'
+                                                                }
+                                                            ],
+                                                            researchWork: [
+                                                                {
+                                                                    title: 'Ancient Indian Civilization',
+                                                                    description: 'Research on ancient Indian civilization, culture, and societal structures'
+                                                                },
+                                                                {
+                                                                    title: 'Vedic Culture & Traditions',
+                                                                    description: 'In-depth study of Vedic traditions, rituals, and their influence on Indian society'
+                                                                },
+                                                                {
+                                                                    title: 'Buddhism & Jainism Studies',
+                                                                    description: 'Research on Buddhist and Jain philosophies and their historical development'
+                                                                },
+                                                                {
+                                                                    title: 'Religion & Society',
+                                                                    description: 'Analysis of women and society in historical context across different periods'
+                                                                }
+                                                            ],
+                                                            technicalSkills: [
+                                                                'Ancient History Research & Analysis',
+                                                                'Vedic Studies & Sanskrit Knowledge',
+                                                                'Buddhist & Jain Philosophy Studies',
+                                                                'Archaeological Research Methods',
+                                                                'Historical Documentation & Analysis',
+                                                                'Curriculum Design & Development',
+                                                                'Academic Writing & Publishing',
+                                                                'Environmental History',
+                                                                'Social History Analysis'
+                                                            ],
+                                                            publications: [
+                                                                {
+                                                                    type: 'Research Papers',
+                                                                    items: [
+                                                                        'Large number of research papers published (2010-2025)',
+                                                                        'Topics: Ancient culture, religion, environment, and society',
+                                                                        'Published in national and international academic journals'
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    type: 'Book Chapters',
+                                                                    items: [
+                                                                        'Multiple book chapters in edited volumes',
+                                                                        'Contributions to academic publications on Indian history',
+                                                                        'Works on Vedic studies and ancient civilizations'
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            other: [
+                                                                'Member of Syllabus Committee (UG, PG, PhD levels)',
+                                                                'Editorial board member for academic journals',
+                                                                'Former Principal with administrative experience',
+                                                                'Organizer of webinars and academic events',
+                                                                'Active participant in national and international conferences',
+                                                                'Mentor to research scholars and graduate students',
+                                                                'Focus on Indian traditional knowledge and cultural heritage',
+                                                                'Department has 440+ students (B.A to M.A) and 3 active research scholars'
+                                                            ]
+                                                        },
+                                                        {
+                                                            name: 'Dr. Arjun Singh',
+                                                            role: 'Assistant Professor (Guest Faculty), Department of History',
+                                                            field: 'History',
+                                                            qualification: 'Ph.D in History (2022)',
+                                                            specialization: 'Himalayan History, Urbanization, Colonial Studies',
+                                                            contact: '+917500884084',
+                                                            email: 'arjunarjun4727@gmail.com',
+                                                            image: '/img/Administrator/Manoj.jpg',
+                                                            cvLink: '/img/history/Dr-Arjun-Singh-CV.pdf',
+                                                            keyHighlights: [
+                                                                'Ph.D in History from 2022 - recent doctorate holder',
+                                                                'Qualified NET (National Eligibility Test) - multiple times',
+                                                                'Qualified JRF (Junior Research Fellowship) from ICHR',
+                                                                'Specialization in Himalayan history and regional studies',
+                                                                'Research focus on urbanization and colonial development',
+                                                                'Active researcher with publications (2019-2024)'
+                                                            ],
+                                                            education: [
+                                                                {
+                                                                    degree: 'B.A',
+                                                                    field: 'History & Political Science'
+                                                                },
+                                                                {
+                                                                    degree: 'M.A',
+                                                                    field: 'History'
+                                                                },
+                                                                {
+                                                                    degree: 'Ph.D',
+                                                                    field: 'History',
+                                                                    specialization: '2022'
+                                                                },
+                                                                {
+                                                                    degree: 'NET',
+                                                                    field: 'National Eligibility Test',
+                                                                    specialization: 'Qualified (Multiple times)'
+                                                                },
+                                                                {
+                                                                    degree: 'JRF',
+                                                                    field: 'Junior Research Fellowship (ICHR)',
+                                                                    specialization: 'Qualified'
+                                                                }
+                                                            ],
+                                                            researchWork: [
+                                                                {
+                                                                    title: 'Himalayan Regional History',
+                                                                    description: 'Research on the history, culture, and development of Himalayan regions'
+                                                                },
+                                                                {
+                                                                    title: 'Urbanization Studies',
+                                                                    description: 'Analysis of urban development and urbanization processes in Indian history'
+                                                                },
+                                                                {
+                                                                    title: 'Colonial & Military History',
+                                                                    description: 'Studies on colonial period, military history, and their impact on Indian society'
+                                                                }
+                                                            ],
+                                                            technicalSkills: [
+                                                                'Himalayan History Research',
+                                                                'Urbanization & Urban History Analysis',
+                                                                'Colonial History Studies',
+                                                                'Military History Research',
+                                                                'Regional History Specialization',
+                                                                'Archival Research Methods',
+                                                                'Historical Documentation',
+                                                                'Academic Writing & Publishing',
+                                                                'Seminar & Conference Presentation'
+                                                            ],
+                                                            publications: [
+                                                                {
+                                                                    type: 'Research Papers',
+                                                                    items: [
+                                                                        'Multiple research papers published in academic journals (2019-2024)',
+                                                                        'Publications on Himalayan history and regional studies',
+                                                                        'Papers on urbanization and colonial development',
+                                                                        'Active contributions to academic discourse'
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    type: 'Books',
+                                                                    items: [
+                                                                        'Book on Himalayan history in progress',
+                                                                        'Research-based scholarly work on regional history'
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            other: [
+                                                                'Assistant Professor (Guest Faculty) at Department of History',
+                                                                'NET qualified researcher (multiple times)',
+                                                                'ICHR JRF qualified - recognized research potential',
+                                                                'Active participant in national and international conferences',
+                                                                'Regular contributor to academic seminars',
+                                                                'Focus on Indian regional and traditional history',
+                                                                'Young researcher with contemporary research approach',
+                                                                'Available for teaching, research supervision, and mentoring'
+                                                            ]
+                                                        }
+                                                    ]
+                                                    : isGeography
+                                                        ? [
+                                                            {
+                                                                name: 'Dr. Dinesh Chandra Goswami',
+                                                                role: 'Senior Faculty, Department of Geography',
+                                                                image: '/img/Administrator/Manoj.jpg',
+                                                                cvLink: '/img/geography/Dr-Dinesh-Chandra-Goswami.docx',
+                                                                keyHighlights: [
+                                                                    'Ph.D. in Geography with specialization in Regional Development',
+                                                                    'Published multiple research papers on transport and regional development',
+                                                                    'Guided multiple D.Phil scholars and supervised 60+ MA dissertations',
+                                                                    'Led UGC Minor & Major Projects on tourism, landslides, and regional development',
+                                                                    'Recipient of Seva Ratna Samman award',
+                                                                    'Active contributor with radio and Doordarshan talks on geography'
+                                                                ],
+                                                                education: [
+                                                                    {
+                                                                        degree: 'M.A. Geography',
+                                                                        field: 'Geography',
+                                                                        specialization: 'HNB Garhwal University'
+                                                                    },
+                                                                    {
+                                                                        degree: 'LL.B.',
+                                                                        field: 'Law',
+                                                                        specialization: 'Lucknow University'
+                                                                    },
+                                                                    {
+                                                                        degree: 'B.Lib., M.Lib.',
+                                                                        field: 'Library Science',
+                                                                        specialization: 'Lucknow University'
+                                                                    }
+                                                                ],
+                                                                researchWork: [
+                                                                    {
+                                                                        title: 'Transport & Regional Development',
+                                                                        description: 'Ph.D. research (2003) on transport systems and regional development patterns'
+                                                                    },
+                                                                    {
+                                                                        title: 'Tourism Geography',
+                                                                        description: 'Research on tourism development, disaster management, and hazard assessment in Himalayan region'
+                                                                    },
+                                                                    {
+                                                                        title: 'Population Studies',
+                                                                        description: 'Studies on population distribution and demographic patterns'
+                                                                    }
+                                                                ],
+                                                                publications: [
+                                                                    {
+                                                                        type: 'Research Papers',
+                                                                        items: ['Multiple research papers published 2001–2006+']
+                                                                    },
+                                                                    {
+                                                                        type: 'Books & Edited Volumes',
+                                                                        items: ['Books on Himalayan environment and geography']
+                                                                    }
+                                                                ],
+                                                                other: [
+                                                                    'NET Qualified',
+                                                                    'Contributed to radio and Doordarshan talks',
+                                                                    'Editor of geography journals',
+                                                                    'Member of multiple geography associations'
+                                                                ]
+                                                            },
+                                                            {
+                                                                name: 'Dr. Srikrishna Nautiyal',
+                                                                role: 'Faculty, Department of Geography',
+                                                                image: '/img/Administrator/dinesh.jpg',
+                                                                cvLink: '/img/geography/Dr-Srikrishna-Nautiyal.docx',
+                                                                keyHighlights: [
+                                                                    'Ph.D. in Geology with expertise in Himalayan geomorphology',
+                                                                    'NET Qualified in Earth Sciences',
+                                                                    'Specialized research on glacier change and landslide hazards',
+                                                                    'Focus on Rishi Ganga catchment and geomorphic hazard assessment',
+                                                                    'Contributed to Joshimath land subsidence studies',
+                                                                    'Published research papers on Himalayan geological hazards'
+                                                                ],
+                                                                education: [
+                                                                    {
+                                                                        degree: 'Ph.D.',
+                                                                        field: 'Geology',
+                                                                        specialization: 'Rishi Ganga Catchment Study'
+                                                                    }
+                                                                ],
+                                                                researchWork: [
+                                                                    {
+                                                                        title: 'Geomorphology & Glacier Studies',
+                                                                        description: 'Research on glacial change, mountain geomorphology, and climate impacts'
+                                                                    },
+                                                                    {
+                                                                        title: 'Himalayan Hazard Assessment',
+                                                                        description: 'Study of landslides, terrain hazards, and geomorphic processes'
+                                                                    },
+                                                                    {
+                                                                        title: 'Remote Sensing & Geo-environmental Studies',
+                                                                        description: 'Application of remote sensing in environmental monitoring and geological studies'
+                                                                    }
+                                                                ],
+                                                                publications: [
+                                                                    {
+                                                                        type: 'Research Papers',
+                                                                        items: [
+                                                                            'Glacier change studies',
+                                                                            'Landslide research',
+                                                                            'Himalayan geology publications'
+                                                                        ]
+                                                                    }
+                                                                ],
+                                                                other: [
+                                                                    'NET Qualified (Earth Sciences)',
+                                                                    'Collaboration in biodiversity and geology studies',
+                                                                    'Contributor to Joshimath land subsidence report'
+                                                                ]
+                                                            },
+                                                            {
+                                                                name: 'Kedar Singh',
+                                                                role: 'Geography Faculty, Department of Geography',
+                                                                image: '/img/Administrator/Pramod.jpg',
+                                                                cvLink: '/img/geography/Kedar-Singh.docx',
+                                                                keyHighlights: [
+                                                                    'Geography researcher with specialization in landslide hazard assessment',
+                                                                    'Published multiple research papers from 2016–2024',
+                                                                    'Focus on Alaknanda Valley landslides and regional geography',
+                                                                    'Researcher on literacy and workforce studies in Himalayan region',
+                                                                    'Holds patent for disaster resilience monitoring device',
+                                                                    'Extensive teaching experience at undergraduate and postgraduate levels'
+                                                                ],
+                                                                researchWork: [
+                                                                    {
+                                                                        title: 'Landslide Hazard Assessment',
+                                                                        description: 'Research on landslide prone areas, particularly in Alaknanda Valley'
+                                                                    },
+                                                                    {
+                                                                        title: 'Regional Geography',
+                                                                        description: 'Studies on regional development, basin geomorphology, and terrain analysis'
+                                                                    },
+                                                                    {
+                                                                        title: 'Tourism Development',
+                                                                        description: 'Research on tourism geography and sustainable development in mountains'
+                                                                    }
+                                                                ],
+                                                                technicalSkills: [
+                                                                    'Landslide hazard mapping',
+                                                                    'GIS and Remote Sensing',
+                                                                    'MS Office, Tally, Photoshop, CorelDraw',
+                                                                    'Basin geomorphology analysis'
+                                                                ],
+                                                                publications: [
+                                                                    {
+                                                                        type: 'Research Papers',
+                                                                        items: [
+                                                                            'Multiple publications 2016–2024',
+                                                                            'Alaknanda Valley landslide studies',
+                                                                            'Literacy and workforce studies',
+                                                                            'Basin geomorphology research'
+                                                                        ]
+                                                                    }
+                                                                ],
+                                                                other: [
+                                                                    'Patent: Disaster resilience monitoring device',
+                                                                    'Active participant in MANU Project (Mapping Uttarakhand)',
+                                                                    'Teaching experience at undergraduate and postgraduate levels'
+                                                                ]
+                                                            },
+                                                            {
+                                                                name: 'Dr. Anjani Prasad Dubey',
+                                                                role: 'Faculty, Department of Geography',
+                                                                image: '/img/Administrator/AEC.jpg',
+                                                                cvLink: '/img/geography/Dr-Anjani-Prasad-Dubey.docx',
+                                                                keyHighlights: [
+                                                                    '25+ years of teaching experience in geography',
+                                                                    'Specialized in rural development and environmental geography',
+                                                                    'Published multiple research papers on environmental and social issues (2008–2020)',
+                                                                    'Authored book on Personality Development & Communication Skills',
+                                                                    'Edited book on Ganga ecosystem and biodiversity',
+                                                                    'Officiating Principal with 8 years of administrative experience'
+                                                                ],
+                                                                education: [
+                                                                    {
+                                                                        degree: 'Ph.D.',
+                                                                        field: 'Geography'
+                                                                    }
+                                                                ],
+                                                                researchWork: [
+                                                                    {
+                                                                        title: 'Rural Development & Population Studies',
+                                                                        description: 'Research on rural geography, population dynamics, and economic systems'
+                                                                    },
+                                                                    {
+                                                                        title: 'Environmental Geography',
+                                                                        description: 'Studies on environmental degradation, biodiversity loss, air pollution, and water resources'
+                                                                    },
+                                                                    {
+                                                                        title: 'Tourism & Food Security',
+                                                                        description: 'Research on tourism geography and food security challenges'
+                                                                    }
+                                                                ],
+                                                                publications: [
+                                                                    {
+                                                                        type: 'Research Papers',
+                                                                        items: [
+                                                                            'Multiple papers 2008–2020 on air pollution',
+                                                                            'Ganga river studies',
+                                                                            'Food security research',
+                                                                            'Biodiversity loss and conservation'
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        type: 'Books',
+                                                                        items: [
+                                                                            'Personality Development & Communication Skills',
+                                                                            'Edited book on Ganga ecosystem'
+                                                                        ]
+                                                                    }
+                                                                ],
+                                                                technicalSkills: [
+                                                                    'Environmental assessment',
+                                                                    'Population geography analysis',
+                                                                    'Rural development planning'
+                                                                ],
+                                                                other: [
+                                                                    'Patents: AI-based soil & environment analyzer',
+                                                                    'Patent: Climate prediction & flood management device',
+                                                                    'Officiating Principal (8 years total)',
+                                                                    '25+ years of teaching experience'
+                                                                ]
+                                                            }
+                                                        ]
+                                                        : isBotany
+                                                            ? [
+                                                                {
+                                                                    name: 'Dr. Vidya Dhar Pandey',
+                                                                    role: 'Professor & H.O.D., Department of Botany',
+                                                                    contact: '+917895607411',
+                                                                    email: 'pandeyvidya2@gmail.com',
+                                                                    image: '/img/Administrator/Manoj.jpg',
+                                                                    cvLink: '/img/botany/1-CV-Prof-VD-Pandey-Botany.docx'
+                                                                },
+                                                                {
+                                                                    name: 'Dr. Gulshan Kumar Dhingra',
+                                                                    role: 'Professor, Director (IQAC, Academics, R&D Cell), Department of Botany',
+                                                                    contact: '+917017976632',
+                                                                    email: 'gulshan_k_dhingra@yahoo.com',
+                                                                    image: '/img/Administrator/dinesh.jpg',
+                                                                    cvLink: '/img/botany/2-CV-Prof-GK-Dhingra-Botany.docx'
+                                                                },
+                                                                {
+                                                                    name: 'Dr. Naveen Kumar Sharma',
+                                                                    role: 'Professor, Department of Botany',
+                                                                    contact: '+919412961991',
+                                                                    email: 'drnksharma69@gmail.com',
+                                                                    image: '/img/Administrator/AEC.jpg',
+                                                                    cvLink: '/img/botany/3-CV-Prof-NK-Sharma-Botany.docx'
+                                                                },
+                                                                {
+                                                                    name: 'Dr. Shalini Rawat',
+                                                                    role: 'Associate Professor, Department of Botany',
+                                                                    contact: '+919411575844',
+                                                                    email: 'rawatshalini18041975@gmail.com',
+                                                                    image: '/img/Administrator/uma1.jpg',
+                                                                    cvLink: '/img/botany/4-CV-Dr-Shalini-Rawat-Botany.docx'
+                                                                },
+                                                                {
+                                                                    name: 'Dr. Suniti Kumar Kuriyal',
+                                                                    role: 'Assistant Professor, Department of Botany',
+                                                                    contact: '+919456556249',
+                                                                    email: 'suniti02kuriyal@gmail.com',
+                                                                    image: '/img/Administrator/Pramod.jpg',
+                                                                    cvLink: '/img/botany/5-CV-SK-Kuriyal-Botany.docx'
+                                                                },
+                                                                {
+                                                                    name: 'Dr. Preeti Khanduri',
+                                                                    role: 'Senior Assistant Professor, Department of Botany',
+                                                                    contact: '+919690308081',
+                                                                    email: 'khanduripreeti23@gmail.com',
+                                                                    image: '/img/Administrator/COE2.jpeg',
+                                                                    cvLink: '/img/botany/6-CV-Dr-Preeti-Khanduri-Botany.docx'
+                                                                },
+                                                                {
+                                                                    name: 'Dr. Dinesh Singh',
+                                                                    role: 'Guest Teacher, Department of Botany',
+                                                                    contact: '+919456359137, +918279941800',
+                                                                    email: 'dsrwt7@rediffmail.com, dsrwt7@gmail.com',
+                                                                    image: '/img/Administrator/Vijay.jpg',
+                                                                    cvLink: '/img/botany/7-CV-Dr-Dinesh-Singh.docx'
+                                                                }
+                                                            ]
+                                                            : isCommerceAndManagement || isEconomics
+                                                                ? []
+                                                                : [];
     const photos = isMathematics
         ? ['/img/mathematics/Department%20Of%20Mathematics/Mathematics.jpeg']
         : isMicrobiology
@@ -1164,16 +2545,26 @@ const DepartmentSecondaryPage = ({ language, onBack, departmentName, setCurrentP
                         ]
                         : isChemistry
                             ? ['/img/chemistry/chemistry-lab-photo.jpeg']
-                            : isCommerceAndManagement
-                                ? ['/img/H3.jpg']
+                            : isCommerceAndManagement || isEconomics
+                                ? []
                                 : isPoliticalScience
                                     ? ['/img/H2.jpg']
                                     : isPhysics
                                         ? ['/img/physics/physics-lab-pic1.jpeg', '/img/physics/physics-lab-pic2.jpeg']
                                         : isEducation
                                             ? ['/img/education/education-group-photo.jpg']
-                                            : ['/img/H2.jpg', '/img/H3.jpg', '/img/H4.jpg'];
-    return (_jsxs("div", { className: "department-secondary-page", children: [_jsxs("div", { className: "department-secondary-header", children: [_jsx("button", { className: "back-button", onClick: onBack, children: language === 'en' ? 'Back' : 'Back' }), _jsx("h1", { children: `DEPARTMENT OF ${departmentName.toUpperCase()}` })] }), _jsxs("div", { className: "department-secondary-container", children: [_jsxs("section", { className: "department-intro", children: [_jsx("h2", { children: data.introTitle }), isMathematics ? (mathematicsIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isMicrobiology ? (microbiologyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isMusic ? (musicIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isPoliticalScience ? (politicalScienceIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isSanskrit ? (sanskritIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isSociology ? (sociologyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isZoology ? (zoologyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isChemistry ? (chemistryIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isCommerceAndManagement ? (commerceManagementIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isPhysics ? (physicsIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isEnglish ? (englishIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : (_jsx("p", { children: data.introText }))] }), _jsxs("section", { className: "department-photos", children: [_jsx("h2", { children: data.photosTitle }), _jsx("div", { className: "department-photos-grid", children: photos.map((photo, index) => (_jsx("div", { className: "department-photo-card", children: _jsx("img", { src: photo, alt: `${departmentName} ${index + 1}` }) }, index))) })] }), _jsxs("section", { className: "department-staff", children: [_jsx("h2", { children: data.staffTitle }), _jsx("div", { className: "department-staff-grid", children: staffMembers.map((member, index) => (_jsxs("div", { className: "department-staff-card", children: [_jsx("img", { src: member.image, alt: member.name, className: "staff-image" }), _jsx("h3", { children: member.name }), _jsx("p", { children: member.role || data.role }), member.contact && _jsxs("p", { className: "staff-contact", children: ["Contact: ", member.contact] }), member.email && _jsxs("p", { className: "staff-contact", children: ["Email: ", member.email] }), _jsx("button", { className: "staff-cv-btn", onClick: () => handleViewTeacherProfile(member), children: "View More" })] }, index))) })] })] })] }));
+                                            : isHomeScience
+                                                ? ['/img/H4.jpg']
+                                                : isHindi
+                                                    ? ['/img/hindi/hindi-department-group.jpeg']
+                                                    : isHistory
+                                                        ? ['/img/H2.jpg']
+                                                        : isGeography
+                                                            ? []
+                                                            : isBotany
+                                                                ? ['/img/botany/botany-department-group.jpeg']
+                                                                : [];
+    return (_jsxs("div", { className: "department-secondary-page", children: [_jsxs("div", { className: "department-secondary-header", children: [_jsx("button", { className: "back-button", onClick: onBack, children: language === 'en' ? 'Back' : 'Back' }), _jsxs("h1", { children: ["DEPARTMENT OF ", departmentName.toUpperCase()] })] }), _jsxs("div", { className: "department-secondary-container", children: [_jsxs("section", { className: "department-intro", children: [_jsx("h2", { children: data.introTitle }), isMathematics ? (mathematicsIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isMicrobiology ? (microbiologyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isMusic ? (musicIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isPoliticalScience ? (politicalScienceIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isSanskrit ? (sanskritIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isSociology ? (sociologyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isZoology ? (zoologyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isChemistry ? (chemistryIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isCommerceAndManagement ? (commerceManagementIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isPhysics ? (physicsIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isEnglish ? (englishIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isHomeScience ? (homeScienceIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isHindi ? (hindiIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isHistory ? (historyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isGeography ? (geographyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : isBotany ? (botanyIntroParagraphs.map((paragraph, index) => _jsx("p", { children: paragraph }, index))) : (_jsx("p", { children: data.introText }))] }), photos.length > 0 && (_jsxs("section", { className: "department-photos", children: [_jsx("h2", { children: data.photosTitle }), _jsx("div", { className: "department-photos-grid", children: photos.map((photo, index) => (_jsx("div", { className: "department-photo-card", children: _jsx("img", { src: photo, alt: `${departmentName} ${index + 1}` }) }, index))) })] })), staffMembers.length > 0 && (_jsxs("section", { className: "department-staff", children: [_jsx("h2", { children: data.staffTitle }), _jsx("div", { className: "department-staff-grid", children: staffMembers.map((member, index) => (_jsxs("div", { className: "department-staff-card", children: [_jsx("img", { src: member.image, alt: member.name, className: "staff-image" }), _jsx("h3", { children: member.name }), _jsx("p", { children: member.role || data.role }), member.contact && _jsxs("p", { className: "staff-contact", children: ["Contact: ", member.contact] }), member.email && _jsxs("p", { className: "staff-contact", children: ["Email: ", member.email] }), _jsx("button", { className: "staff-cv-btn", onClick: () => handleViewTeacherProfile(member), children: "View More" })] }, index))) })] }))] })] }));
 };
 export function getSelectedTeacher() {
     return selectedTeacherInfo;

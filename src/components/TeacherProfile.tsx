@@ -187,15 +187,6 @@ const TeacherProfile: React.FC<TeacherProfileProps> = ({ language, onBack }) => 
               </div>
             </section>
 
-            {/* CV Link */}
-            {teacher.cvLink && (
-              <section className="teacher-profile-section">
-                <h2>{language === 'en' ? 'Curriculum Vitae' : 'जीवन वृत्त'}</h2>
-                <a href={teacher.cvLink} target="_blank" rel="noreferrer" className="teacher-cv-link">
-                  {language === 'en' ? 'Download CV' : 'CV डाउनलोड करें'}
-                </a>
-              </section>
-            )}
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import React from 'react';
 import '../styles/PanditLalitMohanSharmaCollege.css';
 const PanditLalitMohanSharmaCollege = ({ language, onBack, setCurrentPage }) => {
     const content = {

@@ -84,6 +84,7 @@
   .marquee-item {
     padding: 7px 14px;
     font-size: 13px;
+    min-width: auto;
   }
 
   .marquee-icon {
@@ -93,7 +94,8 @@
   .marquee-content {
     gap: 10px;
     padding: 0 12px;
-    animation: scrollMarquee 75s linear infinite;
+    animation: scrollHorizontal 75s linear infinite;
+    flex-wrap: nowrap;
   }
 }
 
@@ -103,19 +105,20 @@
   }
 
   .marquee-item {
-    padding: 6px 12px;
-    font-size: 12px;
-    gap: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    gap: 5px;
+    min-width: auto;
   }
 
   .marquee-icon {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .marquee-content {
-    gap: 8px;
+    gap: 7px;
     padding: 0 10px;
-    animation: scrollMarquee 45s linear infinite;
+    animation: scrollHorizontal 45s linear infinite;
   }
 }
 
@@ -125,18 +128,19 @@
   }
 
   .marquee-item {
-    padding: 5px 10px;
-    font-size: 11px;
+    padding: 4px 8px;
+    font-size: 10px;
     gap: 4px;
+    border-width: 2px;
   }
 
   .marquee-icon {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .marquee-content {
-    gap: 6px;
+    gap: 5px;
     padding: 0 8px;
-    animation: scrollMarquee 40s linear infinite;
+    animation: scrollHorizontal 35s linear infinite;
   }
 }

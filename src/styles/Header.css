@@ -511,16 +511,6 @@
     font-size: 10px;
   }
 }
-    min-width: 200px;
-  }
-
-  .dropdown-menu.departments-menu,
-  .dropdown-menu.academic-menu,
-  .dropdown-menu.students-menu {
-    min-width: 250px;
-    grid-template-columns: 1fr;
-  }
-}
 
 /* Large phones (481px - 600px) - Pixel 7, S21, S23, S24 */
 @media (min-width: 481px) and (max-width: 600px) {
