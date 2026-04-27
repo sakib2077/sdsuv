@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import './App.css';
 import UniversityHomepage from './components/UniversityHomepage';
 import Admission from './components/Admission';
@@ -83,46 +83,98 @@ import TeacherProfile from './components/TeacherProfile';
 
 type PageType = 'home' | 'admission' | 'administration' | 'about' | 'sports' | 'cultural' | 'academics' | 'up-state-universities-act' | 'rti-act' | 'iqac' | 'startup-cell' | 'it-policy' | 'ipr-policy' | 'phd-dlitt' | 'science-staff' | 'arts-staff' | 'commerce-staff' | 'photo-gallery' | 'news-gallery' | 'conference-seminar' | 'centre-excellence' | 'ncc' | 'events-sports' | 'moues' | 'science-journal' | 'commerce-journal' | 'art-journal' | 'anti-ragging' | 'hostel-registration' | 'campus-fee-payment' | 'student-council' | 'student-handbook' | 'student-feedback-form' | 'student-help-desk' | 'women-cell' | 'document-verification' | 'university-campus' | 'pandit-lalit-college' | 'govt-pg-college' | 'affiliated-colleges' | 'govt-colleges' | 'aided-colleges' | 'private-colleges' | 'campus-sports-gallery' | 'centre-excellence-page' | 'research-development' | 'faculty-development' | 'conference-seminar-workshop' | 'college-affiliation-pdf' | 'ordinance-curriculum-pdf' | 'scholarship-pdf' | 'convocation-medal-pdf' | 'phd-merit-list-pdf' | 'nirf-pdf' | 'academic-calendar-pdf' | 'helpline-pdf' | 'phd-notification-pdf' | 'exam-date-sheet-pdf' | 'convocation-quotation-pdf' | 'university-film-pdf' | 'college-affiliation' | 'scholarship' | 'academic-calendar' | 'exam-sheet' | 'all-news' | 'convocation' | 'student-corner' | 'tenders-notification' | 'courses-offered' | 'recruitments' | 'affiliation-affiliated-colleges' | 'old-syllabus' | 'examination' | 'results' | 'notification' | 'lecturer-series' | 'awards-scholarships' | 'career' | 'downloads' | 'fti' | 'announcements' | 'ugc-esamadhan-portal' | 'from-vc-desk' | 'affiliated-college' | 'act-regulations' | 'alumni' | 'exam-schedules' | 'vacancy-positions' | 'teacher-profile';
 
+type NavigationEntry = {
+  page: PageType;
+  scrollY: number;
+};
+
 function App() {
   const [language, setLanguage] = useState<'en' | 'hi'>('en');
   const [currentPage, setCurrentPage] = useState<PageType>('home');
-  const [history, setHistory] = useState<PageType[]>(['home']);
+  const [history, setHistory] = useState<NavigationEntry[]>([{ page: 'home', scrollY: 0 }]);
+  const pendingScrollRestore = useRef<number | null>(0);
+
+  const restoreScrollPosition = (scrollY: number) => {
+    window.scrollTo({ top: scrollY, left: 0, behavior: 'auto' });
+  };
 
   const handleNavigate = (page: string) => {
-    setCurrentPage(page as PageType);
-    setHistory([...history, page as PageType]);
-    window.history.pushState({ page }, '');
+    const nextPage = page as PageType;
+    const nextEntry: NavigationEntry = { page: nextPage, scrollY: 0 };
+
+    window.history.replaceState({ page: currentPage, scrollY: window.scrollY }, '');
+    window.history.pushState(nextEntry, '');
+    pendingScrollRestore.current = 0;
+    setCurrentPage(nextPage);
+    setHistory((previousHistory) => {
+      const updatedHistory = [...previousHistory];
+      const lastIndex = updatedHistory.length - 1;
+
+      if (lastIndex >= 0) {
+        updatedHistory[lastIndex] = {
+          ...updatedHistory[lastIndex],
+          scrollY: window.scrollY
+        };
+      }
+
+      return [...updatedHistory, nextEntry];
+    });
   };
 
   const handleGoBack = () => {
     if (history.length > 1) {
       const newHistory = history.slice(0, -1);
+      const previousEntry = newHistory[newHistory.length - 1];
+
+      pendingScrollRestore.current = previousEntry.scrollY;
       setHistory(newHistory);
-      setCurrentPage(newHistory[newHistory.length - 1]);
+      setCurrentPage(previousEntry.page);
+      window.history.replaceState(previousEntry, '');
     } else {
+      const homeEntry: NavigationEntry = { page: 'home', scrollY: 0 };
+      pendingScrollRestore.current = 0;
       setCurrentPage('home');
-      setHistory(['home']);
+      setHistory([homeEntry]);
+      window.history.replaceState(homeEntry, '');
     }
   };
 
   // Handle browser back button
   React.useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const handlePopState = (event: PopStateEvent) => {
       if (event.state?.page) {
-        setCurrentPage(event.state.page);
+        const restoredEntry: NavigationEntry = {
+          page: event.state.page,
+          scrollY: event.state.scrollY ?? 0
+        };
+
+        pendingScrollRestore.current = restoredEntry.scrollY;
+        setCurrentPage(restoredEntry.page);
+        setHistory((previousHistory) => {
+          const updatedHistory = previousHistory.slice(0, -1);
+          return updatedHistory.length ? updatedHistory : [restoredEntry];
+        });
       } else {
+        pendingScrollRestore.current = 0;
         setCurrentPage('home');
-        setHistory(['home']);
+        setHistory([{ page: 'home', scrollY: 0 }]);
       }
     };
 
+    window.history.replaceState({ page: currentPage, scrollY: window.scrollY }, '');
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Scroll to top when page changes
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
+  // New pages start at the top; back navigation restores the old page position.
+  useLayoutEffect(() => {
+    const scrollY = pendingScrollRestore.current;
+    pendingScrollRestore.current = null;
+    restoreScrollPosition(scrollY ?? 0);
   }, [currentPage]);
 
   const departmentPageNames: Record<string, string> = {
@@ -148,6 +200,16 @@ function App() {
 
   return (
     <div className="App">
+      {currentPage !== 'home' && (
+        <button
+          type="button"
+          className="global-back-button"
+          onClick={handleGoBack}
+          aria-label="Go back to previous page"
+        >
+          Back
+        </button>
+      )}
       <div className="language-switcher">
         <button
           onClick={() => setLanguage('en')}
