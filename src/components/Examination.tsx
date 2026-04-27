@@ -1,54 +1,216 @@
-import React from 'react';
-import '../styles/SecondaryPages.css';
+import React, { useState } from 'react';
+import '../styles/Examination.css';
+
+interface ExaminationItem {
+  id: number;
+  particulars: string;
+  date: string;
+}
+
+const examinationPages: ExaminationItem[][] = [
+  [
+    { id: 1, particulars: 'PG DIPLOMA IN FITNESS AND SPORTS MANAGEMENT', date: '09/05/2025' },
+    { id: 2, particulars: 'YEARLY COURSE EXAMINATION DATE SHEET 2024-2025 (REVISED)', date: '08/05/2025' },
+    { id: 3, particulars: 'MASTER OF PHYSICAL EDUCATION 2ND,4TH, SEMESTER (REVISED)', date: '08/05/2025' },
+    { id: 4, particulars: 'BACHELOR TO PHYSICAL EDUCATION 2ND,4TH, 6TH SEMESTER', date: '08/05/2025' },
+    { id: 5, particulars: 'BACHELOR TO JOURNALISM 2ND,4TH, 6TH SEMESTER', date: '08/05/2025' },
+    { id: 6, particulars: 'MASTER OF SCIENCE 4TH SEMESTER', date: '08/05/2025' },
+    { id: 7, particulars: 'B.B.A 2ND, 4TH SEMESTER', date: '08/05/2025' },
+    { id: 8, particulars: 'द्वितीय सेमेस्टर की परीक्षाओं हेतु परीक्षा कार्यक्रम', date: '08/05/2025' },
+    { id: 9, particulars: 'बी०एस०सी० गृहविज्ञान द्वितीय वर्ष मुख्य / भूतपूर्व छात्रों हेतु परीक्षा कार्यक्रम', date: '08/05/2025' },
+    { id: 10, particulars: 'बी०एस०सी० गृहविज्ञान तृतीय वर्ष मुख्य / भूतपूर्व छात्रों हेतु परीक्षा कार्यक्रम', date: '08/05/2025' },
+    { id: 11, particulars: 'B.A, B.SC.,B.COM. SEMESTER (REVISE)', date: '03/05/2025' },
+    { id: 12, particulars: 'B.A, B.SC.,B.COM. SEMESTER (REVISE)', date: '03/05/2025' },
+    { id: 13, particulars: 'B.A, B.SC.,B.COM. SEMESTER (REVISE)', date: '03/05/2025' },
+    { id: 14, particulars: 'B.A, B.SC.,B.COM. SEMESTER (REVISE)', date: '03/05/2025' },
+    { id: 15, particulars: 'Contact Detail Regarding Examination Form', date: '26/04/2025' },
+    { id: 16, particulars: 'Admission Starts for M.Sc. MICROBIOLOGY (Session 2024-25)', date: '10/07/2024' },
+    { id: 17, particulars: 'Professional PG Course Cancel Order', date: '13/12/2023' },
+    { id: 18, particulars: 'PROFESSIONAL COURSE ODD SEMESTER DATE SHEET 2023-24', date: '12/12/2023' },
+    { id: 19, particulars: 'Professional exam form date extension order', date: '05/12/2023' },
+    { id: 20, particulars: 'Odd semester 2023-2024 professional examination form filling notification..', date: '17/11/2023' },
+    { id: 21, particulars: 'Date extension order for exam form Professional Course (2022-23)', date: '15/07/2023' },
+    { id: 22, particulars: 'REVISED EVEN SEMESTER DIPLOMA COURSE DATE SHEET (2022-23)', date: '13/07/2023' },
+    { id: 23, particulars: 'REVISED EVEN SEMESTER DATE SHEET 2022-23 (PG) PROFESSIONAL COURSE', date: '13/07/2023' },
+    { id: 24, particulars: 'REVISED EVEN SEMESTER DATE SHEET 2022-23 (UG)', date: '13/07/2023' }
+  ],
+  [
+    { id: 25, particulars: 'PROFESSIONAL COURSE DATE SHEET 2022-23 (UG)', date: '07/07/2023' },
+    { id: 26, particulars: 'PROFESSIONAL COURSE DATE SHEET 2022-23 (DIPLOMA)', date: '07/07/2023' },
+    { id: 27, particulars: 'PROFESSIONAL COURSE DATE SHEET 2022-23 (PG)', date: '08/07/2023' },
+    { id: 28, particulars: 'Regarding Even Semester Examination Form Date', date: '01/07/2023' },
+    { id: 29, particulars: 'व्यवसायिक पाठ्यक्रम (वार्षिक) कि दिनांक 12.06.2023 को आयोजित होने वाली बीएससी बायोटेक, वनस्पति विज्ञान, तृतीय प्रश्न पत्र की परीक्षाएं अपरिहार्य कारणों से स्थगित किए जाने संबंधी', date: '06/06/2023' },
+    { id: 30, particulars: 'Yearly Course Date Sheet (Professional Course)', date: '24/05/2023' },
+    { id: 31, particulars: 'B.Sc. Home Science Date Sheet', date: '17/05/2023' },
+    { id: 32, particulars: 'तिथि विस्तारण', date: '17/05/2023' },
+    { id: 33, particulars: 'Bcom IInd and IIIrd year date sheet', date: '17/05/2023' },
+    { id: 34, particulars: 'BSC IInd and IIIrd year date sheet', date: '17/05/2023' },
+    { id: 35, particulars: 'BA second year and third year yearly date sheet', date: '17/05/2023' },
+    { id: 36, particulars: 'EXAMINATION DATE SHEET 2023 B.Sc. Home Science IInd Year/IIIrd Year', date: '10/05/2023' },
+    { id: 37, particulars: 'EXAMINATION DATE SHEET 2023 B.Sc./B.A./B.Com IInd Year/IIIrd Year', date: '06/05/2023' },
+    { id: 38, particulars: 'Regarding Odd Semester 2022-2023 Submission of Practical Marks', date: '18/04/2023' },
+    { id: 39, particulars: 'EXAM FORM FILL NOTIFICATION', date: '16/02/2023' },
+    { id: 40, particulars: 'Exam Committee', date: '20/01/2023' },
+    { id: 41, particulars: 'Exam Controller Vacancy Release', date: '19/01/2023' },
+    { id: 42, particulars: 'EXAMINATION DATE SHEET 2023 B.Ed IInd Year', date: '18/01/2023' },
+    { id: 43, particulars: 'EXAMINATION DATE SHEET 2023 B.Ed Ist Year', date: '18/01/2023' },
+    { id: 44, particulars: 'EXAMINATION DATE SHEET 2023 B.A./B.Sc./B.Ed 4th Year', date: '18/01/2023' },
+    { id: 45, particulars: 'Revised Even Semester Exam Date', date: '24/09/2022' },
+    { id: 46, particulars: 'Even Semester Exam 2021-22 Date Sheet (UG Course)', date: '15/09/2022' },
+    { id: 47, particulars: 'Even Semester Exam 2021-22 Date Sheet (PG Course)', date: '14/09/2022' },
+    { id: 48, particulars: 'Session 2021-22 Even Sem Exam Date', date: '24/08/2022' },
+    { id: 49, particulars: 'Office order for online exam form (D.H.M.- 1st Semester)', date: '24/01/2020' }
+  ],
+  [
+    { id: 50, particulars: 'Office order for exam date sheet (Revised)', date: '24/01/2020' },
+    { id: 51, particulars: 'Office order for exam date sheet (Revised)', date: '19/01/2020' },
+    { id: 52, particulars: 'Examination date sheet 2019-20 (B.Ed/Semester/Back/Ex-Students)', date: '18/01/2020' },
+    { id: 53, particulars: 'Exam date sheet 2019-20 B.A, B.com, B.Sc, M.A, M.Com, M.Sc(Revised)', date: '18/01/2020' },
+    { id: 54, particulars: 'Office Order regarding postponed of semester examination', date: '08/01/2020' },
+    { id: 55, particulars: 'Exam date sheet 2019-20 B.A, B.com, B.Sc, M.A, M.Com, M.Sc(Revised)', date: '06/01/2020' },
+    { id: 56, particulars: 'Examination date sheet 2019-20 (B.Ed/Semester/Back/Ex-Students)', date: '05/01/2020' },
+    { id: 57, particulars: 'Back Paper Exam Date Sheet (Session 2019) Regular/Private/Ex Student', date: '16/11/2019' },
+    { id: 58, particulars: 'Examination Date Sheet 2019 (B.Sc Home science, M.A Education, FIne Arts)', date: '18/07/2019' },
+    { id: 59, particulars: 'Even semester exam date sheet 2019 (M.A. mass comm. , M.Sc. plant breeding, Bachelor of Fashion Design, B.Sc. Biotechnology)', date: '04/07/2019' },
+    { id: 60, particulars: 'Professional Even Semester Exam Date Sheet III Lot 2019', date: '22/05/2019' },
+    { id: 61, particulars: 'Exam Date Sheet (Session 2018-19) Semester/Regular/Private', date: '05/05/2019' },
+    { id: 62, particulars: 'Professional Even Semester Exam Date Sheet 2019', date: '02/05/2019' },
+    { id: 63, particulars: 'Examination Date Sheet 2018-19 (M.Sc Forestry 1st Semester)', date: '14/03/2019' },
+    { id: 64, particulars: 'Examination Date Sheet 2018-19 (P.G.Diploma in Yogic Science 1st Semester)', date: '14/03/2019' },
+    { id: 65, particulars: 'Office Order Regarding Online Application for Examination form Session 2018-19 (B.A/B.Com/B.Sc/M.A/M.Com)', date: '02/03/2019' },
+    { id: 66, particulars: 'Office Order for Inter College Culture Programme Competition', date: '02/03/2019' },
+    { id: 67, particulars: 'office order for Degree/Provisional Certificate/Migration Certificate/ Transcript Certificate fees', date: '02/03/2019' },
+    { id: 68, particulars: 'B.Ed Exam Centre (session 2017-19)', date: '01/03/2019' },
+    { id: 69, particulars: 'Exam Date Sheet (B.Ed 1st year 2017-19 and Back Paper/Ex Student)', date: '26/02/2019' },
+    { id: 70, particulars: 'Exam Date sheet (B.Ed Yearly Course 2014-15 Back Paper and Ex Student)', date: '26/02/2019' },
+    { id: 71, particulars: 'Examination date sheet 2018-19 B.B.A, M.A.English,Drawing and Painting, M.Sc.Agriculture(Agronomy), (Agriculture) Plant Pathology, (Agriculture) Entomology exam date sheet', date: '01/01/2019' },
+    { id: 72, particulars: 'Examination Date Sheet 2018-19 B.Sc(Horticulture, Fisheries, Food Technology)M.Sc(Physics, Chemistry, Mathematics, Botany, Microbiology, Food Technology) M.A (Mathematics)', date: '29/12/2018' },
+    { id: 73, particulars: 'Examination Date Sheet B.Ed 2nd year 2016-18 Main Exam and 2015-17 Back & Ex-Student', date: '29/12/2018' },
+    { id: 74, particulars: 'Examination Date Sheet 2018-19 (M.Com, M.A(Mass Communication, Geography, Hindi, Sociology, Political Science, Yoga), M.Sc(Home Science, Biotechnology, Zoology)', date: '27/12/2018' }
+  ],
+  [
+    { id: 75, particulars: 'Examination Date Sheet 2018-19 (B.Sc Forestry, B.C.A, B.Sc(I.T, C.S), B.B.A (H.M), B.H.M, B.Sc (Animation & Multimedia, Fashion Design, Biotechnology)', date: '20/12/2018' },
+    { id: 76, particulars: 'Even Semester Exam Date Sheet EVS/MHA/MA Yoga', date: '26/06/2018' },
+    { id: 77, particulars: 'Evening Semester Exam Date Sheet 2018 III Lot', date: '15/06/2018' },
+    { id: 78, particulars: 'B.Ed 1st Year only for state Quota 2016-18 and EX/Back Paper 2015-17 Exam Date Sheet', date: '25/01/2018' },
+    { id: 79, particulars: 'Semester Examination Date Sheet for B.A. (Tourism)', date: '13/01/2018' },
+    { id: 80, particulars: 'Semester Examination Date Sheet for B.Sc. (Animation & Multimedia)', date: '13/01/2018' },
+    { id: 81, particulars: 'Semester Examination Date Sheet for M.A. (Mass Communication)', date: '13/01/2018' },
+    { id: 82, particulars: 'Semester Exam Date Sheet.', date: '02/01/2018' },
+    { id: 83, particulars: 'Semester Exam Date Sheet 2017-18 (B.Sc Horticulture, Agriculture) V Semester', date: '15/12/2017' },
+    { id: 84, particulars: 'Semester Exam Date Sheet', date: '14/12/2017' },
+    { id: 85, particulars: 'Examination Date Sheet (M.A (Education) B.Sc (Home Science)', date: '20/09/2017' },
+    { id: 86, particulars: 'M.Sc Microbiology II Semester Time Table', date: '02/08/2017' },
+    { id: 87, particulars: 'B.Ed Examination 2014-15 Ex-Student/Back Paper Date Sheet', date: '21/07/2017' },
+    { id: 88, particulars: 'Date Sheet M.Sc. Agronomy II/IV Semester Exam 2017', date: '13/07/2017' },
+    { id: 89, particulars: 'Date Sheet M.Sc Zoology II Semester Sem Exam 2017', date: '13/07/2017' },
+    { id: 90, particulars: 'B.Sc and M.Sc Time Table', date: '27/01/2017' },
+    { id: 91, particulars: 'Time Table M.Sc (Microbiology), B.Sc (Biotechnology)', date: '21/01/2017' },
+    { id: 92, particulars: 'Time Table B.Sc(Food Technology)', date: '19/01/2017' },
+    { id: 93, particulars: 'M.Sc (Home Science)', date: '19/01/2017' },
+    { id: 94, particulars: 'Semester Exam Date Sheet.', date: '11/01/2017' },
+    { id: 95, particulars: 'Exam Date Sheets', date: '31/12/2016' },
+    { id: 96, particulars: 'M.A, M.Sc, M.Com, B.Sc/M.Sc/BBA, BBA (H.M)/B.C.A Time Table 2016-17', date: '23/12/2016' },
+    { id: 97, particulars: 'Time Table M.A Yoga (II, IIIrd Semester) Batch (2014-16)', date: '30/09/2016' },
+    { id: 98, particulars: 'Time Table of M.Sc Horticulture I/II Sem Exam 2016', date: '27/08/2016' },
+    { id: 99, particulars: 'Time Table of M.A (Drawing & Painting)/M.Lib/B.Lib/M.A Hindi/B.H.A/M.H.A/M.Sc Exam 2016', date: '26/08/2016' }
+  ],
+  [
+    { id: 100, particulars: 'Time Table of B.Sc/M.Sc/M.A Exam 2016', date: '26/02/2016' },
+    { id: 101, particulars: 'Time Table of U.G. /P.G Exam 2015-2016', date: '25/02/2016' },
+    { id: 102, particulars: 'Professional Courses (Semester) Examination Scheduled Session 2015', date: '01/02/2016' },
+    { id: 103, particulars: 'Bachelor of Fine Arts 1st and 2nd year date sheet', date: '17/11/2015' },
+    { id: 104, particulars: 'M.Sc (Botany) 3rd Semester Examination Date Sheet 2015', date: '09/11/2015' },
+    { id: 105, particulars: 'Professional Courses (Semester) Examination reg.', date: '23/10/2015' },
+    { id: 106, particulars: 'Time Table of B.A, M.A (Mass Communication) Yearly 2015 .', date: '20/10/2015' },
+    { id: 107, particulars: 'Professional Courses Exam Result 2015', date: '05/10/2015' },
+    { id: 108, particulars: 'Time Table of M.Sc. (Horticulture,Agri.Plant Breeding,Mathematics and Chemistry) III Sem Exam 2015', date: '22/04/2015' },
+    { id: 109, particulars: 'Time Table of M.Sc. (Botany) I Sem and (IT) III Sem and M.A. (English and Drawing) III Sem Exam 2015', date: '22/04/2015' },
+    { id: 110, particulars: 'Time Table of M.Com. and M.Sc. (Physics) III Sem Exam 2015', date: '22/04/2015' },
+    { id: 111, particulars: 'Time Table of B.Sc. (Agriculture,Horticulture,Forestry and F.S) III Sem Exam 2015', date: '22/04/2015' },
+    { id: 112, particulars: 'Time Table of B.B.A./B.C.A and B.Sc. (IT and CS) III Sem Exam 2015', date: '22/04/2015' },
+    { id: 113, particulars: 'Time Table of M.A. (Yoga) I Sem Exam 2015', date: '22/04/2015' },
+    { id: 114, particulars: 'Time Table of B.B.A. (H.M.) I Sem Exam 2015', date: '22/04/2015' },
+    { id: 115, particulars: 'Time Table of M.H.A. (Hospital Administration) III Sem Exam 2014-15', date: '20/04/2015' },
+    { id: 116, particulars: 'Time Table of M.A.(Mass Communication) M.H.A I Sem Exam 2014-15', date: '28/03/2015' },
+    { id: 117, particulars: 'Time Table of M.A M.Sc M.Com I Sem Exam 2014-15', date: '28/03/2015' },
+    { id: 118, particulars: 'Time Table of B.Sc (Fishery Science Horticulture Frestry and Agriculture) I Sem Exam 2014-15', date: '28/03/2015' },
+    { id: 119, particulars: 'Time Table of B.B.A. B.C.A. B.Sc (I.T.) M.Sc (I.T.) I Sem Exam 2014-15', date: '28/03/2015' },
+    { id: 120, particulars: 'Office order Semester Exam regarding.', date: '26/03/2015' },
+    { id: 121, particulars: 'Time Table of M.Sc. (Agronomy,Agri.Soli Science and F.S) III Sem Exam 2015', date: '22/04/2014' }
+  ]
+];
 
 const Examination: React.FC = () => {
-  return (
-    <div className="secondary-page">
-      <div className="page-header">
-        <h1>Examination</h1>
-        <p>Information About University Exams</p>
-      </div>
-      
-      <div className="page-content">
-        <section className="content-section">
-          <h2>Examination Details</h2>
-          <p>Find comprehensive information about university examination schedules, procedures, and regulations.</p>
-          
-          <div className="info-grid">
-            <div className="info-card">
-              <h3>Exam Schedule</h3>
-              <p>View the current and upcoming examination schedule</p>
-            </div>
-            
-            <div className="info-card">
-              <h3>Exam Guidelines</h3>
-              <p>Rules and regulations for university examinations</p>
-            </div>
-            
-            <div className="info-card">
-              <h3>Important Dates</h3>
-              <p>Key dates for exam registration and completion</p>
-            </div>
-            
-            <div className="info-card">
-              <h3>Exam Centers</h3>
-              <p>List of official examination centers</p>
-            </div>
-          </div>
-        </section>
+  const [currentPage, setCurrentPage] = useState(1);
+  const rows = examinationPages[currentPage - 1] ?? [];
 
-        <section className="content-section">
-          <h2>Exam Resources</h2>
-          <ul className="resource-list">
-            <li>Exam Time Table</li>
-            <li>Question Papers</li>
-            <li>Model Papers</li>
-            <li>Exam Procedures</li>
-            <li>Exam Fee Information</li>
-          </ul>
-        </section>
-      </div>
-    </div>
+  return (
+    <main className="exam-page">
+      <header className="exam-header">
+        <div className="exam-header-inner">
+          <h1>Professional Course</h1>
+          <nav aria-label="Breadcrumb">
+            <a href="#">HOME</a>
+            <span aria-hidden="true">□</span>
+            <a href="#">PROFESSIONAL COURSE</a>
+          </nav>
+        </div>
+      </header>
+
+      <section className="exam-panel" aria-labelledby="exam-title">
+        <div className="exam-titlebar">
+          <h2 id="exam-title">Professional Course</h2>
+        </div>
+
+        <div className="exam-table-scroll">
+          <table className="exam-table">
+            <thead>
+              <tr>
+                <th scope="col">Particulars</th>
+                <th scope="col">Date</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((item) => (
+                <tr key={item.id}>
+                  <td className="exam-particulars">{item.particulars}</td>
+                  <td className="exam-date">{item.date}</td>
+                  <td className="exam-details">
+                    <a className="exam-pdf-link" href="#" aria-label={`View PDF for ${item.particulars}`} title="View PDF">
+                      <span className="exam-pdf-icon" aria-hidden="true">PDF</span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+              {rows.length === 0 && (
+                <tr>
+                  <td className="exam-empty" colSpan={3}></td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        <nav className="exam-pagination" aria-label="Professional course pages">
+          {examinationPages.map((_, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                type="button"
+                key={pageNumber}
+                className={`exam-page-btn ${currentPage === pageNumber ? 'active' : ''}`}
+                onClick={() => setCurrentPage(pageNumber)}
+                aria-current={currentPage === pageNumber ? 'page' : undefined}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+        </nav>
+      </section>
+    </main>
   );
 };
 

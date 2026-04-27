@@ -1,68 +1,122 @@
 import React from 'react';
-import '../styles/SecondaryPages.css';
+import '../styles/AffiliationAffiliatedColleges.css';
+
+interface AffiliationItem {
+  id: number;
+  particulars: string;
+  date?: string;
+}
+
+const affiliationItems: AffiliationItem[] = [
+  {
+    id: 1,
+    particulars: 'Regarding granting affiliation to colleges and higher educational institutions',
+    date: '31/10/2023'
+  },
+  {
+    id: 2,
+    particulars: 'Affiliation G.O. 2017',
+    date: '20/10/2023'
+  },
+  {
+    id: 3,
+    particulars: 'Affiliation G.O. 14 Dec, 2016 Onwards'
+  },
+  {
+    id: 4,
+    particulars: 'Programme Upload Sheet - HED'
+  },
+  {
+    id: 5,
+    particulars: 'PG and UG Course file'
+  },
+  {
+    id: 6,
+    particulars: 'Affiliation session 2019-20'
+  },
+  {
+    id: 7,
+    particulars: 'Affiliation Letter (Session 2016-17)'
+  },
+  {
+    id: 8,
+    particulars: 'New Affiliation reg. (Session 2016-17)'
+  },
+  {
+    id: 9,
+    particulars: 'Affiliation G.O 2017-18 onwards'
+  },
+  {
+    id: 10,
+    particulars: 'New Affiliation reg. (Session 2016-17)'
+  },
+  {
+    id: 11,
+    particulars: '(15-10-2015) Regarding Faculty Affidavit.'
+  },
+  {
+    id: 12,
+    particulars: '(01-07-2015) B.Ed reg. ( N.C.T.E (Recognition Norms & Procedure) Regulation 2014)'
+  },
+  {
+    id: 13,
+    particulars: '16-03-2015 Affiliation Standard Reg.'
+  },
+  {
+    id: 14,
+    particulars: '17-01-2015 New Affiliation Performa.'
+  },
+  {
+    id: 15,
+    particulars: 'Performa of Rajbhawan(Affiliation)'
+  },
+  {
+    id: 16,
+    particulars: 'Fee Fixation Session (2017-18)'
+  }
+];
 
 const AffiliationAffiliatedColleges: React.FC = () => {
   return (
-    <div className="secondary-page">
-      <div className="page-header">
-        <h1>Affiliation & Affiliated Colleges</h1>
-        <p>Information About Affiliated Institutions</p>
-      </div>
-      
-      <div className="page-content">
-        <section className="content-section">
-          <h2>Affiliated Colleges</h2>
-          <p>The university is affiliated with numerous colleges across the region.</p>
-          
-          <div className="colleges-grid">
-            <div className="college-card">
-              <h3>Government Colleges</h3>
-              <p>Government-run affiliated colleges offering various degree programs.</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Private Colleges</h3>
-              <p>Private institutions affiliated with the university.</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Aided Colleges</h3>
-              <p>Grant-in-aid colleges affiliated with the university.</p>
-            </div>
-            
-            <div className="college-card">
-              <h3>Postgraduate Centers</h3>
-              <p>Colleges offering postgraduate programs.</p>
-            </div>
-          </div>
-        </section>
+    <main className="affiliation-page">
+      <section className="affiliation-panel" aria-labelledby="affiliation-title">
+        <div className="affiliation-titlebar">
+          <h1 id="affiliation-title">Affiliation &amp; Affiliated colleges</h1>
+        </div>
 
-        <section className="content-section">
-          <h2>Affiliation Process</h2>
-          <div className="info-box">
-            <h3>How to Apply for Affiliation</h3>
-            <p>Information about the college affiliation process and requirements.</p>
-            <ul className="process-list">
-              <li>Eligibility Criteria</li>
-              <li>Application Procedure</li>
-              <li>Required Documentation</li>
-              <li>Approval Process</li>
-              <li>Annual Renewal Process</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="content-section">
-          <h2>Key Documents</h2>
-          <ul className="document-list">
-            <li>List of Affiliated Colleges</li>
-            <li>Affiliation Guidelines</li>
-            <li>Recognition Certificate</li>
-            <li>Academic Programs Offered</li>
-          </ul>
-        </section>
-      </div>
-    </div>
+        <div className="affiliation-table-scroll">
+          <table className="affiliation-table">
+            <thead>
+              <tr>
+                <th scope="col">Particulars</th>
+                <th scope="col">Date</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {affiliationItems.map((item) => (
+                <tr key={item.id}>
+                  <td className="affiliation-particulars">{item.particulars}</td>
+                  <td className="affiliation-date">{item.date ?? ''}</td>
+                  <td className="affiliation-details">
+                    <a
+                      className="affiliation-pdf-link"
+                      href="#"
+                      aria-label={`View PDF for ${item.particulars}`}
+                      title="View PDF"
+                    >
+                      <span className="affiliation-pdf-icon" aria-hidden="true">
+                        PDF
+                      </span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
   );
 };
 

@@ -1,176 +1,218 @@
 .anti-ragging-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  padding: 40px 20px;
+  background: #ffffff;
+  color: #475261;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.anti-ragging-header {
-  max-width: 1200px;
-  margin: 0 auto 50px;
-  position: relative;
-  text-align: center;
-  padding: 40px 30px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+.anti-ragging-topbar {
+  background: #ba0711;
+  border-bottom: 7px solid #ffe4e4;
+  color: #ffffff;
 }
 
-.anti-ragging-header h1 {
-  font-size: 42px;
-  color: #1e3a5f;
-  margin: 15px 0 8px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.anti-ragging-subtitle {
-  font-size: 18px;
-  color: #888;
-  font-weight: 500;
-  margin: 0;
-}
-
-.anti-ragging-container {
-  max-width: 1200px;
+.anti-ragging-topbar-inner {
+  width: min(1440px, calc(100% - 48px));
+  min-height: 74px;
   margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 13px 0 16px;
 }
 
-.anti-ragging-description {
-  background: white;
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  margin-bottom: 40px;
-  text-align: center;
-  border-left: 5px solid #2ecc71;
-}
-
-.anti-ragging-description p {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.8;
+.anti-ragging-topbar h1 {
   margin: 0;
-}
-
-.anti-ragging-sections-section {
-  margin-bottom: 50px;
-}
-
-.anti-ragging-sections-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.anti-ragging-section-card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  text-align: center;
-  transition: all 0.3s ease;
-  border-top: 3px solid #2ecc71;
-}
-
-.anti-ragging-section-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(46, 204, 113, 0.15);
-}
-
-.anti-ragging-section-icon {
-  font-size: 40px;
-  margin-bottom: 12px;
-}
-
-.anti-ragging-section-card h3 {
-  font-size: 16px;
-  color: #1e3a5f;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  line-height: 1.2;
   font-weight: 700;
-  margin: 12px 0;
 }
 
-.anti-ragging-section-card p {
-  font-size: 13px;
-  color: #888;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.anti-ragging-cta-section {
-  text-align: center;
-  padding: 40px 0;
-}
-
-.anti-ragging-submit-btn {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
-  color: white;
-  border: none;
-  padding: 14px 40px;
-  border-radius: 8px;
-  font-size: 16px;
+.anti-ragging-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 7px;
+  font-size: 12px;
+  line-height: 1;
   font-weight: 700;
+}
+
+.anti-ragging-breadcrumb button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 6px 16px rgba(46, 204, 113, 0.25);
+  font: inherit;
+  padding: 0;
 }
 
-.anti-ragging-submit-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(46, 204, 113, 0.35);
+.anti-ragging-breadcrumb button:hover,
+.anti-ragging-breadcrumb button:focus-visible {
+  text-decoration: underline;
 }
 
-@media (max-width: 1024px) {
-  .anti-ragging-sections-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.anti-ragging-breadcrumb span {
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  display: inline-block;
+}
 
-  .anti-ragging-header h1 {
-    font-size: 32px;
-  }
+.anti-ragging-content {
+  width: min(1412px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 64px 0 36px;
+}
+
+.anti-ragging-intro {
+  text-align: center;
+}
+
+.anti-ragging-intro h2 {
+  margin: 0 0 10px;
+  color: #535f6c;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.anti-ragging-contact-block {
+  margin: 0 0 14px;
+}
+
+.anti-ragging-contact-block h3,
+.anti-ragging-officers-title {
+  margin: 0 0 14px;
+  color: #4d5660;
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 800;
+}
+
+.anti-ragging-contact-block p {
+  margin: 0 0 3px;
+  color: #44505b;
+  font-size: 15px;
+  line-height: 1.28;
+}
+
+.anti-ragging-page a {
+  color: #064f9f;
+  text-decoration: none;
+}
+
+.anti-ragging-page a:hover,
+.anti-ragging-page a:focus-visible {
+  text-decoration: underline;
+}
+
+.anti-ragging-officers-title {
+  margin-top: 8px;
+  margin-bottom: 33px;
+}
+
+.anti-ragging-table-wrap {
+  overflow-x: auto;
+}
+
+.anti-ragging-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 15px;
+}
+
+.anti-ragging-table th,
+.anti-ragging-table td {
+  border-top: 1px solid #d8d8d8;
+  color: #3f4d5f;
+  text-align: left;
+}
+
+.anti-ragging-table th {
+  padding: 14px 10px 24px;
+  text-align: center;
+  color: #535f6c;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.anti-ragging-table td {
+  width: 25%;
+  height: 56px;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+.anti-ragging-table tbody tr:last-child td {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.anti-ragging-warning {
+  margin-top: 66px;
+  text-align: center;
+  color: #505a65;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.anti-ragging-warning p {
+  margin: 0 0 4px;
+}
+
+.anti-ragging-warning p:last-child {
+  margin-top: 10px;
+}
+
+.anti-ragging-warning a {
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
-  .anti-ragging-page {
-    padding: 20px 15px;
+  .anti-ragging-topbar-inner,
+  .anti-ragging-content {
+    width: min(100% - 28px, 1412px);
   }
 
-  .anti-ragging-header {
-    padding: 25px 20px;
-    margin-bottom: 30px;
+  .anti-ragging-topbar-inner {
+    min-height: 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .anti-ragging-header h1 {
-    font-size: 24px;
+  .anti-ragging-topbar h1 {
+    font-size: 25px;
   }
 
-  .anti-ragging-subtitle {
-    font-size: 15px;
+  .anti-ragging-breadcrumb {
+    padding-top: 0;
   }
 
-  .back-button {
-    left: 15px;
-    top: 15px;
-    padding: 8px 15px;
-    font-size: 12px;
+  .anti-ragging-content {
+    padding-top: 42px;
   }
 
-  .anti-ragging-description {
-    padding: 25px;
-    margin-bottom: 30px;
+  .anti-ragging-intro h2 {
+    font-size: 20px;
   }
 
-  .anti-ragging-sections-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .anti-ragging-table {
+    min-width: 760px;
   }
 
-  .anti-ragging-section-card {
-    padding: 20px;
+  .anti-ragging-table td {
+    height: 52px;
   }
 
-  .anti-ragging-section-icon {
-    font-size: 32px;
+  .anti-ragging-warning {
+    margin-top: 46px;
+    font-size: 14px;
   }
 }

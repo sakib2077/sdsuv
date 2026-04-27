@@ -1,59 +1,46 @@
 import React from 'react';
-import '../styles/DetailPage.css';
+import '../styles/AcademicCalendarPage.css';
 
 interface AcademicCalendarPageProps {
   language: 'en' | 'hi';
   onBack: () => void;
 }
 
-const AcademicCalendarPage: React.FC<AcademicCalendarPageProps> = ({ language, onBack }) => {
+const calendarLinks = [
+  'Academic calendar 2022-23',
+  'Academic calendar 2021-22',
+  'Academic calendar 2020-21',
+  'Academic calendar 2019-20',
+  'Academic Calendar 2017-18',
+  'Academic Calendar 2014',
+];
+
+const AcademicCalendarPage: React.FC<AcademicCalendarPageProps> = ({ onBack }) => {
   return (
-    <div className="detail-page">
-      <div className="detail-header">
-        <button className="back-button" onClick={onBack}>← Back</button>
-        <h1>{language === 'en' ? 'Academic Calendar 2025-2026' : 'शैक्षणिक कैलेंडर 2025-2026'}</h1>
-      </div>
-      
-      <div className="detail-content">
-        <div className="content-section">
-          <h2>{language === 'en' ? 'Important Dates' : 'महत्वपूर्ण तारीखें'}</h2>
-          <table className="academic-table">
-            <tbody>
-              <tr>
-                <td>{language === 'en' ? 'Session Start Date' : 'सत्र प्रारंभ तारीख'}</td>
-                <td>15 July 2025</td>
-              </tr>
-              <tr>
-                <td>{language === 'en' ? 'Mid Semester Exam' : 'मध्य सेमेस्टर परीक्षा'}</td>
-                <td>15 September 2025</td>
-              </tr>
-              <tr>
-                <td>{language === 'en' ? 'End Semester Exam' : 'अंतिम सेमेस्टर परीक्षा'}</td>
-                <td>10 November 2025</td>
-              </tr>
-              <tr>
-                <td>{language === 'en' ? 'Result Declaration' : 'परिणाम घोषणा'}</td>
-                <td>30 November 2025</td>
-              </tr>
-            </tbody>
-          </table>
+    <div className="academic-calendar-page">
+      <header className="academic-calendar-topbar">
+        <div className="academic-calendar-topbar-inner">
+          <h1>Academic Calendar</h1>
+          <nav className="academic-calendar-breadcrumb" aria-label="Academic calendar navigation">
+            <button type="button" onClick={onBack}>HOME</button>
+            <span aria-hidden="true"></span>
+            <strong>ACADEMIC CALENDAR</strong>
+          </nav>
         </div>
+      </header>
 
-        <div className="content-section">
-          <h2>{language === 'en' ? 'Holidays' : 'छुट्टियां'}</h2>
+      <main className="academic-calendar-content">
+        <section className="academic-calendar-panel" aria-labelledby="academic-calendar-heading">
+          <h2 id="academic-calendar-heading">Academic Calendar</h2>
           <ul>
-            <li>{language === 'en' ? 'Independence Day' : 'स्वतंत्रता दिवस'}: 15 August 2025</li>
-            <li>{language === 'en' ? 'Diwali Break' : 'दिवाली अवकाश'}: 27 Oct - 3 Nov 2025</li>
-            <li>{language === 'en' ? 'Winter Break' : 'शीतकालीन अवकाश'}: 20 Dec 2025 - 5 Jan 2026</li>
-            <li>{language === 'en' ? 'Republic Day' : 'गणतंत्र दिवस'}: 26 January 2026</li>
+            {calendarLinks.map((link) => (
+              <li key={link}>
+                <a href="#">{link}</a>
+              </li>
+            ))}
           </ul>
-        </div>
-
-        <div className="content-section">
-          <h2>{language === 'en' ? 'Download Calendar' : 'कैलेंडर डाउनलोड करें'}</h2>
-          <button className="download-button">{language === 'en' ? 'Download PDF' : 'पीडीएफ डाउनलोड करें'}</button>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 };

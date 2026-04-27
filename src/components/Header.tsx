@@ -1,4 +1,5 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
 import AdmissionPortrait from './AdmissionPortrait';
 import '../styles/Header.css';
 
@@ -15,6 +16,55 @@ interface SubMenuItem {
 
 const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+  const [dropdownPosition, setDropdownPosition] = useState<{ top: number; left: number; width: number } | null>(null);
+  const [dropdownTrigger, setDropdownTrigger] = useState<'click' | 'hover' | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isMobileNav, setIsMobileNav] = useState(false);
+  const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const portalRef = useRef<HTMLDivElement | null>(null);
+  const closeTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const touchDevice = 'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        (navigator as any).msMaxTouchPoints > 0;
+      setIsTouchDevice(touchDevice);
+
+      const mediaQuery = window.matchMedia('(max-width: 768px)');
+      const handleMediaChange = () => {
+        setIsMobileNav(mediaQuery.matches);
+        setOpenDropdown(null);
+        setDropdownPosition(null);
+        setDropdownTrigger(null);
+      };
+
+      handleMediaChange();
+      mediaQuery.addEventListener('change', handleMediaChange);
+      return () => mediaQuery.removeEventListener('change', handleMediaChange);
+    }
+  }, []);
+
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const updateDropdownPosition = (index: number) => {
+    const button = buttonRefs.current[index];
+    if (button) {
+      const rect = button.getBoundingClientRect();
+      const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 320;
+      const menuWidth = Math.min(Math.max(rect.width, 300), viewportWidth - 16);
+      setDropdownPosition({
+        top: rect.bottom,
+        left: Math.max(8, Math.min(rect.left, viewportWidth - menuWidth - 8)),
+        width: menuWidth
+      });
+    }
+  };
 
   const institutesSubMenu: SubMenuItem[] = [
     {
@@ -218,20 +268,158 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
 
   const data = content[language];
 
-  const handleDropdownToggle = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
-    setOpenDropdown(openDropdown === index ? null : index);
+  const handleDropdownToggle = (index: number) => {
+    clearCloseTimer();
+    setOpenDropdown((prev) => {
+      const next = prev === index ? null : index;
+      if (next === null || isMobileNav) {
+        setDropdownPosition(null);
+        setDropdownTrigger(next === null ? null : 'click');
+      } else {
+        updateDropdownPosition(index);
+        setDropdownTrigger('click');
+      }
+      return next;
+    });
   };
 
   const handleMouseEnter = (index: number, event: React.MouseEvent<HTMLDivElement>) => {
+    clearCloseTimer();
+    updateDropdownPosition(index);
     setOpenDropdown(index);
+    setDropdownTrigger('hover');
   };
 
+  useLayoutEffect(() => {
+    if (openDropdown !== null) {
+      updateDropdownPosition(openDropdown);
+    }
+  }, [openDropdown]);
+
+  useEffect(() => {
+    if (openDropdown === null || isMobileNav) {
+      return;
+    }
+
+    const handleWindowChange = () => updateDropdownPosition(openDropdown);
+    window.addEventListener('resize', handleWindowChange);
+    window.addEventListener('scroll', handleWindowChange, true);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowChange);
+      window.removeEventListener('scroll', handleWindowChange, true);
+    };
+  }, [openDropdown, isMobileNav]);
+
+  useEffect(() => {
+    if (openDropdown === null) {
+      return;
+    }
+
+    const handleDocumentClick = (event: MouseEvent) => {
+      const target = event.target as Node | null;
+      const button = buttonRefs.current[openDropdown];
+      if (!target) {
+        return;
+      }
+      if (button?.contains(target)) {
+        return;
+      }
+      if (portalRef.current?.contains(target)) {
+        return;
+      }
+      setOpenDropdown(null);
+      setDropdownPosition(null);
+      setDropdownTrigger(null);
+    };
+
+    document.addEventListener('mousedown', handleDocumentClick);
+    return () => document.removeEventListener('mousedown', handleDocumentClick);
+  }, [openDropdown]);
+
   const handleMouseLeave = () => {
-    setOpenDropdown(null);
+    if (dropdownTrigger === 'hover') {
+      clearCloseTimer();
+      closeTimerRef.current = window.setTimeout(() => {
+        setOpenDropdown(null);
+        setDropdownPosition(null);
+        setDropdownTrigger(null);
+      }, 120);
+    }
   };
+
+  const getMenuItems = (itemName: string) => {
+    const menus: { [key: string]: SubMenuItem[] } = {
+      'Organizational Units': institutesSubMenu,
+      'à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨/à¤µà¤¿à¤­à¤¾à¤—/à¤˜à¤Ÿà¤• à¤•à¥‰à¤²à¥‡à¤œ': institutesSubMenu,
+      'Departments': departmentsSubMenu,
+      'à¤µà¤¿à¤­à¤¾à¤—': departmentsSubMenu,
+      'Academic': academicSubMenu,
+      'à¤…à¤•à¤¾à¤¦à¤®à¤¿à¤•': academicSubMenu,
+      'Infrastructure': infrastructureSubMenu,
+      'à¤¬à¥à¤¨à¤¿à¤¯à¤¾à¤¦à¥€ à¤¢à¤¾à¤‚à¤šà¤¾': infrastructureSubMenu,
+      'IQAC': iqacSubMenu,
+      'à¤†à¤ˆà¤•à¥à¤¯à¥‚à¤à¤¸à¥€': iqacSubMenu,
+      'Examination': examinationSubMenu,
+      'à¤ªà¤°à¥€à¤•à¥à¤·à¤¾': examinationSubMenu,
+      'Students Corner': studentsCornerSubMenu,
+      'à¤›à¤¾à¤¤à¥à¤° à¤•à¥‹à¤¨à¤¾': studentsCornerSubMenu,
+      'Events': eventsSubMenu,
+      'à¤‡à¤µà¥‡à¤‚à¤Ÿà¥à¤¸': eventsSubMenu,
+      'Journals': journalsSubMenu,
+      'à¤œà¤°à¥à¤¨à¤²': journalsSubMenu,
+      'Staffs': staffsSubMenu,
+      'à¤¸à¥à¤Ÿà¤¾à¤«': staffsSubMenu
+    };
+    return menus[itemName];
+  };
+
+  const getMenuClass = (item: string) => {
+    if (item === 'Organizational Units' || item === 'à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨/à¤µà¤¿à¤­à¤¾à¤—/à¤˜à¤Ÿà¤• à¤•à¥‰à¤²à¥‡à¤œ') return 'institutes-menu';
+    if (item === 'Departments' || item === 'à¤µà¤¿à¤­à¤¾à¤—') return 'departments-menu';
+    if (item === 'Academic' || item === 'à¤…à¤•à¤¾à¤¦à¤®à¤¿à¤•') return 'academic-menu';
+    if (item === 'Students Corner' || item === 'à¤›à¤¾à¤¤à¥à¤° à¤•à¥‹à¤¨à¤¾') return 'students-menu';
+    return '';
+  };
+
+  const activeDropdownPortal = !isMobileNav && openDropdown !== null && dropdownPosition && buttonRefs.current[openDropdown] && typeof document !== 'undefined'
+    ? createPortal(
+      <div
+        ref={portalRef}
+        className={`dropdown-menu dropdown-portal ${getMenuClass(data.nav[openDropdown])}`}
+        style={{
+          position: 'fixed',
+          top: dropdownPosition.top,
+          left: dropdownPosition.left,
+          minWidth: dropdownPosition.width,
+          zIndex: 2147483647,
+          pointerEvents: 'auto'
+        }}
+        onMouseEnter={!isTouchDevice ? clearCloseTimer : undefined}
+        onMouseLeave={!isTouchDevice ? handleMouseLeave : undefined}
+      >
+        {getMenuItems(data.nav[openDropdown])?.map((subitem, subindex) => (
+          <a
+            key={subindex}
+            href={subitem.url}
+            className="dropdown-item"
+            onClick={(e) => {
+              e.preventDefault();
+              handleDropdownItemClick(subitem.labelEn, subitem.labelHi);
+            }}
+          >
+            {subitem.labelEn}
+          </a>
+        ))}
+      </div>,
+      document.body
+    )
+    : null;
 
   const handleDropdownItemClick = (labelEn: string, labelHi: string) => {
     setOpenDropdown(null);
+    setDropdownPosition(null);
+    setDropdownTrigger(null);
     
     // Handle institutes/colleges navigation
     if (labelEn === 'University Campus' || labelHi === 'à¤µà¤¿à¤¶à¥à¤µà¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯ à¤ªà¤°à¤¿à¤¸à¤°') {
@@ -318,61 +506,35 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
       </div>
       <nav className="navbar">
         {data.nav.map((item, index) => {
-          const getMenuItems = (itemName: string) => {
-            const menus: { [key: string]: SubMenuItem[] } = {
-              'Organizational Units': institutesSubMenu,
-              'à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨/à¤µà¤¿à¤­à¤¾à¤—/à¤˜à¤Ÿà¤• à¤•à¥‰à¤²à¥‡à¤œ': institutesSubMenu,
-              'Departments': departmentsSubMenu,
-              'à¤µà¤¿à¤­à¤¾à¤—': departmentsSubMenu,
-              'Academic': academicSubMenu,
-              'à¤…à¤•à¤¾à¤¦à¤®à¤¿à¤•': academicSubMenu,
-              'Infrastructure': infrastructureSubMenu,
-              'à¤¬à¥à¤¨à¤¿à¤¯à¤¾à¤¦à¥€ à¤¢à¤¾à¤‚à¤šà¤¾': infrastructureSubMenu,
-              'IQAC': iqacSubMenu,
-              'à¤†à¤ˆà¤•à¥à¤¯à¥‚à¤à¤¸à¥€': iqacSubMenu,
-              'Examination': examinationSubMenu,
-              'à¤ªà¤°à¥€à¤•à¥à¤·à¤¾': examinationSubMenu,
-              'Students Corner': studentsCornerSubMenu,
-              'à¤›à¤¾à¤¤à¥à¤° à¤•à¥‹à¤¨à¤¾': studentsCornerSubMenu,
-              'Events': eventsSubMenu,
-              'à¤‡à¤µà¥‡à¤‚à¤Ÿà¥à¤¸': eventsSubMenu,
-              'Journals': journalsSubMenu,
-              'à¤œà¤°à¥à¤¨à¤²': journalsSubMenu,
-              'Staffs': staffsSubMenu,
-              'à¤¸à¥à¤Ÿà¤¾à¤«': staffsSubMenu
-            };
-            return menus[itemName];
-          };
-
           const menuItems = getMenuItems(item);
-          const menuClass = item === 'Organizational Units' || item === 'à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨/à¤µà¤¿à¤­à¤¾à¤—/à¤˜à¤Ÿà¤• à¤•à¥‰à¤²à¥‡à¤œ' ? 'institutes-menu' :
-                           item === 'Departments' || item === 'à¤µà¤¿à¤­à¤¾à¤—' ? 'departments-menu' : 
-                           item === 'Academic' || item === 'à¤…à¤•à¤¾à¤¦à¤®à¤¿à¤•' ? 'academic-menu' : 
-                           item === 'Students Corner' || item === 'à¤›à¤¾à¤¤à¥à¤° à¤•à¥‹à¤¨à¤¾' ? 'students-menu' : '';
 
           return (
             <div 
               key={index} 
-              className="nav-item"
-              onMouseEnter={menuItems ? (e) => handleMouseEnter(index, e) : undefined}
-              onMouseLeave={menuItems ? handleMouseLeave : undefined}
+              className={`nav-item ${openDropdown === index ? 'nav-item-open' : ''}`}
+              onMouseEnter={menuItems && !isTouchDevice ? (e) => handleMouseEnter(index, e) : undefined}
+              onMouseLeave={menuItems && !isTouchDevice ? handleMouseLeave : undefined}
             >
               {menuItems ? (
                 <>
                   <button 
-                    className="nav-link dropdown-toggle"
-                    onClick={(e) => handleDropdownToggle(index, e)}
+                    type="button"
+                    ref={(el) => (buttonRefs.current[index] = el)}
+                    className={`nav-link dropdown-toggle ${openDropdown === index ? 'is-open' : ''}`}
+                    aria-expanded={openDropdown === index}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleDropdownToggle(index);
+                    }}
                   >
                     {item}
                   </button>
-                  {openDropdown === index && (
-                    <div 
-                      className={`dropdown-menu ${menuClass}`}
-                    >
+                  {isMobileNav && openDropdown === index && (
+                    <div className={`dropdown-menu mobile-dropdown ${getMenuClass(item)}`}>
                       {menuItems.map((subitem, subindex) => (
-                        <a 
-                          key={subindex} 
-                          href={subitem.url} 
+                        <a
+                          key={subindex}
+                          href={subitem.url}
                           className="dropdown-item"
                           onClick={(e) => {
                             e.preventDefault();
@@ -406,6 +568,7 @@ const Header: React.FC<HeaderProps> = ({ language, setCurrentPage }) => {
           );
         })}
       </nav>
+      {activeDropdownPortal}
     </header>
   );
 };

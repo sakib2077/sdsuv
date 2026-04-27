@@ -29,9 +29,16 @@ interface PublicationCard {
 const ResearchPublications: React.FC<ResearchPublicationsProps> = ({ language, setCurrentPage }) => {
   const [expandedMenu, setExpandedMenu] = useState<string>('internal-quality-assurance');
 
+  const publicationRoutes: { [id: number]: string } = {
+    1: 'campus-sports-gallery',
+    2: 'conference-seminar-workshop'
+  };
+
   const handlePublicationClick = (publicationId: number) => {
-    if (publicationId === 1 && setCurrentPage) {
-      setCurrentPage('campus-sports-gallery');
+    if (!setCurrentPage) return;
+    const page = publicationRoutes[publicationId];
+    if (page) {
+      setCurrentPage(page);
     }
   };
 
@@ -188,7 +195,18 @@ const ResearchPublications: React.FC<ResearchPublicationsProps> = ({ language, s
 
           <div className="publications-list">
             {publications.map((pub) => (
-              <div key={pub.id} className="publication-card">
+              <div
+                key={pub.id}
+                className="publication-card"
+                onClick={() => handlePublicationClick(pub.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handlePublicationClick(pub.id);
+                  }
+                }}
+              >
                 <div className="publication-image">
                   <img src={pub.image} alt={language === 'en' ? pub.titleEn : pub.titleHi} />
                   <div className="publication-date">{pub.date}</div>
@@ -196,10 +214,13 @@ const ResearchPublications: React.FC<ResearchPublicationsProps> = ({ language, s
                 <div className="publication-info">
                   <h3>{language === 'en' ? pub.titleEn : pub.titleHi}</h3>
                   <p>{language === 'en' ? pub.descriptionEn : pub.descriptionHi}</p>
-                  <button 
-                    className="details-link" 
-                    onClick={() => handlePublicationClick(pub.id)}
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                  <button
+                    type="button"
+                    className="details-link"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handlePublicationClick(pub.id);
+                    }}
                   >
                     {language === 'en' ? 'Details' : 'विवरण'}
                   </button>

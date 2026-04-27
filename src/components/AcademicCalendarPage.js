@@ -1,7 +1,15 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import '../styles/DetailPage.css';
-const AcademicCalendarPage = ({ language, onBack }) => {
-    return (_jsxs("div", { className: "detail-page", children: [_jsxs("div", { className: "detail-header", children: [_jsx("button", { className: "back-button", onClick: onBack, children: "\u2190 Back" }), _jsx("h1", { children: language === 'en' ? 'Academic Calendar 2025-2026' : 'शैक्षणिक कैलेंडर 2025-2026' })] }), _jsxs("div", { className: "detail-content", children: [_jsxs("div", { className: "content-section", children: [_jsx("h2", { children: language === 'en' ? 'Important Dates' : 'महत्वपूर्ण तारीखें' }), _jsx("table", { className: "academic-table", children: _jsxs("tbody", { children: [_jsxs("tr", { children: [_jsx("td", { children: language === 'en' ? 'Session Start Date' : 'सत्र प्रारंभ तारीख' }), _jsx("td", { children: "15 July 2025" })] }), _jsxs("tr", { children: [_jsx("td", { children: language === 'en' ? 'Mid Semester Exam' : 'मध्य सेमेस्टर परीक्षा' }), _jsx("td", { children: "15 September 2025" })] }), _jsxs("tr", { children: [_jsx("td", { children: language === 'en' ? 'End Semester Exam' : 'अंतिम सेमेस्टर परीक्षा' }), _jsx("td", { children: "10 November 2025" })] }), _jsxs("tr", { children: [_jsx("td", { children: language === 'en' ? 'Result Declaration' : 'परिणाम घोषणा' }), _jsx("td", { children: "30 November 2025" })] })] }) })] }), _jsxs("div", { className: "content-section", children: [_jsx("h2", { children: language === 'en' ? 'Holidays' : 'छुट्टियां' }), _jsxs("ul", { children: [_jsxs("li", { children: [language === 'en' ? 'Independence Day' : 'स्वतंत्रता दिवस', ": 15 August 2025"] }), _jsxs("li", { children: [language === 'en' ? 'Diwali Break' : 'दिवाली अवकाश', ": 27 Oct - 3 Nov 2025"] }), _jsxs("li", { children: [language === 'en' ? 'Winter Break' : 'शीतकालीन अवकाश', ": 20 Dec 2025 - 5 Jan 2026"] }), _jsxs("li", { children: [language === 'en' ? 'Republic Day' : 'गणतंत्र दिवस', ": 26 January 2026"] })] })] }), _jsxs("div", { className: "content-section", children: [_jsx("h2", { children: language === 'en' ? 'Download Calendar' : 'कैलेंडर डाउनलोड करें' }), _jsx("button", { className: "download-button", children: language === 'en' ? 'Download PDF' : 'पीडीएफ डाउनलोड करें' })] })] })] }));
+import '../styles/AcademicCalendarPage.css';
+const calendarLinks = [
+    'Academic calendar 2022-23',
+    'Academic calendar 2021-22',
+    'Academic calendar 2020-21',
+    'Academic calendar 2019-20',
+    'Academic Calendar 2017-18',
+    'Academic Calendar 2014',
+];
+const AcademicCalendarPage = ({ onBack }) => {
+    return (_jsxs("div", { className: "academic-calendar-page", children: [_jsx("header", { className: "academic-calendar-topbar", children: _jsxs("div", { className: "academic-calendar-topbar-inner", children: [_jsx("h1", { children: "Academic Calendar" }), _jsxs("nav", { className: "academic-calendar-breadcrumb", "aria-label": "Academic calendar navigation", children: [_jsx("button", { type: "button", onClick: onBack, children: "HOME" }), _jsx("span", { "aria-hidden": "true" }), _jsx("strong", { children: "ACADEMIC CALENDAR" })] })] }) }), _jsx("main", { className: "academic-calendar-content", children: _jsxs("section", { className: "academic-calendar-panel", "aria-labelledby": "academic-calendar-heading", children: [_jsx("h2", { id: "academic-calendar-heading", children: "Academic Calendar" }), _jsx("ul", { children: calendarLinks.map((link) => (_jsx("li", { children: _jsx("a", { href: "#", children: link }) }, link))) })] }) })] }));
 };
 export default AcademicCalendarPage;
 //# sourceMappingURL=AcademicCalendarPage.js.map

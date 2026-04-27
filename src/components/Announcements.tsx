@@ -1,61 +1,64 @@
 import React from 'react';
-import '../styles/SecondaryPages.css';
+import '../styles/Announcements.css';
+
+interface AnnouncementItem {
+  id: number;
+  particulars: string;
+}
+
+const announcementItems: AnnouncementItem[] = [
+  { id: 1, particulars: 'B.Ed ENTRANCE TEST-2013 ADMIT CARD (PROVISIONAL)' },
+  { id: 2, particulars: 'Advertisement Notification for the posts, 2013' },
+  { id: 3, particulars: 'Updated Program of B.Ed Entrance Exam 2013-14' },
+  { id: 4, particulars: 'Updated Program of B.Ed Entrance Exam 2013-14' },
+  { id: 5, particulars: 'Exam Shedules of Session 2012-13' }
+];
 
 const Announcements: React.FC = () => {
   return (
-    <div className="secondary-page">
-      <div className="page-header">
-        <h1>Announcements</h1>
-        <p>University Announcements and Updates</p>
-      </div>
-      
-      <div className="page-content">
-        <section className="content-section">
-          <h2>Latest Announcements</h2>
-          <p>Stay informed with the latest announcements from the university.</p>
-          
-          <div className="announcements-list">
-            <div className="announcement-item">
-              <h3>Announcement</h3>
-              <p><strong>Date:</strong> New announcements coming soon</p>
-              <p><strong>Category:</strong> Academic / Administrative</p>
-              <p><strong>Details:</strong> Important updates will be shared here</p>
-            </div>
-          </div>
-        </section>
+    <main className="announcements-page">
+      <header className="announcements-header">
+        <div className="announcements-header-inner">
+          <h1>Announcements</h1>
+          <nav aria-label="Breadcrumb">
+            <a href="#">HOME</a>
+            <span aria-hidden="true">□</span>
+            <a href="#">ANNOUNCEMENTS</a>
+          </nav>
+        </div>
+      </header>
 
-        <section className="content-section">
-          <h2>Announcement Categories</h2>
-          
-          <div className="info-grid">
-            <div className="info-card">
-              <h3>Academic Announcements</h3>
-              <p>Exam schedules, syllabus updates, course details</p>
-            </div>
-            
-            <div className="info-card">
-              <h3>Administrative</h3>
-              <p>Policy changes, holiday notifications, deadlines</p>
-            </div>
-            
-            <div className="info-card">
-              <h3>Campus Life</h3>
-              <p>Events, cultural programs, sports activities</p>
-            </div>
-            
-            <div className="info-card">
-              <h3>Recruitment</h3>
-              <p>Job openings, recruitment drives, career fairs</p>
-            </div>
-          </div>
-        </section>
+      <section className="announcements-panel" aria-labelledby="announcements-title">
+        <div className="announcements-titlebar">
+          <h2 id="announcements-title">Announcements</h2>
+        </div>
 
-        <section className="content-section">
-          <h2>Archive</h2>
-          <p>Access previous announcements and historical records.</p>
-        </section>
-      </div>
-    </div>
+        <div className="announcements-table-scroll">
+          <table className="announcements-table">
+            <thead>
+              <tr>
+                <th scope="col">Particulars</th>
+                <th scope="col">Date</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {announcementItems.map((item) => (
+                <tr key={item.id}>
+                  <td className="announcements-particulars">{item.particulars}</td>
+                  <td className="announcements-date"></td>
+                  <td className="announcements-details">
+                    <a className="announcements-pdf-link" href="#" aria-label={`View PDF for ${item.particulars}`} title="View PDF">
+                      <span className="announcements-pdf-icon" aria-hidden="true">PDF</span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
   );
 };
 

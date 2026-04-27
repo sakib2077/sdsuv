@@ -249,6 +249,21 @@
   transform: translateY(-4px);
 }
 
+.placeholder-card {
+  border: 2px dashed rgba(102, 126, 234, 0.5);
+  background-color: #f7f8ff;
+  padding: 40px;
+  border-radius: 14px;
+  color: #4a4a6a;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

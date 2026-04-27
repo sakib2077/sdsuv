@@ -1,7 +1,75 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import '../styles/SecondaryPages.css';
+import '../styles/AffiliationAffiliatedColleges.css';
+const affiliationItems = [
+    {
+        id: 1,
+        particulars: 'Regarding granting affiliation to colleges and higher educational institutions',
+        date: '31/10/2023'
+    },
+    {
+        id: 2,
+        particulars: 'Affiliation G.O. 2017',
+        date: '20/10/2023'
+    },
+    {
+        id: 3,
+        particulars: 'Affiliation G.O. 14 Dec, 2016 Onwards'
+    },
+    {
+        id: 4,
+        particulars: 'Programme Upload Sheet - HED'
+    },
+    {
+        id: 5,
+        particulars: 'PG and UG Course file'
+    },
+    {
+        id: 6,
+        particulars: 'Affiliation session 2019-20'
+    },
+    {
+        id: 7,
+        particulars: 'Affiliation Letter (Session 2016-17)'
+    },
+    {
+        id: 8,
+        particulars: 'New Affiliation reg. (Session 2016-17)'
+    },
+    {
+        id: 9,
+        particulars: 'Affiliation G.O 2017-18 onwards'
+    },
+    {
+        id: 10,
+        particulars: 'New Affiliation reg. (Session 2016-17)'
+    },
+    {
+        id: 11,
+        particulars: '(15-10-2015) Regarding Faculty Affidavit.'
+    },
+    {
+        id: 12,
+        particulars: '(01-07-2015) B.Ed reg. ( N.C.T.E (Recognition Norms & Procedure) Regulation 2014)'
+    },
+    {
+        id: 13,
+        particulars: '16-03-2015 Affiliation Standard Reg.'
+    },
+    {
+        id: 14,
+        particulars: '17-01-2015 New Affiliation Performa.'
+    },
+    {
+        id: 15,
+        particulars: 'Performa of Rajbhawan(Affiliation)'
+    },
+    {
+        id: 16,
+        particulars: 'Fee Fixation Session (2017-18)'
+    }
+];
 const AffiliationAffiliatedColleges = () => {
-    return (_jsxs("div", { className: "secondary-page", children: [_jsxs("div", { className: "page-header", children: [_jsx("h1", { children: "Affiliation & Affiliated Colleges" }), _jsx("p", { children: "Information About Affiliated Institutions" })] }), _jsxs("div", { className: "page-content", children: [_jsxs("section", { className: "content-section", children: [_jsx("h2", { children: "Affiliated Colleges" }), _jsx("p", { children: "The university is affiliated with numerous colleges across the region." }), _jsxs("div", { className: "colleges-grid", children: [_jsxs("div", { className: "college-card", children: [_jsx("h3", { children: "Government Colleges" }), _jsx("p", { children: "Government-run affiliated colleges offering various degree programs." })] }), _jsxs("div", { className: "college-card", children: [_jsx("h3", { children: "Private Colleges" }), _jsx("p", { children: "Private institutions affiliated with the university." })] }), _jsxs("div", { className: "college-card", children: [_jsx("h3", { children: "Aided Colleges" }), _jsx("p", { children: "Grant-in-aid colleges affiliated with the university." })] }), _jsxs("div", { className: "college-card", children: [_jsx("h3", { children: "Postgraduate Centers" }), _jsx("p", { children: "Colleges offering postgraduate programs." })] })] })] }), _jsxs("section", { className: "content-section", children: [_jsx("h2", { children: "Affiliation Process" }), _jsxs("div", { className: "info-box", children: [_jsx("h3", { children: "How to Apply for Affiliation" }), _jsx("p", { children: "Information about the college affiliation process and requirements." }), _jsxs("ul", { className: "process-list", children: [_jsx("li", { children: "Eligibility Criteria" }), _jsx("li", { children: "Application Procedure" }), _jsx("li", { children: "Required Documentation" }), _jsx("li", { children: "Approval Process" }), _jsx("li", { children: "Annual Renewal Process" })] })] })] }), _jsxs("section", { className: "content-section", children: [_jsx("h2", { children: "Key Documents" }), _jsxs("ul", { className: "document-list", children: [_jsx("li", { children: "List of Affiliated Colleges" }), _jsx("li", { children: "Affiliation Guidelines" }), _jsx("li", { children: "Recognition Certificate" }), _jsx("li", { children: "Academic Programs Offered" })] })] })] })] }));
+    return (_jsx("main", { className: "affiliation-page", children: _jsxs("section", { className: "affiliation-panel", "aria-labelledby": "affiliation-title", children: [_jsx("div", { className: "affiliation-titlebar", children: _jsx("h1", { id: "affiliation-title", children: "Affiliation & Affiliated colleges" }) }), _jsx("div", { className: "affiliation-table-scroll", children: _jsxs("table", { className: "affiliation-table", children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { scope: "col", children: "Particulars" }), _jsx("th", { scope: "col", children: "Date" }), _jsx("th", { scope: "col", children: "Details" })] }) }), _jsx("tbody", { children: affiliationItems.map((item) => (_jsxs("tr", { children: [_jsx("td", { className: "affiliation-particulars", children: item.particulars }), _jsx("td", { className: "affiliation-date", children: item.date ?? '' }), _jsx("td", { className: "affiliation-details", children: _jsx("a", { className: "affiliation-pdf-link", href: "#", "aria-label": `View PDF for ${item.particulars}`, title: "View PDF", children: _jsx("span", { className: "affiliation-pdf-icon", "aria-hidden": "true", children: "PDF" }) }) })] }, item.id))) })] }) })] }) }));
 };
 export default AffiliationAffiliatedColleges;
 //# sourceMappingURL=AffiliationAffiliatedColleges.js.map

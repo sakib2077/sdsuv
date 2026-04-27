@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/DetailPage.css';
+import '../styles/AcademicCalendarPage.css';
 interface AcademicCalendarPageProps {
     language: 'en' | 'hi';
     onBack: () => void;

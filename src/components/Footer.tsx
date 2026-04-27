@@ -7,6 +7,8 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ language, setCurrentPage }) => {
+  const actRegulationsPdf = '/img/ppf/University_Act.pdf';
+
   // External links mapping
   const externalLinks: { [key: string]: string } = {
     'UGC e-Samadhan portal': 'https://samadhaan.ugc.ac.in/',
@@ -198,7 +200,11 @@ const Footer: React.FC<FooterProps> = ({ language, setCurrentPage }) => {
             <ul className="footer-links">
               {currentContent.universityLinks.map((link, index) => (
                 <li key={index}>
-                  <a href="#" onClick={(e) => handleLinkClick(e, link)} className="footer-link">{link}</a>
+                  {index === 2 ? (
+                    <a href={actRegulationsPdf} target="_blank" rel="noopener noreferrer" className="footer-link">{link}</a>
+                  ) : (
+                    <a href="#" onClick={(e) => handleLinkClick(e, link)} className="footer-link">{link}</a>
+                  )}
                 </li>
               ))}
             </ul>

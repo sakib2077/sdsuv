@@ -77,7 +77,6 @@ import AffiliatedCollege from './components/AffiliatedCollege';
 import ActRegulations from './components/ActRegulations';
 import Alumni from './components/Alumni';
 import ExamSchedules from './components/ExamSchedules';
-import AcademicCalendar from './components/AcademicCalendar';
 import VacancyPositions from './components/VacancyPositions';
 import DepartmentSecondaryPage from './components/DepartmentSecondaryPage';
 import TeacherProfile from './components/TeacherProfile';
@@ -259,7 +258,6 @@ function App() {
       {currentPage === 'act-regulations' && <ActRegulations />}
       {currentPage === 'alumni' && <Alumni />}
       {currentPage === 'exam-schedules' && <ExamSchedules />}
-      {currentPage === 'academic-calendar' && <AcademicCalendar />}
       {currentPage === 'vacancy-positions' && <VacancyPositions />}
     </div>
   );

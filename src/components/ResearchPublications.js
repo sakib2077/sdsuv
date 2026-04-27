@@ -3,9 +3,16 @@ import { useState } from 'react';
 import '../styles/ResearchPublications.css';
 const ResearchPublications = ({ language, setCurrentPage }) => {
     const [expandedMenu, setExpandedMenu] = useState('internal-quality-assurance');
+    const publicationRoutes = {
+        1: 'campus-sports-gallery',
+        2: 'conference-seminar-workshop'
+    };
     const handlePublicationClick = (publicationId) => {
-        if (publicationId === 1 && setCurrentPage) {
-            setCurrentPage('campus-sports-gallery');
+        if (!setCurrentPage)
+            return;
+        const page = publicationRoutes[publicationId];
+        if (page) {
+            setCurrentPage(page);
         }
     };
     const handleMenuItemClick = (itemId) => {
@@ -114,7 +121,14 @@ const ResearchPublications = ({ language, setCurrentPage }) => {
                                 const isExpanded = isFixed || expandedMenu === item.id;
                                 const itemDescription = language === 'en' ? item.descriptionEn : item.descriptionHi;
                                 return (_jsxs("div", { className: "menu-item", children: [_jsxs("button", { className: `menu-button ${isExpanded ? 'active' : ''}`, onClick: () => item.id !== 'internal-quality-assurance' && handleMenuItemClick(item.id), children: [_jsx("span", { children: language === 'en' ? item.titleEn : item.titleHi }), item.id !== 'internal-quality-assurance' && (_jsx("span", { className: "dropdown-icon", children: isExpanded ? '▲' : '▼' }))] }), isExpanded && (_jsxs("div", { className: "item-details", children: [_jsx("p", { className: "content-description", children: itemDescription }), _jsx("button", { className: "view-more-btn", onClick: () => handleViewMoreClick(item.id), children: language === 'en' ? 'View More' : 'और देखें' })] }))] }, item.id));
-                            }) })] }), _jsxs("div", { className: "research-content", children: [_jsx("div", { className: "featured-image", children: _jsx("img", { src: "/img/SECOND.jpg", alt: "Research Featured" }) }), _jsxs("div", { className: "research-header", children: [_jsx("h2", { children: language === 'en' ? 'Research Publication & Book Published' : 'अनुसंधान प्रकाशन और पुस्तक प्रकाशित' }), _jsx("a", { href: "#", className: "read-more", children: language === 'en' ? 'Read more...' : 'और अधिक पढ़ें...' })] }), _jsx("div", { className: "publications-list", children: publications.map((pub) => (_jsxs("div", { className: "publication-card", children: [_jsxs("div", { className: "publication-image", children: [_jsx("img", { src: pub.image, alt: language === 'en' ? pub.titleEn : pub.titleHi }), _jsx("div", { className: "publication-date", children: pub.date })] }), _jsxs("div", { className: "publication-info", children: [_jsx("h3", { children: language === 'en' ? pub.titleEn : pub.titleHi }), _jsx("p", { children: language === 'en' ? pub.descriptionEn : pub.descriptionHi }), _jsx("button", { className: "details-link", onClick: () => handlePublicationClick(pub.id), style: { background: 'none', border: 'none', cursor: 'pointer', padding: 0 }, children: language === 'en' ? 'Details' : 'विवरण' })] })] }, pub.id))) })] })] }) }));
+                            }) })] }), _jsxs("div", { className: "research-content", children: [_jsx("div", { className: "featured-image", children: _jsx("img", { src: "/img/SECOND.jpg", alt: "Research Featured" }) }), _jsxs("div", { className: "research-header", children: [_jsx("h2", { children: language === 'en' ? 'Research Publication & Book Published' : 'अनुसंधान प्रकाशन और पुस्तक प्रकाशित' }), _jsx("a", { href: "#", className: "read-more", children: language === 'en' ? 'Read more...' : 'और अधिक पढ़ें...' })] }), _jsx("div", { className: "publications-list", children: publications.map((pub) => (_jsxs("div", { className: "publication-card", onClick: () => handlePublicationClick(pub.id), role: "button", tabIndex: 0, onKeyDown: (e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        handlePublicationClick(pub.id);
+                                    }
+                                }, children: [_jsxs("div", { className: "publication-image", children: [_jsx("img", { src: pub.image, alt: language === 'en' ? pub.titleEn : pub.titleHi }), _jsx("div", { className: "publication-date", children: pub.date })] }), _jsxs("div", { className: "publication-info", children: [_jsx("h3", { children: language === 'en' ? pub.titleEn : pub.titleHi }), _jsx("p", { children: language === 'en' ? pub.descriptionEn : pub.descriptionHi }), _jsx("button", { type: "button", className: "details-link", onClick: (event) => {
+                                                    event.stopPropagation();
+                                                    handlePublicationClick(pub.id);
+                                                }, children: language === 'en' ? 'Details' : 'विवरण' })] })] }, pub.id))) })] })] }) }));
 };
 export default ResearchPublications;
 //# sourceMappingURL=ResearchPublications.js.map
