@@ -229,6 +229,7 @@
   .photo-item img {
     height: 200px;
   }
+}
 
 @media (max-width: 480px) {
   .photos-grid {
